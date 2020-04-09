@@ -1,0 +1,5 @@
+<aside class="warning">
+Para executar esta operação, você deve estar autenticado através do método:
+{{= data.utils.getAuthenticationStr(data) }}
+</aside>
+

@@ -1,0 +1,20 @@
+--- #Widdershin's option data
+    codeSamples: true
+    expandBody: true
+    httpsnippet: false
+    language_tabs:
+        - java: "Java"
+        - javascript: "Javascript"
+    user_templates: "./user_templates/openapi3"
+    theme: "darkula"
+    search: true
+    sample: true
+    discovery: false
+    includes: []
+    shallowSchemas: false
+    tocSummary: false
+    headings: 3
+    yaml: false
+    resolve: false
+    summary: false
+    raw: false

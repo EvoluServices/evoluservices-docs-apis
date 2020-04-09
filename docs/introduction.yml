@@ -1,0 +1,21 @@
+prerequisites:
+  - step: 'Pré-requisito 1'
+    description: >-
+      Mussum Ipsum, cacilds vidis litro abertis. Si u mundo tá muito paradis? Toma um mé que o 
+      mundo vai girarzis! Si num tem leite então bota uma pinga aí cumpadi! Não sou faixa preta 
+      cumpadi, sou preto inteiris, inteiris. Manduma pindureta quium dia nois paga.
+  - step: 'Pré-requisito 2'
+    description: >-
+      Mussum Ipsum, cacilds vidis litro abertis. Si u mundo tá muito paradis? Toma um mé que o 
+      mundo vai girarzis! Si num tem leite então bota uma pinga aí cumpadi! Não sou faixa preta 
+      cumpadi, sou preto inteiris, inteiris. Manduma pindureta quium dia nois paga.
+authentication:
+  description: >-
+    Mussum Ipsum, cacilds vidis litro abertis. Si u mundo tá muito paradis? Toma um mé que o 
+    mundo vai girarzis! Si num tem leite então bota uma pinga aí cumpadi! Não sou faixa preta 
+    cumpadi, sou preto inteiris, inteiris. Manduma pindureta quium dia nois paga.
+test_enviroment:
+  description: >-
+    Mussum Ipsum, cacilds vidis litro abertis. Si u mundo tá muito paradis? Toma um mé que o 
+    mundo vai girarzis! Si num tem leite então bota uma pinga aí cumpadi! Não sou faixa preta 
+    cumpadi, sou preto inteiris, inteiris. Manduma pindureta quium dia nois paga.

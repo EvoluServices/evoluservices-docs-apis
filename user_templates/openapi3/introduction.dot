@@ -1,0 +1,12 @@
+# Começando a integrar
+
+# Pré-requisitos
+{{~data.introduction.prerequisites: p}}
+## {{=p.step}}
+{{=p.description}}
+{{~}}
+## Autenticação
+{{=data.introduction.authentication.description}}
+
+## Ambiente de testes
+{{=data.introduction['test_enviroment'].description}}

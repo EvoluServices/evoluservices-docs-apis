@@ -1,0 +1,356 @@
+openapi: 3.0.1
+info:
+  description: >-
+    A API Evoluservices Orders facilita a criação de links para clientes pagarem
+    aos estabelecimentos por serviços ou produtos adquiridos digitalmente. Ela
+    tambem permite a consulta dos status dos pagamentos, a data estipulada para
+    a liquidação das transações realizadas e os métodos de pagamento
+    disponíveis. Para demonstracao use as credenciais `orders:123mudar` para
+    testar os filtros de autorizacao.
+  version: 2.0.0
+  title: Evoluservices Orders API
+  contact:
+    email: integracoes@evoluservices.com
+servers:
+  - url: 'https://sandbox.evoluservices.com '
+  - url: 'https://evcash-latest.staging.evoluservices.com'
+tags:
+  - name: payment-methods
+    description: >-
+      Obtém os métodos de pagamento disponíveis para estabelecimentos
+      específicos
+  - name: orders
+    description: Operação para criar novos pedidos e verificar os já existentes
+paths:
+  /api/payment-methods:
+    get:
+      tags:
+        - payment-methods
+      summary: Possui as formas de pagamento disponíveis ao estabelecimento
+      operationId: paymentMethods
+      parameters:
+        - in: query
+          name: paymentMethods.amount
+          schema:
+            type: string
+          description: Valor do pagamento
+        - in: query
+          name: paymentMethods.merchantCode
+          schema:
+            type: string
+          description: Código de identificação do estabelecimento
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentMethodsOutputDto'
+        '400':
+          description: Exceção de validação
+        '401':
+          description: Não autorizado
+        '404':
+          description: estabelecimento não encontrado
+        '422':
+          description: Erro de integração
+        '500':
+          description: Erro interno no servidor
+      security:
+        - BasicAuth: []
+  /api/orders:
+    post:
+      tags:
+        - orders
+      summary: Cria uma nova transação e envia para aprovação
+      operationId: createOrders
+      requestBody:
+        description: Objeto contendo as informações para a solicitação de transação
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClientsOrderInputDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientsOrderOutputDto'
+        '400':
+          description: Exceção de validação
+        '401':
+          description: não autorizado
+        '404':
+          description: Estabelecimento não encontrado
+        '422':
+          description: Erro de integração
+        '500':
+          description: Erro interno no servidor
+      security:
+        - BasicAuth: []
+  '/api/orders/{uuid}':
+    get:
+      tags:
+        - orders
+      parameters:
+        - required: true
+          in: path
+          name: uuid
+          schema:
+            type: string
+          description: Uuid do Link de Pagamento
+      summary: 'Consulta o Link de Pagamento e de acordo com o uuid '
+      operationId: consultOrder
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientsOrderTransactionsDto'
+        '400':
+          description: Exceção de validação
+        '401':
+          description: Não autorizado
+        '404':
+          description: Pedido não encontrado
+        '422':
+          description: Erro de integração
+        '500':
+          description: Erro interno no servidor
+      security:
+        - BasicAuth: []
+components:
+  schemas:
+    PaymentMethodsInputDto:
+      type: object
+      properties:
+        amount:
+          type: string
+          example: '10000'
+        merchantCode:
+          type: string
+          example: AVD242AN
+    PaymentMethodsOutputDto:
+      type: object
+      properties:
+        paymentMethods:
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentMethod'
+    PaymentMethod:
+      type: object
+      properties:
+        type:
+          type: string
+          example: CREDIT
+        paymentOption:
+          type: object
+          $ref: '#/components/schemas/PaymentOption'
+    PaymentOption:
+      type: object
+      properties:
+        maxInstallments:
+          type: number
+          example: '12'
+        paymentBrands:
+          type: array
+          items:
+            type: string
+            example: 'VISA, MASTER, ELO'
+    ClientsOrderInputDto:
+      type: object
+      properties:
+        order:
+          type: object
+          properties:
+            reference:
+              type: string
+              example: 123CLIENTS
+            redirectUrl:
+              type: string
+              example: 'https://example.com/callback'
+              description: >-
+                Redireciona a URL depois do pagamento do pedido. Faça um retorno
+                de chamada 'POST' com o formato 'x-www-form-urlencoded' e com os
+                parâmetros 'uuid' e 'transactionNumber'.
+            amount:
+              type: string
+              example: '10000'
+            maxInstallments:
+              type: number
+              example: '2'
+            merchantCode:
+              type: string
+              example: A1B2C3
+            customerName:
+              type: string
+              example: Rodrigo
+            customerDocument:
+              type: string
+              example: 01234567890
+            recurrent:
+              type: boolean
+              example: true
+            recurrenceType:
+              type: string
+              enum:
+                - MONTHLY
+                - FLEXIBLE
+            quantityCharges:
+              type: number
+              example: '10'
+            frequency:
+              type: number
+              example: '30'
+    ClientsOrderOutputDto:
+      type: object
+      properties:
+        uuid:
+          type: string
+          example: e2ba235d-0b30-4edc-981d-e2c222763aee
+        payUrl:
+          type: string
+          example: api.evoluservices.com/orders/pay
+        reference:
+          type: string
+          example: 123CLIENTS
+        status:
+          type: string
+          enum:
+            - APPROVED
+            - CANCELED
+            - PENDING
+    ClientsOrderTransactionsDto:
+      type: object
+      properties:
+        uuid:
+          type: string
+          example: e2ba235d-0b30-4edc-981d-e2c222763aee
+        reference:
+          type: string
+          example: 123CLIENTS
+        status:
+          type: string
+          enum:
+            - APPROVED
+            - CANCELED
+            - PENDING
+        transactionList:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClientsTransactionDto'
+    ClientsTransactionDto:
+      type: object
+      properties:
+        number:
+          type: number
+          example: '12345678909'
+        status:
+          type: string
+          enum:
+            - APPROVED
+            - CANCELLED
+            - ABORTED
+            - ABORTED_BY_MERCHANT
+            - PARTIALLY_CANCELED
+          description: >-
+            Além dos valores abaixo, temos algumas outras possibilidades de
+            status para controle interno, por exemplo: COMPLETE, INCOMPLETE,
+            CANCEL_REQUESTED, etc, mas eles não devem ser considerados como
+            valores esperados porque são extremamente voláteis.
+        amount:
+          type: number
+          example: '100.00'
+        installments:
+          type: number
+          example: '2'
+        paymentBrand:
+          type: string
+          enum:
+            - VISA_CREDITO
+            - VISA_ELECTRON
+            - MASTERCARD
+            - MAESTRO
+            - AMEX
+            - DINERS
+            - HIPERCARD
+            - AURA
+            - SOROCRED
+            - BANRISUL
+            - ELO
+            - SICREDI
+            - ELO_DEBITO
+            - BRADESCO
+            - HIPER
+            - AGIPLAN
+            - BANESCARD
+            - CREDZ
+            - JCB
+            - CABAL
+            - MAIS
+            - CHEQUE_TELECHEQUE
+            - CHEQUE_CREDITALL
+            - BOLETO
+            - BANESCARD_DEBITO
+            - CABAL_DEBITO
+            - HIPER_DEBITO
+            - REDESHOP
+        paymentQuantity:
+          type: number
+          example: '3'
+        nsu:
+          type: string
+          example: '993485982'
+        authorizationNumber:
+          type: string
+          example: '470216'
+        customer:
+          type: object
+          $ref: '#/components/schemas/SubjectIdentifierDto'
+        payments:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClientsTransactionPaymentDto'
+    SubjectIdentifierDto:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Jose da Silva
+        document:
+          type: string
+          example: 123.456.789-09
+    ClientsTransactionPaymentDto:
+      type: object
+      properties:
+        number:
+          type: number
+          example: '12345678909'
+        amount:
+          type: number
+          example: '100.00'
+        status:
+          type: string
+          enum:
+            - PAYED
+            - UNPAID
+            - ANTICIPATION_REQUESTED
+            - ANTICIPATED
+            - CANCEL_REQUESTED
+            - CANCELLED
+        payDate:
+          type: string
+          example: 01/01/2001
+          description: >-
+            Descreve a data em que o pagamento efetivamente foi feito ou, se
+            ainda não foi pago, mostra a data esperada.
+        merchant:
+          type: object
+          $ref: '#/components/schemas/SubjectIdentifierDto'
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
