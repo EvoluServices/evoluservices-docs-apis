@@ -1,8 +1,8 @@
 # Começando a integrar
 
-# Pré-requisitos
+## Pré-requisitos
 {{~data.introduction.prerequisites: p}}
-## {{=p.step}}
+### {{=p.step}}
 {{=p.description}}
 {{~}}
 ## Autenticação

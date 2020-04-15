@@ -4,7 +4,7 @@ const widdershins = require('widdershins');
 const parser = require('./parser.js');
 
 const optionFilePath = './options/widdershins-option.yml';
-const indexFilePath = './source/index.html.md';
+const sourceFilePath = './source/';
 
 function convert(swaggerFile, callback) {
     // Widdershins options
@@ -14,7 +14,7 @@ function convert(swaggerFile, callback) {
 
     widdershins.convert(swaggerFile, option)
     .then(str => {
-        fs.writeFileSync(indexFilePath, str, 'utf8');
+        fs.writeFileSync(sourceFilePath + option.convertFile, str, 'utf8');
         callback(str);
     })
     .catch(err => {
@@ -24,5 +24,4 @@ function convert(swaggerFile, callback) {
 
 module.exports = {
     convert: convert,
-    mdFilePath: indexFilePath
 }

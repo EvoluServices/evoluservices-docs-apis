@@ -3,7 +3,7 @@
 {{= data.tags.section }}
 <h1 id="{{=data.title_prefix}}">{{=data.api.info && data.api.info.title}} {{=data.version}}</h1>
 
-> Scroll down for {{? data.header.language_tabs.length}}code, {{?}}example requests and responses.{{? data.header.language_tabs.length}} Select a language for code samples from the tabs above or the mobile navigation menu.{{?}}
+> Role abaixo para {{? data.header.language_tabs.length}}códigos e {{?}}exemplos de requisições e respostas.{{? data.header.language_tabs.length}} Selecione a linguagem para exemplos de código através das abas acima ou pelo menu de navegação do celular.{{?}}
 
 {{? data.api.info && data.api.info.description}}{{=data.api.info.description}}{{?}}
 
@@ -23,10 +23,6 @@ Base URLs:
 {{?}}
 {{= data.templates.introduction(data)}}
 {{= data.tags.endSection }}
-
-{{? data.api.components && data.api.components.securitySchemes }}
-{{#def.security}}
-{{?}}
 
 {{ for (var r in data.resources) { }}
 {{ data.resource = data.resources[r]; }}

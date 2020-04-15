@@ -3,19 +3,20 @@ title: Evoluservices Orders API v2.0.0
 language_tabs:
   - java: Java
   - javascript: Javascript
+  - python: Python
 toc_footers: []
 includes: []
 search: true
-highlight_theme: darkula
-headingLevel: 3
+highlight_theme: ir-black
+headingLevel: 2
 
 ---
 
-<!-- Generator: Widdershins v4.0.0 -->
+<!-- Generator: Widdershins v4.0.1 -->
 
 <h1 id="evoluservices-orders-api">Evoluservices Orders API v2.0.0</h1>
 
-> Scroll down for code, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
+> Role abaixo para códigos e exemplos de requisições e respostas. Selecione a linguagem para exemplos de código através das abas acima ou pelo menu de navegação do celular.
 
 A API Evoluservices Orders facilita a criação de links para clientes pagarem aos estabelecimentos por serviços ou produtos adquiridos digitalmente. Ela tambem permite a consulta dos status dos pagamentos, a data estipulada para a liquidação das transações realizadas e os métodos de pagamento disponíveis. Para demonstracao use as credenciais `orders:123mudar` para testar os filtros de autorizacao.
 
@@ -27,12 +28,12 @@ Base URLs:
 
 # Começando a integrar
 
-# Pré-requisitos
+## Pré-requisitos
 
-## Pré-requisito 1
+### Pré-requisito 1
 Mussum Ipsum, cacilds vidis litro abertis. Si u mundo tá muito paradis? Toma um mé que o  mundo vai girarzis! Si num tem leite então bota uma pinga aí cumpadi! Não sou faixa preta  cumpadi, sou preto inteiris, inteiris. Manduma pindureta quium dia nois paga.
 
-## Pré-requisito 2
+### Pré-requisito 2
 Mussum Ipsum, cacilds vidis litro abertis. Si u mundo tá muito paradis? Toma um mé que o  mundo vai girarzis! Si num tem leite então bota uma pinga aí cumpadi! Não sou faixa preta  cumpadi, sou preto inteiris, inteiris. Manduma pindureta quium dia nois paga.
 
 ## Autenticação
@@ -40,10 +41,6 @@ Mussum Ipsum, cacilds vidis litro abertis. Si u mundo tá muito paradis? Toma um
 
 ## Ambiente de testes
 Mussum Ipsum, cacilds vidis litro abertis. Si u mundo tá muito paradis? Toma um mé que o  mundo vai girarzis! Si num tem leite então bota uma pinga aí cumpadi! Não sou faixa preta  cumpadi, sou preto inteiris, inteiris. Manduma pindureta quium dia nois paga.
-
-# Autenticação
-
-- HTTP Authentication, scheme: basic 
 
 <h1 id="evoluservices-orders-api-payment-methods">payment-methods</h1>
 
@@ -92,6 +89,18 @@ fetch('https://sandbox.evoluservices.com /api/payment-methods',
 
 ```
 
+```python
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('https://sandbox.evoluservices.com /api/payment-methods', headers = headers)
+
+print(r.json())
+
+```
+
 `GET /api/payment-methods`
 
 *Possui as formas de pagamento disponíveis ao estabelecimento*
@@ -130,7 +139,7 @@ fetch('https://sandbox.evoluservices.com /api/payment-methods',
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[PaymentMethodsOutputDto](#schemapaymentmethodsoutputdto)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Exceção de validação|None|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Não autorizado|None|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|estabelecimento não encontrado|None|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Estabelecimento não encontrado|None|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|Erro de integração|None|
 |500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Erro interno no servidor|None|
 
@@ -171,7 +180,7 @@ const inputBody = '{
   "order": {
     "reference": "123CLIENTS",
     "redirectUrl": "https://example.com/callback",
-    "amount": "10000",
+    "amount": "10000.00",
     "maxInstallments": "2",
     "merchantCode": "A1B2C3",
     "customerName": "Rodrigo",
@@ -201,6 +210,19 @@ fetch('https://sandbox.evoluservices.com /api/orders',
 
 ```
 
+```python
+import requests
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+r = requests.post('https://sandbox.evoluservices.com /api/orders', headers = headers)
+
+print(r.json())
+
+```
+
 `POST /api/orders`
 
 *Cria uma nova transação e envia para aprovação*
@@ -212,7 +234,7 @@ fetch('https://sandbox.evoluservices.com /api/orders',
   "order": {
     "reference": "123CLIENTS",
     "redirectUrl": "https://example.com/callback",
-    "amount": "10000",
+    "amount": "10000.00",
     "maxInstallments": "2",
     "merchantCode": "A1B2C3",
     "customerName": "Rodrigo",
@@ -231,17 +253,17 @@ fetch('https://sandbox.evoluservices.com /api/orders',
 |---|---|---|---|---|
 |body|body|[ClientsOrderInputDto](#schemaclientsorderinputdto)|true|Objeto contendo as informações para a solicitação de transação|
 |» order|body|object|false|none|
-|»» reference|body|string|false|none|
+|»» reference|body|string|false|Identificação referenciando o order.|
 |»» redirectUrl|body|string|false|Redireciona a URL depois do pagamento do pedido. Faça um retorno de chamada 'POST' com o formato 'x-www-form-urlencoded' e com os parâmetros 'uuid' e 'transactionNumber'.|
-|»» amount|body|string|false|none|
-|»» maxInstallments|body|number|false|none|
-|»» merchantCode|body|string|false|none|
-|»» customerName|body|string|false|none|
-|»» customerDocument|body|string|false|none|
-|»» recurrent|body|boolean|false|none|
-|»» recurrenceType|body|string|false|none|
-|»» quantityCharges|body|number|false|none|
-|»» frequency|body|number|false|none|
+|»» amount|body|string|false|Valor do order, em formato decimal (XXXX.XX)|
+|»» maxInstallments|body|number|false|Número máximo de parcelas permitidos pelo order.|
+|»» merchantCode|body|string|false|Código do estabelecimento referente ao order.|
+|»» customerName|body|string|false|Nome do cliente do order.|
+|»» customerDocument|body|string|false|Documento do cliente do order.|
+|»» recurrent|body|boolean|false|Indica se o pagamento do order é do tipo recorrente ou não;|
+|»» recurrenceType|body|string|false|Tipo de recorrência do pagamento do order. Pode ser mensal ou flexível,  a cada determinado período fixo.|
+|»» quantityCharges|body|number|false|Quantidade de recorrências que serão cobradas no order.|
+|»» frequency|body|number|false|Período fixo entre as cobranças da recorrência, em dias.|
 
 #### Enumerated Values
 
@@ -319,6 +341,18 @@ fetch('https://sandbox.evoluservices.com /api/orders/{uuid}',
 }).then(function(body) {
     console.log(body);
 });
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('https://sandbox.evoluservices.com /api/orders/{uuid}', headers = headers)
+
+print(r.json())
 
 ```
 
@@ -405,12 +439,14 @@ BasicAuth
 
 ```
 
+Objeto para a busca de formas de pagamento disponíveis ao estabelecimento.
+
 ### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|amount|string|false|none|none|
-|merchantCode|string|false|none|none|
+|amount|string|false|none|Valor do pagamento|
+|merchantCode|string|false|none|Código do estabelecimento|
 
 <h2 id="tocS_PaymentMethodsOutputDto">PaymentMethodsOutputDto</h2>
 <!-- backwards compatibility -->
@@ -436,11 +472,13 @@ BasicAuth
 
 ```
 
+Objeto de retorno contendo as informações sobre as formas de pagamento disponíveis. 
+
 ### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|paymentMethods|[[PaymentMethod](#schemapaymentmethod)]|false|none|none|
+|paymentMethods|[[PaymentMethod](#schemapaymentmethod)]|false|none|[Objeto contendo método de pagamento do estabelecimento.]|
 
 <h2 id="tocS_PaymentMethod">PaymentMethod</h2>
 <!-- backwards compatibility -->
@@ -462,12 +500,21 @@ BasicAuth
 
 ```
 
+Objeto contendo método de pagamento do estabelecimento.
+
 ### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|type|string|false|none|none|
-|paymentOption|[PaymentOption](#schemapaymentoption)|false|none|none|
+|type|string|false|none|Determina o método de pagamento. Pode ser crédito ou recorrente|
+|paymentOption|[PaymentOption](#schemapaymentoption)|false|none|Opção para o tipo de pagamento do estabelecimento|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|type|CREDIT|
+|type|RECURRENT|
 
 <h2 id="tocS_PaymentOption">PaymentOption</h2>
 <!-- backwards compatibility -->
@@ -486,12 +533,14 @@ BasicAuth
 
 ```
 
+Opção para o tipo de pagamento do estabelecimento
+
 ### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|maxInstallments|number|false|none|none|
-|paymentBrands|[string]|false|none|none|
+|maxInstallments|number|false|none|Número máximo de parcelas permitido para a opção|
+|paymentBrands|[string]|false|none|Bandeiras disponíveis para a opção|
 
 <h2 id="tocS_ClientsOrderInputDto">ClientsOrderInputDto</h2>
 <!-- backwards compatibility -->
@@ -505,7 +554,7 @@ BasicAuth
   "order": {
     "reference": "123CLIENTS",
     "redirectUrl": "https://example.com/callback",
-    "amount": "10000",
+    "amount": "10000.00",
     "maxInstallments": "2",
     "merchantCode": "A1B2C3",
     "customerName": "Rodrigo",
@@ -519,22 +568,24 @@ BasicAuth
 
 ```
 
+Objeto contendo informações para a solicitação de uma nova transação.
+
 ### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |order|object|false|none|none|
-|» reference|string|false|none|none|
+|» reference|string|false|none|Identificação referenciando o order.|
 |» redirectUrl|string|false|none|Redireciona a URL depois do pagamento do pedido. Faça um retorno de chamada 'POST' com o formato 'x-www-form-urlencoded' e com os parâmetros 'uuid' e 'transactionNumber'.|
-|» amount|string|false|none|none|
-|» maxInstallments|number|false|none|none|
-|» merchantCode|string|false|none|none|
-|» customerName|string|false|none|none|
-|» customerDocument|string|false|none|none|
-|» recurrent|boolean|false|none|none|
-|» recurrenceType|string|false|none|none|
-|» quantityCharges|number|false|none|none|
-|» frequency|number|false|none|none|
+|» amount|string|false|none|Valor do order, em formato decimal (XXXX.XX)|
+|» maxInstallments|number|false|none|Número máximo de parcelas permitidos pelo order.|
+|» merchantCode|string|false|none|Código do estabelecimento referente ao order.|
+|» customerName|string|false|none|Nome do cliente do order.|
+|» customerDocument|string|false|none|Documento do cliente do order.|
+|» recurrent|boolean|false|none|Indica se o pagamento do order é do tipo recorrente ou não;|
+|» recurrenceType|string|false|none|Tipo de recorrência do pagamento do order. Pode ser mensal ou flexível,  a cada determinado período fixo.|
+|» quantityCharges|number|false|none|Quantidade de recorrências que serão cobradas no order.|
+|» frequency|number|false|none|Período fixo entre as cobranças da recorrência, em dias.|
 
 #### Enumerated Values
 
@@ -560,14 +611,16 @@ BasicAuth
 
 ```
 
+Objeto de retorno contendo informações sobre o link de pagamento gerado pelo order.
+
 ### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|uuid|string|false|none|none|
-|payUrl|string|false|none|none|
-|reference|string|false|none|none|
-|status|string|false|none|none|
+|uuid|string|false|none|UUID do link de pagamento gerado pelo order.|
+|payUrl|string|false|none|URL do link de pagamento para tal order.|
+|reference|string|false|none|Identificação referenciando o order.|
+|status|string|false|none|Status do order.|
 
 #### Enumerated Values
 
@@ -621,14 +674,16 @@ BasicAuth
 
 ```
 
+Objeto de retorno contendo informações sobre a transação efetuada por um link de pagamento,  de acordo com o UUID buscado.
+
 ### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|uuid|string|false|none|none|
-|reference|string|false|none|none|
-|status|string|false|none|none|
-|transactionList|[[ClientsTransactionDto](#schemaclientstransactiondto)]|false|none|none|
+|uuid|string|false|none|UUID do link de pagamento.|
+|reference|string|false|none|Identificação referenciando o order da transação.|
+|status|string|false|none|Status da transação.|
+|transactionList|[[ClientsTransactionDto](#schemaclientstransactiondto)]|false|none|Transações efetuadas pelo link de pagamento.|
 
 #### Enumerated Values
 
@@ -675,20 +730,22 @@ BasicAuth
 
 ```
 
+Objeto contendo as informações sobre as transações efetuadas pelo link de pagamento.
+
 ### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|number|number|false|none|none|
+|number|number|false|none|Número da transação.|
 |status|string|false|none|Além dos valores abaixo, temos algumas outras possibilidades de status para controle interno, por exemplo: COMPLETE, INCOMPLETE, CANCEL_REQUESTED, etc, mas eles não devem ser considerados como valores esperados porque são extremamente voláteis.|
-|amount|number|false|none|none|
-|installments|number|false|none|none|
-|paymentBrand|string|false|none|none|
-|paymentQuantity|number|false|none|none|
-|nsu|string|false|none|none|
-|authorizationNumber|string|false|none|none|
-|customer|[SubjectIdentifierDto](#schemasubjectidentifierdto)|false|none|none|
-|payments|[[ClientsTransactionPaymentDto](#schemaclientstransactionpaymentdto)]|false|none|none|
+|amount|number|false|none|Valor da transação no formato decimal (XXXX.XX)|
+|installments|number|false|none|Número de parcelas efetuadas na transação.|
+|paymentBrand|string|false|none|Bandeira com a qual a transação foi efetuada.|
+|paymentQuantity|number|false|none|Quantidades de pagamentos existentes na transação.|
+|nsu|string|false|none|NSU da transação|
+|authorizationNumber|string|false|none|Número de autorização da transação.|
+|customer|[SubjectIdentifierDto](#schemasubjectidentifierdto)|false|none|Objeto contendo informações sobre o cliente ou o estabelecimento que efetuou a transação com link de pagamento.|
+|payments|[[ClientsTransactionPaymentDto](#schemaclientstransactionpaymentdto)]|false|none|[Objeto contendo informações sobre o pagamento da transçaão do link de pagamento ao parceiro.]|
 
 #### Enumerated Values
 
@@ -743,12 +800,14 @@ BasicAuth
 
 ```
 
+Objeto contendo informações sobre o cliente ou o estabelecimento que efetuou a transação com link de pagamento.
+
 ### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|name|string|false|none|none|
-|document|string|false|none|none|
+|name|string|false|none|Nome do cliente ou do estabelecimento.|
+|document|string|false|none|Documento do cliente ou do estabelecimento.|
 
 <h2 id="tocS_ClientsTransactionPaymentDto">ClientsTransactionPaymentDto</h2>
 <!-- backwards compatibility -->
@@ -771,15 +830,17 @@ BasicAuth
 
 ```
 
+Objeto contendo informações sobre o pagamento da transçaão do link de pagamento ao parceiro.
+
 ### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|number|number|false|none|none|
-|amount|number|false|none|none|
-|status|string|false|none|none|
+|number|number|false|none|Número do pagamento|
+|amount|number|false|none|Valor do pagamento, em formato decimal.|
+|status|string|false|none|Status do pagamento da transação.|
 |payDate|string|false|none|Descreve a data em que o pagamento efetivamente foi feito ou, se ainda não foi pago, mostra a data esperada.|
-|merchant|[SubjectIdentifierDto](#schemasubjectidentifierdto)|false|none|none|
+|merchant|[SubjectIdentifierDto](#schemasubjectidentifierdto)|false|none|Objeto contendo informações sobre o cliente ou o estabelecimento que efetuou a transação com link de pagamento.|
 
 #### Enumerated Values
 

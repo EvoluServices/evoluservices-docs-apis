@@ -22,7 +22,7 @@ tags:
   - name: orders
     description: Operação para criar novos pedidos e verificar os já existentes
 paths:
-  /api/payment-methods:
+  '/api/payment-methods':
     get:
       tags:
         - payment-methods
@@ -51,14 +51,14 @@ paths:
         '401':
           description: Não autorizado
         '404':
-          description: estabelecimento não encontrado
+          description: Estabelecimento não encontrado
         '422':
           description: Erro de integração
         '500':
           description: Erro interno no servidor
       security:
         - BasicAuth: []
-  /api/orders:
+  '/api/orders':
     post:
       tags:
         - orders
@@ -126,15 +126,21 @@ components:
   schemas:
     PaymentMethodsInputDto:
       type: object
+      description: >-
+        Objeto para a busca de formas de pagamento disponíveis ao estabelecimento.
       properties:
         amount:
           type: string
           example: '10000'
+          description: 'Valor do pagamento'
         merchantCode:
           type: string
           example: AVD242AN
+          description: 'Código do estabelecimento'
     PaymentMethodsOutputDto:
       type: object
+      description: >-
+        Objeto de retorno contendo as informações sobre as formas de pagamento disponíveis. 
       properties:
         paymentMethods:
           type: array
@@ -142,26 +148,39 @@ components:
             $ref: '#/components/schemas/PaymentMethod'
     PaymentMethod:
       type: object
+      description: >-
+        Objeto contendo método de pagamento do estabelecimento.
       properties:
         type:
           type: string
           example: CREDIT
+          enum:
+            - CREDIT
+            - RECURRENT
+          description: >- 
+            Determina o método de pagamento. Pode ser crédito
+            ou recorrente
         paymentOption:
           type: object
           $ref: '#/components/schemas/PaymentOption'
     PaymentOption:
       type: object
+      description: 'Opção para o tipo de pagamento do estabelecimento'
       properties:
         maxInstallments:
           type: number
           example: '12'
+          description: 'Número máximo de parcelas permitido para a opção'
         paymentBrands:
           type: array
+          description: 'Bandeiras disponíveis para a opção'
           items:
             type: string
             example: 'VISA, MASTER, ELO'
     ClientsOrderInputDto:
       type: object
+      description: >-
+        Objeto contendo informações para a solicitação de uma nova transação.
       properties:
         order:
           type: object
@@ -169,6 +188,8 @@ components:
             reference:
               type: string
               example: 123CLIENTS
+              description: >-
+                Identificação referenciando o order.
             redirectUrl:
               type: string
               example: 'https://example.com/callback'
@@ -178,76 +199,120 @@ components:
                 parâmetros 'uuid' e 'transactionNumber'.
             amount:
               type: string
-              example: '10000'
+              example: '10000.00'
+              description: >-
+                Valor do order, em formato decimal (XXXX.XX)
             maxInstallments:
               type: number
               example: '2'
+              description: >-
+                Número máximo de parcelas permitidos pelo order.
             merchantCode:
               type: string
               example: A1B2C3
+              description: >-
+                Código do estabelecimento referente ao order.
             customerName:
               type: string
               example: Rodrigo
+              description: >-
+                Nome do cliente do order.
             customerDocument:
               type: string
               example: 01234567890
+              description: >-
+                Documento do cliente do order.
             recurrent:
               type: boolean
               example: true
+              description: >-
+                Indica se o pagamento do order é do tipo recorrente ou não;
             recurrenceType:
               type: string
+              description: >-
+                Tipo de recorrência do pagamento do order. Pode ser mensal ou flexível, 
+                a cada determinado período fixo.
               enum:
                 - MONTHLY
                 - FLEXIBLE
             quantityCharges:
               type: number
               example: '10'
+              description: >-
+                Quantidade de recorrências que serão cobradas no order.
             frequency:
               type: number
               example: '30'
+              description: >-
+                Período fixo entre as cobranças da recorrência, em dias.
     ClientsOrderOutputDto:
       type: object
+      description: >-
+        Objeto de retorno contendo informações sobre o link de pagamento gerado pelo order.
       properties:
         uuid:
           type: string
           example: e2ba235d-0b30-4edc-981d-e2c222763aee
+          description: >-
+            UUID do link de pagamento gerado pelo order.
         payUrl:
           type: string
           example: api.evoluservices.com/orders/pay
+          description: >-
+            URL do link de pagamento para tal order.
         reference:
           type: string
           example: 123CLIENTS
+          description: >-
+            Identificação referenciando o order.
         status:
           type: string
+          description: >-
+            Status do order.
           enum:
             - APPROVED
             - CANCELED
             - PENDING
     ClientsOrderTransactionsDto:
       type: object
+      description: >-
+        Objeto de retorno contendo informações sobre a transação efetuada por um link de pagamento, 
+        de acordo com o UUID buscado.
       properties:
         uuid:
           type: string
           example: e2ba235d-0b30-4edc-981d-e2c222763aee
+          description: >-
+            UUID do link de pagamento.
         reference:
           type: string
           example: 123CLIENTS
+          description: >-
+            Identificação referenciando o order da transação.
         status:
           type: string
+          description: >+
+            Status da transação.
           enum:
             - APPROVED
             - CANCELED
             - PENDING
         transactionList:
           type: array
+          description: >-
+            Transações efetuadas pelo link de pagamento.
           items:
             $ref: '#/components/schemas/ClientsTransactionDto'
     ClientsTransactionDto:
       type: object
+      description: >-
+        Objeto contendo as informações sobre as transações efetuadas pelo link de pagamento.
       properties:
         number:
           type: number
           example: '12345678909'
+          description: >-
+            Número da transação.
         status:
           type: string
           enum:
@@ -264,11 +329,17 @@ components:
         amount:
           type: number
           example: '100.00'
+          description: >-
+            Valor da transação no formato decimal (XXXX.XX)
         installments:
           type: number
           example: '2'
+          description: >-
+            Número de parcelas efetuadas na transação.
         paymentBrand:
           type: string
+          description: >-
+            Bandeira com a qual a transação foi efetuada.
           enum:
             - VISA_CREDITO
             - VISA_ELECTRON
@@ -301,12 +372,18 @@ components:
         paymentQuantity:
           type: number
           example: '3'
+          description: >-
+            Quantidades de pagamentos existentes na transação.
         nsu:
           type: string
           example: '993485982'
+          description: >-
+            NSU da transação
         authorizationNumber:
           type: string
           example: '470216'
+          description: >-
+            Número de autorização da transação.
         customer:
           type: object
           $ref: '#/components/schemas/SubjectIdentifierDto'
@@ -316,24 +393,38 @@ components:
             $ref: '#/components/schemas/ClientsTransactionPaymentDto'
     SubjectIdentifierDto:
       type: object
+      description: >-
+        Objeto contendo informações sobre o cliente ou o estabelecimento que efetuou a transação com link de pagamento.
       properties:
         name:
           type: string
           example: Jose da Silva
+          description: >-
+            Nome do cliente ou do estabelecimento.
         document:
           type: string
           example: 123.456.789-09
+          description: >-
+            Documento do cliente ou do estabelecimento.
     ClientsTransactionPaymentDto:
       type: object
+      description: >-
+        Objeto contendo informações sobre o pagamento da transçaão do link de pagamento ao parceiro.
       properties:
         number:
           type: number
           example: '12345678909'
+          description: >-
+            Número do pagamento
         amount:
           type: number
           example: '100.00'
+          description: >-
+            Valor do pagamento, em formato decimal.
         status:
           type: string
+          description: >-
+            Status do pagamento da transação.
           enum:
             - PAYED
             - UNPAID

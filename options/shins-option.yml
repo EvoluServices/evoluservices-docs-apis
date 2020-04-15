@@ -1,7 +1,13 @@
 --- #Shin's option data
+    pages: 
+        - portal.html.md
+        - guideOrders.html.md
+        - reference.html.md
+    
     cli: true
     minify: false
     customCss: true
     inline: false
     unsafe: false
     no-links: false
+    logo: ./source/images/custom_logo.png

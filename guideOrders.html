@@ -1,0 +1,363 @@
+
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Evoluservices Orders API Guide</title>
+
+    <style>
+    </style>
+    <link rel="stylesheet" media="screen" href="pub/css/screen.css">
+    <link rel="stylesheet" media="screen" href="pub/css/screen_overrides.css">
+    <link rel="stylesheet" media="print" href="pub/css/print.css">
+    <link rel="stylesheet" media="print" href="pub/css/print_overrides.css">
+    <link rel="stylesheet" media="screen" href="pub/css/ir-black.css">
+    <link rel="stylesheet" media="screen" href="pub/css/theme_overrides.css">
+    
+      <script src="source/javascripts/lib/_jquery.js"></script>
+<script src="source/javascripts/lib/_jquery.highlight.js"></script>
+<script src="source/javascripts/lib/_lunr.js"></script>
+<script src="source/javascripts/lib/_imagesloaded.min.js"></script>
+<script src="source/javascripts/lib/_energize.js"></script>
+<script src="source/javascripts/app/_lang.js"></script>
+<script src="source/javascripts/app/_search.js"></script>
+<script src="source/javascripts/app/_toc.js"></script>
+<script type="text/javascript">
+$(function() {
+  loadToc($('#toc'), '.toc-link', '.toc-list-h2, .toc-list-h3, .toc-list-h4, .toc-list-h5, .toc-list-h6', 10);
+  setupLanguages($('body').data('languages'));
+  $('.content').imagesLoaded( function() {
+    recacheHeights();
+    refreshToc();
+  });
+});
+
+window.onpopstate = function() {
+  activateLanguage(getLanguageFromQueryString());
+};
+</script>
+
+    
+    <meta name="theme-color" content="#F3F7F9" />
+<!-- Renderer: Shins v2.4.1-0 -->
+<!-- Generator: Widdershins v4.0.1 -->
+  </head>
+
+  <body data-languages="[&quot;shell&quot;,&quot;http&quot;,&quot;javascript&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;php&quot;,&quot;java&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="source/images/navbar.png" class="undefined" alt="Navigation">
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="source/images/custom_logo.png" class="logo" alt="Logo">
+      
+        <div class="lang-selector">
+          
+            
+              <a href="#" data-language-name="shell">Shell</a>
+            
+          
+            
+              <a href="#" data-language-name="http">HTTP</a>
+            
+          
+            
+              <a href="#" data-language-name="javascript">JavaScript</a>
+            
+          
+            
+              <a href="#" data-language-name="ruby">Ruby</a>
+            
+          
+            
+              <a href="#" data-language-name="python">Python</a>
+            
+          
+            
+              <a href="#" data-language-name="php">PHP</a>
+            
+          
+            
+              <a href="#" data-language-name="java">Java</a>
+            
+          
+        </div>
+      
+      
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      
+      <div id="toc" class="toc-list-h1">
+	  	<ul class="toc-list-h1">
+        
+          <li>
+            <a href="#order-api" class="toc-h1 toc-link" data-title="Order API">Order API</a>
+            
+          </li>
+        
+          <li>
+            <a href="#overview" class="toc-h1 toc-link" data-title="Overview">Overview</a>
+            
+              <ul class="toc-list-h2">
+                
+                  <li>
+                    <a href="#introdu--o" class="toc-h2 toc-link" data-title="">Introdu&#xE7;&#xE3;o</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#api" class="toc-h2 toc-link" data-title="">API</a>
+                    
+                  </li>
+                
+              </ul>
+            
+          </li>
+        
+          <li>
+            <a href="#termos-fundamentais" class="toc-h1 toc-link" data-title="Termos fundamentais">Termos fundamentais</a>
+            
+              <ul class="toc-list-h2">
+                
+                  <li>
+                    <a href="#transa--o" class="toc-h2 toc-link" data-title="">Transa&#xE7;&#xE3;o</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#pci-compliance" class="toc-h2 toc-link" data-title="">PCI Compliance</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#order" class="toc-h2 toc-link" data-title="">Order</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#pagamento" class="toc-h2 toc-link" data-title="">Pagamento</a>
+                    
+                  </li>
+                
+              </ul>
+            
+          </li>
+        
+          <li>
+            <a href="#ciclo-de-vida-de-uma-order" class="toc-h1 toc-link" data-title="Ciclo de vida de uma order">Ciclo de vida de uma order</a>
+            
+          </li>
+        
+          <li>
+            <a href="#guidelines" class="toc-h1 toc-link" data-title="Guidelines">Guidelines</a>
+            
+          </li>
+        
+          <li>
+            <a href="#processo-homologat-rio" class="toc-h1 toc-link" data-title="Processo homologatório">Processo homologat&#xF3;rio</a>
+            
+          </li>
+        
+		</ul>
+      </div>
+      
+        <ul class="toc-footer">
+          
+            <li><a href="https:www.evoluservices.com">Veja nosso site</a></li>
+          
+        </ul>
+      
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id="order-api">Order API</h1>
+<blockquote>
+<p>Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.</p>
+</blockquote>
+<p>You can find out more about Swagger at <a href="http://swagger.io">http://swagger.io</a> or on <a href="http://swagger.io/irc/">irc.freenode.net, #swagger</a>.  For this sample, you can use the api key <code>special-key</code> to test the authorization filters.</p>
+<p>Base URLs:</p>
+<ul>
+<li><a href="http://petstore.swagger.io/v2">http://petstore.swagger.io/v2</a></li>
+</ul>
+<p><a href="http://swagger.io/terms/">Terms of service</a>
+Email: <a href="mailto:apiteam@swagger.io">Support</a>
+License: <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache 2.0</a></p>
+<h1 id="overview">Overview</h1>
+<p>Se isso ficar mto dificil para vc entender, talvez seja melhor voltar para o nosso <a href="./portal.html#apis">portal</a>.</p>
+<ul>
+<li>Introdução à API da Evoluservices</li>
+</ul>
+<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+<pre><code>- Flow: implicit
+- Authorization URL = [http://petstore.swagger.io/oauth/dialog](http://petstore.swagger.io/oauth/dialog)
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>usuário</th>
+<th>senha</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>usuario 1</td>
+<td>senha1</td>
+</tr>
+<tr>
+<td>usuario 2</td>
+<td>senha2</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>API Key (api_key)
+<ul>
+<li>Parameter Name: <strong>api_key</strong>, in: header.</li>
+</ul>
+</li>
+</ul>
+<h2 id="introdu--o">Introdução</h2>
+<ul>
+<li>Nossos produtos</li>
+</ul>
+<p>Temos maravilhosas API que uma delas é o link de pagamento e a outra é a de transação remota.</p>
+<p>Fabulosa, magnífica, vão atrás pra entender tbm. Faça splits de pagamento automático para quem vc quiser.</p>
+<p>E a outra fantástica é o de link de pagamento para colocar no seu site e aumentar a produtividade e facilitar o recebimento de seus produtos e serviços.</p>
+<ul>
+<li>Suporte</li>
+</ul>
+<p>Caso tenha alguma dificuldade, crítica, dúvida, sugestão ou só um coração partido, fique a vontade para ligar para a nossa usper treinada equipe de suporte que está disposta a te ajudar a resolver no que for preciso.</p>
+<p>Whatsapp pq somos modernos: (11) xxxx-xxxx</p>
+<p>Mas caso tenha dificuldade com tecnologia, pode ligar tbm pelo número: (11) xxxx-xxxx</p>
+<h2 id="api">API</h2>
+<p><a id="api"></a></p>
+<ul>
+<li>O que é uma API RESTful?</li>
+</ul>
+<p>nterface de Programação de Aplicações (pt) ou Interface de Programação de Aplicação (pt-BR)), cuja sigla API provém do Inglês Application Programming Interface, é um conjunto de rotinas e padrões estabelecidos por um software para a utilização das suas funcionalidades por aplicativos que não pretendem envolver-se em detalhes da implementação do software, mas apenas usar seus serviços.</p>
+<p>De modo geral, a API é composta por uma série de funções acessíveis somente por programação, e que permitem utilizar características do software menos evidentes ao utilizador tradicional.</p>
+<ul>
+<li>O que é RESTful?</li>
+</ul>
+<p>A API RESTful tem como base a tecnologia REST (representational state transfer), um tipo de arquitetura e comunicação muito utilizado no desenvolvimento de serviços web.</p>
+<p>O REST utilizado pelos browsers de internet pode ser imaginado como a linguagem da internet. Com o aumento da utilização da nuvem, o REST é uma escolha lógica para a construção de APIs que permitem ao usuário conectar e interagir com aplicações na nuvem. APIs RESTful são usadas por sites como Google, Amazon, LinkedIn e Twitter.</p>
+<ul>
+<li>Como usar o postman?</li>
+</ul>
+<p>Isso é só pra encher linguiça por enquanto. Vi uns tutoriais de como começar a integrar explicando como usar o Postmand de forma mto boa e interessante.</p>
+<p>With over 4 million users nowadays, Postman has become a tool of choice for the following reasons:</p>
+<ol>
+<li>Accessibility - To use Postman, one would just need to log-in to their own accounts making it easy to access files anytime, anywhere as long as a Postman application is installed on the computer.</li>
+<li>Use of Collections - Postman lets users create collections for their API calls. Each collection can create subfolders and multiple requests. This helps in organizing your test suites.</li>
+<li>Collaboration - Collections and environments can be imported or exported making it easy to share files. A direct link can also be used to share collections.</li>
+<li>Creating Environments - Having multiple environments aids in less repetition of tests as one can use the same collection but for a different environment. This is where parameterization will take place which we will discuss in further lessons.</li>
+<li>Creation of Tests - Test checkpoints such as verifying for successful HTTP response status can be added to each API calls which help ensure test coverage.</li>
+<li>Automation Testing - Through the use of the Collection Runner or Newman, tests can be run in multiple iterations saving time for repetitive tests.</li>
+<li>Debugging - Postman console helps to check what data has been retrieved making it easy to debug tests.</li>
+<li>Continuous Integration - With its ability to support continuous integration, development practices are maintained.</li>
+</ol>
+<h1 id="termos-fundamentais">Termos fundamentais</h1>
+<p><a id="termos_fundamentais"></a>
+Alguns termos são fundamentais o entendimento para poder acompanhar com mais qualidade o processo de integração com a Order API.</p>
+<h2 id="transa--o">Transação</h2>
+<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+<h2 id="pci-compliance">PCI Compliance</h2>
+<p>O PCI Compliance ou “PCI DSS”, é uma das maiores certificações de segurança do mundo. Mas o que é na prática, o PCI Compliance?</p>
+<p>Explicando melhor, o “PCI DSS” é o Padrão de Segurança de Dados para a Indústria de Cartões de Pagamento. Isso significa que essa certificação é necessária para todas empresas que processam, armazenam e transmitem dados de cartões pela internet e é exigida para garantir a segurança desses dados. É uma certificação extremamente importante para quem quer vender através de pagamento on-line.</p>
+<h2 id="order">Order</h2>
+<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+<h2 id="pagamento">Pagamento</h2>
+<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+<h1 id="ciclo-de-vida-de-uma-order">Ciclo de vida de uma order</h1>
+<p><a id="ciclo-vida-order"></a></p>
+<p>What is Lorem Ipsum?
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+<p>Why do we use it?
+It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+<p>Vou colocar uma tabela pra mostrar que dá pra fazer algumas coisas:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>body</td>
+<td>body</td>
+<td><a href="#schemapet">Pet</a></td>
+<td>true</td>
+<td>Pet object that needs to be added to the store</td>
+</tr>
+</tbody>
+</table>
+<h1 id="guidelines">Guidelines</h1>
+<p>Nós não somos várzeas, sendo assim, temos algumas linhas de desenvolvimento que são importantes para não deixá-los surpresos quando alguma mudança ocorrer.</p>
+<ol>
+<li>Evitaremos eliminar algum tipo de parâmetro</li>
+<li>Procuraremos adicionar parâmetros que serão opcionais</li>
+<li>Evitaremos renomear qualquer elemento, seja parâmetro, requisição, etc</li>
+</ol>
+<h1 id="processo-homologat-rio">Processo homologatório</h1>
+<p>Divido em fases, mas não faço ideia de como deve ser:</p>
+<ol>
+<li>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
+<li>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</li>
+<li>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</li>
+<li>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</li>
+<li>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</li>
+</ol>
+<!-- Renderer: Shins v2.4.1-0 -->
+<!-- Generator: Widdershins v4.0.1 -->
+      </div>
+      <div class="dark-box">
+        
+          <div class="lang-selector">
+            
+              
+                <a href="#" data-language-name="shell">Shell</a>
+              
+            
+              
+                <a href="#" data-language-name="http">HTTP</a>
+              
+            
+              
+                <a href="#" data-language-name="javascript">JavaScript</a>
+              
+            
+              
+                <a href="#" data-language-name="ruby">Ruby</a>
+              
+            
+              
+                <a href="#" data-language-name="python">Python</a>
+              
+            
+              
+                <a href="#" data-language-name="php">PHP</a>
+              
+            
+              
+                <a href="#" data-language-name="java">Java</a>
+              
+            
+          </div>
+        
+      </div>
+    </div>
+  </body>
+</html>
