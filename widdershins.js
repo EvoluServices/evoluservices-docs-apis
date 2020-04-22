@@ -1,7 +1,6 @@
 const fs = require('fs');
 const yaml = require('js-yaml');
 const widdershins = require('widdershins');
-const parser = require('./parser.js');
 
 const optionFilePath = './options/widdershins-option.yml';
 const sourceFilePath = './source/';
@@ -9,8 +8,6 @@ const sourceFilePath = './source/';
 function convert(swaggerFile, callback) {
     // Widdershins options
     let option = yaml.safeLoad(fs.readFileSync(optionFilePath, 'utf8'));
-
-    option.templateCallback = parser.parse;
 
     widdershins.convert(swaggerFile, option)
     .then(str => {

@@ -1,6 +1,6 @@
 {{= data.tags.section }}
 
-## {{= data.operationUniqueName}}
+### {{= data.operationUniqueName}}
 
 {{? data.operation.operationId}}
 <a id="opId{{=data.operation.operationId}}"></a>

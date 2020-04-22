@@ -1,12 +1,13 @@
 # Começando a integrar
 
-## Pré-requisitos
-{{~data.introduction.prerequisites: p}}
-### {{=p.step}}
-{{=p.description}}
-{{~}}
 ## Autenticação
-{{=data.introduction.authentication.description}}
+A API utiliza o modo de autenticação basicAuth, mais comum no protocolo HTTP. A autenticação é feita através de um credencial na codificação base 64 e uma senha no formato `credencial:senha` inserido no campo Authorization do Header.
+
+Além disso, é necessário merchantCode que é um código único para cada estabelecimento cadastrado no API.
+
+O credencial, a senha e o merchantCode são adquiridos no [processo homologatório](./guideOrders.html#processo-homologat-rio).
 
 ## Ambiente de testes
-{{=data.introduction['test_enviroment'].description}}
+Para uma boa integração, disponibilizamos um ambiente de testes encontrado pela seguinte url: https://sandbox.evoluservices.com.
+
+Para ter acesso a esse ambiente de teste, será recebido um e-mail com  com as credenciais de acesso no endereço de e-mail cadastrado assim que o [processo homologatório](./guideOrders.html#processo-homologat-rio) for iniciado.

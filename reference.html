@@ -57,7 +57,7 @@ window.onpopstate = function() {
 <!-- backwards compatibility -->
   </head>
 
-  <body data-languages="[&quot;java&quot;,&quot;javascript&quot;,&quot;python&quot;]">
+  <body data-languages="[&quot;java&quot;,&quot;javascript&quot;,&quot;python&quot;,&quot;javascript--nodejs&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -79,6 +79,10 @@ window.onpopstate = function() {
           
             
               <a href="#" data-language-name="python">Python</a>
+            
+          
+            
+              <a href="#" data-language-name="javascript--nodejs">NodeJs</a>
             
           
         </div>
@@ -103,11 +107,6 @@ window.onpopstate = function() {
               <ul class="toc-list-h2">
                 
                   <li>
-                    <a href="#pr--requisitos" class="toc-h2 toc-link" data-title="">Pr&#xE9;-requisitos</a>
-                    
-                  </li>
-                
-                  <li>
                     <a href="#autentica--o" class="toc-h2 toc-link" data-title="">Autentica&#xE7;&#xE3;o</a>
                     
                   </li>
@@ -122,12 +121,61 @@ window.onpopstate = function() {
           </li>
         
           <li>
-            <a href="#evoluservices-orders-api-payment-methods" class="toc-h1 toc-link" data-title="payment-methods">payment-methods</a>
+            <a href="#requisi--es-e-respostas" class="toc-h1 toc-link" data-title="Requisições e respostas">Requisi&#xE7;&#xF5;es e respostas</a>
             
               <ul class="toc-list-h2">
                 
                   <li>
-                    <a href="#paymentmethods" class="toc-h2 toc-link" data-title="">paymentMethods</a>
+                    <a href="#evoluservices-orders-api-payment-methods" class="toc-h2 toc-link" data-title="">payment-methods</a>
+                    
+                      <ul class="toc-list-h3">
+                      
+                      <li>
+                        <a href="#paymentmethods" class="toc-h3 toc-link" data-title="">paymentMethods</a>
+                      </li>
+                      
+                      <li>
+                        <a href="#paymentmethods-parameters" class="toc-h3 toc-link" data-title="">Parameters</a>
+                      </li>
+                      
+                      <li>
+                        <a href="#paymentmethods-responses" class="toc-h3 toc-link" data-title="">Responses</a>
+                      </li>
+                      
+                    </ul>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#evoluservices-orders-api-orders" class="toc-h2 toc-link" data-title="">orders</a>
+                    
+                      <ul class="toc-list-h3">
+                      
+                      <li>
+                        <a href="#createorders" class="toc-h3 toc-link" data-title="">createOrders</a>
+                      </li>
+                      
+                      <li>
+                        <a href="#createorders-parameters" class="toc-h3 toc-link" data-title="">Parameters</a>
+                      </li>
+                      
+                      <li>
+                        <a href="#createorders-responses" class="toc-h3 toc-link" data-title="">Responses</a>
+                      </li>
+                      
+                      <li>
+                        <a href="#consultorder" class="toc-h3 toc-link" data-title="">consultOrder</a>
+                      </li>
+                      
+                      <li>
+                        <a href="#consultorder-parameters" class="toc-h3 toc-link" data-title="">Parameters</a>
+                      </li>
+                      
+                      <li>
+                        <a href="#consultorder-responses" class="toc-h3 toc-link" data-title="">Responses</a>
+                      </li>
+                      
+                    </ul>
                     
                   </li>
                 
@@ -136,76 +184,137 @@ window.onpopstate = function() {
           </li>
         
           <li>
-            <a href="#evoluservices-orders-api-orders" class="toc-h1 toc-link" data-title="orders">orders</a>
-            
-              <ul class="toc-list-h2">
-                
-                  <li>
-                    <a href="#createorders" class="toc-h2 toc-link" data-title="">createOrders</a>
-                    
-                  </li>
-                
-                  <li>
-                    <a href="#consultorder" class="toc-h2 toc-link" data-title="">consultOrder</a>
-                    
-                  </li>
-                
-              </ul>
-            
-          </li>
-        
-          <li>
-            <a href="#schemas" class="toc-h1 toc-link" data-title="Schemas">Schemas</a>
+            <a href="#estruturas" class="toc-h1 toc-link" data-title="Estruturas">Estruturas</a>
             
               <ul class="toc-list-h2">
                 
                   <li>
                     <a href="#tocs_paymentmethodsinputdto" class="toc-h2 toc-link" data-title="">PaymentMethodsInputDto</a>
                     
+                      <ul class="toc-list-h3">
+                      
+                      <li>
+                        <a href="#properties" class="toc-h3 toc-link" data-title="">Properties</a>
+                      </li>
+                      
+                    </ul>
+                    
                   </li>
                 
                   <li>
                     <a href="#tocs_paymentmethodsoutputdto" class="toc-h2 toc-link" data-title="">PaymentMethodsOutputDto</a>
+                    
+                      <ul class="toc-list-h3">
+                      
+                      <li>
+                        <a href="#properties" class="toc-h3 toc-link" data-title="">Properties</a>
+                      </li>
+                      
+                    </ul>
                     
                   </li>
                 
                   <li>
                     <a href="#tocs_paymentmethod" class="toc-h2 toc-link" data-title="">PaymentMethod</a>
                     
+                      <ul class="toc-list-h3">
+                      
+                      <li>
+                        <a href="#properties" class="toc-h3 toc-link" data-title="">Properties</a>
+                      </li>
+                      
+                    </ul>
+                    
                   </li>
                 
                   <li>
                     <a href="#tocs_paymentoption" class="toc-h2 toc-link" data-title="">PaymentOption</a>
+                    
+                      <ul class="toc-list-h3">
+                      
+                      <li>
+                        <a href="#properties" class="toc-h3 toc-link" data-title="">Properties</a>
+                      </li>
+                      
+                    </ul>
                     
                   </li>
                 
                   <li>
                     <a href="#tocs_clientsorderinputdto" class="toc-h2 toc-link" data-title="">ClientsOrderInputDto</a>
                     
+                      <ul class="toc-list-h3">
+                      
+                      <li>
+                        <a href="#properties" class="toc-h3 toc-link" data-title="">Properties</a>
+                      </li>
+                      
+                    </ul>
+                    
                   </li>
                 
                   <li>
                     <a href="#tocs_clientsorderoutputdto" class="toc-h2 toc-link" data-title="">ClientsOrderOutputDto</a>
+                    
+                      <ul class="toc-list-h3">
+                      
+                      <li>
+                        <a href="#properties" class="toc-h3 toc-link" data-title="">Properties</a>
+                      </li>
+                      
+                    </ul>
                     
                   </li>
                 
                   <li>
                     <a href="#tocs_clientsordertransactionsdto" class="toc-h2 toc-link" data-title="">ClientsOrderTransactionsDto</a>
                     
+                      <ul class="toc-list-h3">
+                      
+                      <li>
+                        <a href="#properties" class="toc-h3 toc-link" data-title="">Properties</a>
+                      </li>
+                      
+                    </ul>
+                    
                   </li>
                 
                   <li>
                     <a href="#tocs_clientstransactiondto" class="toc-h2 toc-link" data-title="">ClientsTransactionDto</a>
+                    
+                      <ul class="toc-list-h3">
+                      
+                      <li>
+                        <a href="#properties" class="toc-h3 toc-link" data-title="">Properties</a>
+                      </li>
+                      
+                    </ul>
                     
                   </li>
                 
                   <li>
                     <a href="#tocs_subjectidentifierdto" class="toc-h2 toc-link" data-title="">SubjectIdentifierDto</a>
                     
+                      <ul class="toc-list-h3">
+                      
+                      <li>
+                        <a href="#properties" class="toc-h3 toc-link" data-title="">Properties</a>
+                      </li>
+                      
+                    </ul>
+                    
                   </li>
                 
                   <li>
                     <a href="#tocs_clientstransactionpaymentdto" class="toc-h2 toc-link" data-title="">ClientsTransactionPaymentDto</a>
+                    
+                      <ul class="toc-list-h3">
+                      
+                      <li>
+                        <a href="#properties" class="toc-h3 toc-link" data-title="">Properties</a>
+                      </li>
+                      
+                    </ul>
                     
                   </li>
                 
@@ -218,6 +327,8 @@ window.onpopstate = function() {
       
         <ul class="toc-footer">
           
+            <li><a href="index.html">Voltar para o portal</a></li>
+          
         </ul>
       
     </div>
@@ -228,34 +339,28 @@ window.onpopstate = function() {
 <blockquote>
 <p>Role abaixo para códigos e exemplos de requisições e respostas. Selecione a linguagem para exemplos de código através das abas acima ou pelo menu de navegação do celular.</p>
 </blockquote>
-<p>A API Evoluservices Orders facilita a criação de links para clientes pagarem aos estabelecimentos por serviços ou produtos adquiridos digitalmente. Ela tambem permite a consulta dos status dos pagamentos, a data estipulada para a liquidação das transações realizadas e os métodos de pagamento disponíveis. Para demonstracao use as credenciais <code>orders:123mudar</code> para testar os filtros de autorizacao.</p>
+<p>A API Evoluservices Orders facilita a criação de links de pagamento para  clientes pagarem os estabelecimentos por serviços ou produtos adquiridos  digitalmente. Ela também permite a consulta dos status dos pagamentos, a data estipulada para a liquidação das transações realizadas e os métodos de pagamento disponíveis. Para demonstração, use as credenciais <code>orders:123mudar</code> para testar os filtros de autorização.</p>
 <p>Base URLs:</p>
 <ul>
-<li>
-<p><a href="https://sandbox.evoluservices.com ">https://sandbox.evoluservices.com </a></p>
-</li>
-<li>
-<p><a href="https://evcash-latest.staging.evoluservices.com">https://evcash-latest.staging.evoluservices.com</a></p>
-</li>
+<li><a href="https://sandbox.evoluservices.com">https://sandbox.evoluservices.com</a></li>
 </ul>
 <h1 id="come-ando-a-integrar">Começando a integrar</h1>
-<h2 id="pr--requisitos">Pré-requisitos</h2>
-<h3 id="pr--requisito-1">Pré-requisito 1</h3>
-<p>Mussum Ipsum, cacilds vidis litro abertis. Si u mundo tá muito paradis? Toma um mé que o  mundo vai girarzis! Si num tem leite então bota uma pinga aí cumpadi! Não sou faixa preta  cumpadi, sou preto inteiris, inteiris. Manduma pindureta quium dia nois paga.</p>
-<h3 id="pr--requisito-2">Pré-requisito 2</h3>
-<p>Mussum Ipsum, cacilds vidis litro abertis. Si u mundo tá muito paradis? Toma um mé que o  mundo vai girarzis! Si num tem leite então bota uma pinga aí cumpadi! Não sou faixa preta  cumpadi, sou preto inteiris, inteiris. Manduma pindureta quium dia nois paga.</p>
 <h2 id="autentica--o">Autenticação</h2>
-<p>Mussum Ipsum, cacilds vidis litro abertis. Si u mundo tá muito paradis? Toma um mé que o  mundo vai girarzis! Si num tem leite então bota uma pinga aí cumpadi! Não sou faixa preta  cumpadi, sou preto inteiris, inteiris. Manduma pindureta quium dia nois paga.</p>
+<p>A API utiliza o modo de autenticação basicAuth, mais comum no protocolo HTTP. A autenticação é feita através de um credencial na codificação base 64 e uma senha no formato <code>credencial:senha</code> inserido no campo Authorization do Header.</p>
+<p>Além disso, é necessário merchantCode que é um código único para cada estabelecimento cadastrado no API.</p>
+<p>O credencial, a senha e o merchantCode são adquiridos no <a href="./guideOrders.html#processo-homologat-rio">processo homologatório</a>.</p>
 <h2 id="ambiente-de-testes">Ambiente de testes</h2>
-<p>Mussum Ipsum, cacilds vidis litro abertis. Si u mundo tá muito paradis? Toma um mé que o  mundo vai girarzis! Si num tem leite então bota uma pinga aí cumpadi! Não sou faixa preta  cumpadi, sou preto inteiris, inteiris. Manduma pindureta quium dia nois paga.</p>
-<h1 id="evoluservices-orders-api-payment-methods">payment-methods</h1>
-<p>Obtém os métodos de pagamento disponíveis para estabelecimentos específicos</p>
-<h2 id="paymentmethods">paymentMethods</h2>
+<p>Para uma boa integração, disponibilizamos um ambiente de testes encontrado pela seguinte url: <a href="https://sandbox.evoluservices.com">https://sandbox.evoluservices.com</a>.</p>
+<p>Para ter acesso a esse ambiente de teste, será recebido um e-mail com  com as credenciais de acesso no endereço de e-mail cadastrado assim que o <a href="./guideOrders.html#processo-homologat-rio">processo homologatório</a> for iniciado.</p>
+<h1 id="requisi--es-e-respostas">Requisições e respostas</h1>
+<h2 id="evoluservices-orders-api-payment-methods">payment-methods</h2>
+<p>Obtém os métodos de pagamento disponíveis para estabelecimentos específicos conforme o valor desejo.</p>
+<h3 id="paymentmethods">paymentMethods</h3>
 <p><a id="opIdpaymentMethods"></a></p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight tab tab-java"><code>URL obj = <span class="hljs-keyword">new</span> URL(<span class="hljs-string">"https://sandbox.evoluservices.com /api/payment-methods"</span>);
+<pre class="highlight tab tab-java"><code>URL obj = <span class="hljs-keyword">new</span> URL(<span class="hljs-string">"https://sandbox.evoluservices.com/api/payment-methods"</span>);
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod(<span class="hljs-string">"GET"</span>);
 <span class="hljs-keyword">int</span> responseCode = con.getResponseCode();
@@ -275,7 +380,7 @@ System.out.println(response.toString());
   <span class="hljs-string">'Accept'</span>:<span class="hljs-string">'application/json'</span>
 };
 
-fetch(<span class="hljs-string">'https://sandbox.evoluservices.com /api/payment-methods'</span>,
+fetch(<span class="hljs-string">'https://sandbox.evoluservices.com/api/payment-methods'</span>,
 {
   <span class="hljs-attr">method</span>: <span class="hljs-string">'GET'</span>,
 
@@ -293,13 +398,32 @@ headers = {
   <span class="hljs-string">'Accept'</span>: <span class="hljs-string">'application/json'</span>
 }
 
-r = requests.get(<span class="hljs-string">'https://sandbox.evoluservices.com /api/payment-methods'</span>, headers = headers)
+r = requests.get(<span class="hljs-string">'https://sandbox.evoluservices.com/api/payment-methods'</span>, headers = headers)
 
 print(r.json())
 
 </code></pre>
+<pre class="highlight tab tab-javascript--nodejs"><code><span class="hljs-keyword">const</span> fetch = <span class="hljs-built_in">require</span>(<span class="hljs-string">'node-fetch'</span>);
+
+<span class="hljs-keyword">const</span> headers = {
+  <span class="hljs-string">'Accept'</span>:<span class="hljs-string">'application/json'</span>
+};
+
+fetch(<span class="hljs-string">'https://sandbox.evoluservices.com/api/payment-methods'</span>,
+{
+  <span class="hljs-attr">method</span>: <span class="hljs-string">'GET'</span>,
+
+  <span class="hljs-attr">headers</span>: headers
+})
+.then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>{
+    <span class="hljs-keyword">return</span> res.json();
+}).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">body</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(body);
+});
+
+</code></pre>
 <p><code>GET /api/payment-methods</code></p>
-<p><em>Possui as formas de pagamento disponíveis ao estabelecimento</em></p>
+<p><em>Possui as formas de pagamento disponíveis ao estabelecimento dadovalor pré-definido.</em></p>
 <h3 id="paymentmethods-parameters">Parameters</h3>
 <table>
 <thead>
@@ -401,14 +525,14 @@ print(r.json())
 Para executar esta operação, você deve estar autenticado através do método:
 BasicAuth
 </aside>
-<h1 id="evoluservices-orders-api-orders">orders</h1>
-<p>Operação para criar novos pedidos e verificar os já existentes</p>
-<h2 id="createorders">createOrders</h2>
+<h2 id="evoluservices-orders-api-orders">orders</h2>
+<p>Operação para criar novos pedidos e verificar os já existentes.</p>
+<h3 id="createorders">createOrders</h3>
 <p><a id="opIdcreateOrders"></a></p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight tab tab-java"><code>URL obj = <span class="hljs-keyword">new</span> URL(<span class="hljs-string">"https://sandbox.evoluservices.com /api/orders"</span>);
+<pre class="highlight tab tab-java"><code>URL obj = <span class="hljs-keyword">new</span> URL(<span class="hljs-string">"https://sandbox.evoluservices.com/api/orders"</span>);
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod(<span class="hljs-string">"POST"</span>);
 <span class="hljs-keyword">int</span> responseCode = con.getResponseCode();
@@ -443,7 +567,7 @@ System.out.println(response.toString());
   <span class="hljs-string">'Accept'</span>:<span class="hljs-string">'application/json'</span>
 };
 
-fetch(<span class="hljs-string">'https://sandbox.evoluservices.com /api/orders'</span>,
+fetch(<span class="hljs-string">'https://sandbox.evoluservices.com/api/orders'</span>,
 {
   <span class="hljs-attr">method</span>: <span class="hljs-string">'POST'</span>,
   <span class="hljs-attr">body</span>: inputBody,
@@ -462,13 +586,47 @@ headers = {
   <span class="hljs-string">'Accept'</span>: <span class="hljs-string">'application/json'</span>
 }
 
-r = requests.post(<span class="hljs-string">'https://sandbox.evoluservices.com /api/orders'</span>, headers = headers)
+r = requests.post(<span class="hljs-string">'https://sandbox.evoluservices.com/api/orders'</span>, headers = headers)
 
 print(r.json())
 
 </code></pre>
+<pre class="highlight tab tab-javascript--nodejs"><code><span class="hljs-keyword">const</span> fetch = <span class="hljs-built_in">require</span>(<span class="hljs-string">'node-fetch'</span>);
+<span class="hljs-keyword">const</span> inputBody = {
+  <span class="hljs-string">"order"</span>: {
+    <span class="hljs-string">"reference"</span>: <span class="hljs-string">"123CLIENTS"</span>,
+    <span class="hljs-string">"redirectUrl"</span>: <span class="hljs-string">"https://example.com/callback"</span>,
+    <span class="hljs-string">"amount"</span>: <span class="hljs-string">"10000.00"</span>,
+    <span class="hljs-string">"maxInstallments"</span>: <span class="hljs-string">"2"</span>,
+    <span class="hljs-string">"merchantCode"</span>: <span class="hljs-string">"A1B2C3"</span>,
+    <span class="hljs-string">"customerName"</span>: <span class="hljs-string">"Rodrigo"</span>,
+    <span class="hljs-string">"customerDocument"</span>: <span class="hljs-string">"01234567890"</span>,
+    <span class="hljs-string">"recurrent"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">"recurrenceType"</span>: <span class="hljs-string">"MONTHLY"</span>,
+    <span class="hljs-string">"quantityCharges"</span>: <span class="hljs-string">"10"</span>,
+    <span class="hljs-string">"frequency"</span>: <span class="hljs-string">"30"</span>
+  }
+};
+<span class="hljs-keyword">const</span> headers = {
+  <span class="hljs-string">'Content-Type'</span>:<span class="hljs-string">'application/json'</span>,
+  <span class="hljs-string">'Accept'</span>:<span class="hljs-string">'application/json'</span>
+};
+
+fetch(<span class="hljs-string">'https://sandbox.evoluservices.com/api/orders'</span>,
+{
+  <span class="hljs-attr">method</span>: <span class="hljs-string">'POST'</span>,
+  <span class="hljs-attr">body</span>: <span class="hljs-built_in">JSON</span>.stringify(inputBody),
+  <span class="hljs-attr">headers</span>: headers
+})
+.then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>{
+    <span class="hljs-keyword">return</span> res.json();
+}).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">body</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(body);
+});
+
+</code></pre>
 <p><code>POST /api/orders</code></p>
-<p><em>Cria uma nova transação e envia para aprovação</em></p>
+<p><em>Cria novo link de pagamento e retorna url para o pagamento ser realizado.</em></p>
 <blockquote>
 <p>Body parameter</p>
 </blockquote>
@@ -505,7 +663,7 @@ print(r.json())
 <td>body</td>
 <td><a href="#schemaclientsorderinputdto">ClientsOrderInputDto</a></td>
 <td>true</td>
-<td>Objeto contendo as informações para a solicitação de transação</td>
+<td>Objeto contendo as informações para criar o link de pagamento.</td>
 </tr>
 <tr>
 <td>» order</td>
@@ -519,14 +677,14 @@ print(r.json())
 <td>body</td>
 <td>string</td>
 <td>false</td>
-<td>Identificação referenciando o order.</td>
+<td>Identificação referenciando o order</td>
 </tr>
 <tr>
 <td>»» redirectUrl</td>
 <td>body</td>
 <td>string</td>
 <td>false</td>
-<td>Redireciona a URL depois do pagamento do pedido. Faça um retorno de chamada 'POST' com o formato 'x-www-form-urlencoded' e com os parâmetros 'uuid' e 'transactionNumber'.</td>
+<td>Redireciona a URL depois do pagamento do pedido. Faça um retorno de chamada 'POST' com o formato 'x-www-form-urlencoded' e com os parâmetros 'uuid' e 'transactionNumber'</td>
 </tr>
 <tr>
 <td>»» amount</td>
@@ -540,56 +698,56 @@ print(r.json())
 <td>body</td>
 <td>number</td>
 <td>false</td>
-<td>Número máximo de parcelas permitidos pelo order.</td>
+<td>Número máximo de parcelas permitidos pelo order</td>
 </tr>
 <tr>
 <td>»» merchantCode</td>
 <td>body</td>
 <td>string</td>
 <td>false</td>
-<td>Código do estabelecimento referente ao order.</td>
+<td>Código do estabelecimento referente ao order</td>
 </tr>
 <tr>
 <td>»» customerName</td>
 <td>body</td>
 <td>string</td>
 <td>false</td>
-<td>Nome do cliente do order.</td>
+<td>Nome do cliente do order</td>
 </tr>
 <tr>
 <td>»» customerDocument</td>
 <td>body</td>
 <td>string</td>
 <td>false</td>
-<td>Documento do cliente do order.</td>
+<td>Documento do cliente do order</td>
 </tr>
 <tr>
 <td>»» recurrent</td>
 <td>body</td>
 <td>boolean</td>
 <td>false</td>
-<td>Indica se o pagamento do order é do tipo recorrente ou não;</td>
+<td>Indica se o pagamento do order é do tipo recorrente ou não</td>
 </tr>
 <tr>
 <td>»» recurrenceType</td>
 <td>body</td>
 <td>string</td>
 <td>false</td>
-<td>Tipo de recorrência do pagamento do order. Pode ser mensal ou flexível,  a cada determinado período fixo.</td>
+<td>Tipo de recorrência do pagamento do order podendo ser mensal ou flexível  (por período fixo determinado). O preenchimento do campo é Obrigatório caso o campo <code>recurrent</code> seja definido como <code>true</code>.</td>
 </tr>
 <tr>
 <td>»» quantityCharges</td>
 <td>body</td>
 <td>number</td>
 <td>false</td>
-<td>Quantidade de recorrências que serão cobradas no order.</td>
+<td>Quantidade de recorrências que serão cobradas no order O preenchimento do campo é Obrigatório caso o campo <code>recurrent</code> seja definido como <code>true</code>.</td>
 </tr>
 <tr>
 <td>»» frequency</td>
 <td>body</td>
 <td>number</td>
 <td>false</td>
-<td>Período fixo entre as cobranças da recorrência, em dias.</td>
+<td>Período fixo entre as cobranças da recorrência, em dias. O preenchimento do campo é Obrigatório caso o campo <code>recurrent</code> seja definido como <code>true</code>.</td>
 </tr>
 </tbody>
 </table>
@@ -678,12 +836,12 @@ print(r.json())
 Para executar esta operação, você deve estar autenticado através do método:
 BasicAuth
 </aside>
-<h2 id="consultorder">consultOrder</h2>
+<h3 id="consultorder">consultOrder</h3>
 <p><a id="opIdconsultOrder"></a></p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight tab tab-java"><code>URL obj = <span class="hljs-keyword">new</span> URL(<span class="hljs-string">"https://sandbox.evoluservices.com /api/orders/{uuid}"</span>);
+<pre class="highlight tab tab-java"><code>URL obj = <span class="hljs-keyword">new</span> URL(<span class="hljs-string">"https://sandbox.evoluservices.com/api/orders/{uuid}"</span>);
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod(<span class="hljs-string">"GET"</span>);
 <span class="hljs-keyword">int</span> responseCode = con.getResponseCode();
@@ -703,7 +861,7 @@ System.out.println(response.toString());
   <span class="hljs-string">'Accept'</span>:<span class="hljs-string">'application/json'</span>
 };
 
-fetch(<span class="hljs-string">'https://sandbox.evoluservices.com /api/orders/{uuid}'</span>,
+fetch(<span class="hljs-string">'https://sandbox.evoluservices.com/api/orders/{uuid}'</span>,
 {
   <span class="hljs-attr">method</span>: <span class="hljs-string">'GET'</span>,
 
@@ -721,13 +879,32 @@ headers = {
   <span class="hljs-string">'Accept'</span>: <span class="hljs-string">'application/json'</span>
 }
 
-r = requests.get(<span class="hljs-string">'https://sandbox.evoluservices.com /api/orders/{uuid}'</span>, headers = headers)
+r = requests.get(<span class="hljs-string">'https://sandbox.evoluservices.com/api/orders/{uuid}'</span>, headers = headers)
 
 print(r.json())
 
 </code></pre>
+<pre class="highlight tab tab-javascript--nodejs"><code><span class="hljs-keyword">const</span> fetch = <span class="hljs-built_in">require</span>(<span class="hljs-string">'node-fetch'</span>);
+
+<span class="hljs-keyword">const</span> headers = {
+  <span class="hljs-string">'Accept'</span>:<span class="hljs-string">'application/json'</span>
+};
+
+fetch(<span class="hljs-string">'https://sandbox.evoluservices.com/api/orders/{uuid}'</span>,
+{
+  <span class="hljs-attr">method</span>: <span class="hljs-string">'GET'</span>,
+
+  <span class="hljs-attr">headers</span>: headers
+})
+.then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>{
+    <span class="hljs-keyword">return</span> res.json();
+}).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">body</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(body);
+});
+
+</code></pre>
 <p><code>GET /api/orders/{uuid}</code></p>
-<p>*Consulta o Link de Pagamento e de acordo com o uuid *</p>
+<p><em>Consulta o Link de Pagamento de acordo com o uuid.</em></p>
 <h3 id="consultorder-parameters">Parameters</h3>
 <table>
 <thead>
@@ -842,7 +1019,7 @@ print(r.json())
 Para executar esta operação, você deve estar autenticado através do método:
 BasicAuth
 </aside>
-<h1 id="schemas">Schemas</h1>
+<h1 id="estruturas">Estruturas</h1>
 <h2 id="tocs_paymentmethodsinputdto">PaymentMethodsInputDto</h2>
 <p><a id="schemapaymentmethodsinputdto"></a>
 <a id="schema_PaymentMethodsInputDto"></a>
@@ -854,7 +1031,7 @@ BasicAuth
 }
 
 </code></pre>
-<p>Objeto para a busca de formas de pagamento disponíveis ao estabelecimento.</p>
+<p>Objeto para a busca de formas de pagamento disponíveis ao estabelecimento conforme valor desejado.</p>
 <h3 id="properties">Properties</h3>
 <table>
 <thead>
@@ -921,7 +1098,7 @@ BasicAuth
 <td>[<a href="#schemapaymentmethod">PaymentMethod</a>]</td>
 <td>false</td>
 <td>none</td>
-<td>[Objeto contendo método de pagamento do estabelecimento.]</td>
+<td>[Objeto contendo as informações de pagamento do estabelecimento.]</td>
 </tr>
 </tbody>
 </table>
@@ -941,7 +1118,7 @@ BasicAuth
 }
 
 </code></pre>
-<p>Objeto contendo método de pagamento do estabelecimento.</p>
+<p>Objeto contendo as informações de pagamento do estabelecimento.</p>
 <h3 id="properties">Properties</h3>
 <table>
 <thead>
@@ -959,7 +1136,7 @@ BasicAuth
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>Determina o método de pagamento. Pode ser crédito ou recorrente</td>
+<td>Determina o método de pagamento, podendo ser crédito ou recorrente</td>
 </tr>
 <tr>
 <td>paymentOption</td>
@@ -1078,14 +1255,14 @@ BasicAuth
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>Identificação referenciando o order.</td>
+<td>Identificação referenciando o order</td>
 </tr>
 <tr>
 <td>» redirectUrl</td>
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>Redireciona a URL depois do pagamento do pedido. Faça um retorno de chamada 'POST' com o formato 'x-www-form-urlencoded' e com os parâmetros 'uuid' e 'transactionNumber'.</td>
+<td>Redireciona a URL depois do pagamento do pedido. Faça um retorno de chamada 'POST' com o formato 'x-www-form-urlencoded' e com os parâmetros 'uuid' e 'transactionNumber'</td>
 </tr>
 <tr>
 <td>» amount</td>
@@ -1099,56 +1276,56 @@ BasicAuth
 <td>number</td>
 <td>false</td>
 <td>none</td>
-<td>Número máximo de parcelas permitidos pelo order.</td>
+<td>Número máximo de parcelas permitidos pelo order</td>
 </tr>
 <tr>
 <td>» merchantCode</td>
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>Código do estabelecimento referente ao order.</td>
+<td>Código do estabelecimento referente ao order</td>
 </tr>
 <tr>
 <td>» customerName</td>
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>Nome do cliente do order.</td>
+<td>Nome do cliente do order</td>
 </tr>
 <tr>
 <td>» customerDocument</td>
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>Documento do cliente do order.</td>
+<td>Documento do cliente do order</td>
 </tr>
 <tr>
 <td>» recurrent</td>
 <td>boolean</td>
 <td>false</td>
 <td>none</td>
-<td>Indica se o pagamento do order é do tipo recorrente ou não;</td>
+<td>Indica se o pagamento do order é do tipo recorrente ou não</td>
 </tr>
 <tr>
 <td>» recurrenceType</td>
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>Tipo de recorrência do pagamento do order. Pode ser mensal ou flexível,  a cada determinado período fixo.</td>
+<td>Tipo de recorrência do pagamento do order podendo ser mensal ou flexível  (por período fixo determinado). O preenchimento do campo é Obrigatório caso o campo <code>recurrent</code> seja definido como <code>true</code>.</td>
 </tr>
 <tr>
 <td>» quantityCharges</td>
 <td>number</td>
 <td>false</td>
 <td>none</td>
-<td>Quantidade de recorrências que serão cobradas no order.</td>
+<td>Quantidade de recorrências que serão cobradas no order O preenchimento do campo é Obrigatório caso o campo <code>recurrent</code> seja definido como <code>true</code>.</td>
 </tr>
 <tr>
 <td>» frequency</td>
 <td>number</td>
 <td>false</td>
 <td>none</td>
-<td>Período fixo entre as cobranças da recorrência, em dias.</td>
+<td>Período fixo entre as cobranças da recorrência, em dias. O preenchimento do campo é Obrigatório caso o campo <code>recurrent</code> seja definido como <code>true</code>.</td>
 </tr>
 </tbody>
 </table>
@@ -1202,28 +1379,28 @@ BasicAuth
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>UUID do link de pagamento gerado pelo order.</td>
+<td>UUID do link de pagamento gerado pelo order</td>
 </tr>
 <tr>
 <td>payUrl</td>
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>URL do link de pagamento para tal order.</td>
+<td>URL do link de pagamento para tal order</td>
 </tr>
 <tr>
 <td>reference</td>
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>Identificação referenciando o order.</td>
+<td>Identificação referenciando o order</td>
 </tr>
 <tr>
 <td>status</td>
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>Status do order.</td>
+<td>Status do order</td>
 </tr>
 </tbody>
 </table>
@@ -1290,7 +1467,7 @@ BasicAuth
 }
 
 </code></pre>
-<p>Objeto de retorno contendo informações sobre a transação efetuada por um link de pagamento,  de acordo com o UUID buscado.</p>
+<p>Objeto de retorno contendo informações sobre a transação efetuada por um link de pagamento  de acordo com o UUID buscado.</p>
 <h3 id="properties">Properties</h3>
 <table>
 <thead>
@@ -1308,21 +1485,21 @@ BasicAuth
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>UUID do link de pagamento.</td>
+<td>UUID do link de pagamento</td>
 </tr>
 <tr>
 <td>reference</td>
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>Identificação referenciando o order da transação.</td>
+<td>Identificação referenciando o order da transação</td>
 </tr>
 <tr>
 <td>status</td>
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>Status da transação.</td>
+<td>Status da transação</td>
 </tr>
 <tr>
 <td>transactionList</td>
@@ -1407,14 +1584,14 @@ BasicAuth
 <td>number</td>
 <td>false</td>
 <td>none</td>
-<td>Número da transação.</td>
+<td>Número da transação</td>
 </tr>
 <tr>
 <td>status</td>
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>Além dos valores abaixo, temos algumas outras possibilidades de status para controle interno, por exemplo: COMPLETE, INCOMPLETE, CANCEL_REQUESTED, etc, mas eles não devem ser considerados como valores esperados porque são extremamente voláteis.</td>
+<td>Além dos valores abaixo, temos algumas outras possibilidades de status para controle interno, por exemplo: COMPLETE, INCOMPLETE, CANCEL_REQUESTED, etc, mas eles não devem ser considerados como valores esperados porque são extremamente voláteis</td>
 </tr>
 <tr>
 <td>amount</td>
@@ -1428,21 +1605,21 @@ BasicAuth
 <td>number</td>
 <td>false</td>
 <td>none</td>
-<td>Número de parcelas efetuadas na transação.</td>
+<td>Número de parcelas efetuadas na transação</td>
 </tr>
 <tr>
 <td>paymentBrand</td>
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>Bandeira com a qual a transação foi efetuada.</td>
+<td>Bandeira com a qual a transação foi efetuada</td>
 </tr>
 <tr>
 <td>paymentQuantity</td>
 <td>number</td>
 <td>false</td>
 <td>none</td>
-<td>Quantidades de pagamentos existentes na transação.</td>
+<td>Quantidades de pagamentos existentes na transação</td>
 </tr>
 <tr>
 <td>nsu</td>
@@ -1456,21 +1633,21 @@ BasicAuth
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>Número de autorização da transação.</td>
+<td>Número de autorização da transação</td>
 </tr>
 <tr>
 <td>customer</td>
 <td><a href="#schemasubjectidentifierdto">SubjectIdentifierDto</a></td>
 <td>false</td>
 <td>none</td>
-<td>Objeto contendo informações sobre o cliente ou o estabelecimento que efetuou a transação com link de pagamento.</td>
+<td>Objeto contendo informações do cliente que efetuou a transação com link de pagamento.</td>
 </tr>
 <tr>
 <td>payments</td>
 <td>[<a href="#schemaclientstransactionpaymentdto">ClientsTransactionPaymentDto</a>]</td>
 <td>false</td>
 <td>none</td>
-<td>[Objeto contendo informações sobre o pagamento da transçaão do link de pagamento ao parceiro.]</td>
+<td>[Objeto contendo informações sobre o pagamento da transação feita pelo link de pagamento.]</td>
 </tr>
 </tbody>
 </table>
@@ -1628,7 +1805,7 @@ BasicAuth
 }
 
 </code></pre>
-<p>Objeto contendo informações sobre o cliente ou o estabelecimento que efetuou a transação com link de pagamento.</p>
+<p>Objeto contendo informações do cliente que efetuou a transação com link de pagamento.</p>
 <h3 id="properties">Properties</h3>
 <table>
 <thead>
@@ -1646,14 +1823,14 @@ BasicAuth
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>Nome do cliente ou do estabelecimento.</td>
+<td>Nome do cliente</td>
 </tr>
 <tr>
 <td>document</td>
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>Documento do cliente ou do estabelecimento.</td>
+<td>Documento do cliente</td>
 </tr>
 </tbody>
 </table>
@@ -1674,7 +1851,7 @@ BasicAuth
 }
 
 </code></pre>
-<p>Objeto contendo informações sobre o pagamento da transçaão do link de pagamento ao parceiro.</p>
+<p>Objeto contendo informações sobre o pagamento da transação feita pelo link de pagamento.</p>
 <h3 id="properties">Properties</h3>
 <table>
 <thead>
@@ -1699,28 +1876,28 @@ BasicAuth
 <td>number</td>
 <td>false</td>
 <td>none</td>
-<td>Valor do pagamento, em formato decimal.</td>
+<td>Valor do pagamento, em formato decimal</td>
 </tr>
 <tr>
 <td>status</td>
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>Status do pagamento da transação.</td>
+<td>Status do pagamento da transação</td>
 </tr>
 <tr>
 <td>payDate</td>
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>Descreve a data em que o pagamento efetivamente foi feito ou, se ainda não foi pago, mostra a data esperada.</td>
+<td>Data em que o pagamento efetivamente foi feito ou, se ainda não foi pago, data esperada de pagamento</td>
 </tr>
 <tr>
 <td>merchant</td>
 <td><a href="#schemasubjectidentifierdto">SubjectIdentifierDto</a></td>
 <td>false</td>
 <td>none</td>
-<td>Objeto contendo informações sobre o cliente ou o estabelecimento que efetuou a transação com link de pagamento.</td>
+<td>Objeto contendo informações do cliente que efetuou a transação com link de pagamento.</td>
 </tr>
 </tbody>
 </table>
@@ -1786,6 +1963,10 @@ BasicAuth
             
               
                 <a href="#" data-language-name="python">Python</a>
+              
+            
+              
+                <a href="#" data-language-name="javascript--nodejs">NodeJs</a>
               
             
           </div>

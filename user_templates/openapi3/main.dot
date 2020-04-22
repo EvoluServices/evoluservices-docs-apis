@@ -24,11 +24,13 @@ Base URLs:
 {{= data.templates.introduction(data)}}
 {{= data.tags.endSection }}
 
+
+# Requisições e respostas
 {{ for (var r in data.resources) { }}
 {{ data.resource = data.resources[r]; }}
 
 {{= data.tags.section }}
-<h1 id="{{=data.title_prefix+'-'+data.utils.slugify(r)}}">{{= r}}</h1>
+<h2 id="{{=data.title_prefix+'-'+data.utils.slugify(r)}}">{{= r}}</h2>
 
 {{? data.resource.description }}{{= data.resource.description}}{{?}}
 
@@ -50,7 +52,7 @@ Base URLs:
 {{? data.api.components && data.api.components.schemas }}
 {{= data.tags.section }}
 
-# Schemas
+# Estruturas
 
 {{ for (var s in data.components.schemas) { }}
 {{ var origSchema = data.components.schemas[s]; }}

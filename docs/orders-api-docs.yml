@@ -1,32 +1,31 @@
 openapi: 3.0.1
 info:
   description: >-
-    A API Evoluservices Orders facilita a criação de links para clientes pagarem
-    aos estabelecimentos por serviços ou produtos adquiridos digitalmente. Ela
-    tambem permite a consulta dos status dos pagamentos, a data estipulada para
+    A API Evoluservices Orders facilita a criação de links de pagamento para 
+    clientes pagarem os estabelecimentos por serviços ou produtos adquiridos 
+    digitalmente. Ela também permite a consulta dos status dos pagamentos, a data estipulada para
     a liquidação das transações realizadas e os métodos de pagamento
-    disponíveis. Para demonstracao use as credenciais `orders:123mudar` para
-    testar os filtros de autorizacao.
+    disponíveis. Para demonstração, use as credenciais `orders:123mudar` para
+    testar os filtros de autorização.
   version: 2.0.0
   title: Evoluservices Orders API
   contact:
     email: integracoes@evoluservices.com
 servers:
-  - url: 'https://sandbox.evoluservices.com '
-  - url: 'https://evcash-latest.staging.evoluservices.com'
+  - url: 'https://sandbox.evoluservices.com'
 tags:
   - name: payment-methods
     description: >-
       Obtém os métodos de pagamento disponíveis para estabelecimentos
-      específicos
+      específicos conforme o valor desejo.
   - name: orders
-    description: Operação para criar novos pedidos e verificar os já existentes
+    description: Operação para criar novos pedidos e verificar os já existentes.
 paths:
   '/api/payment-methods':
     get:
       tags:
         - payment-methods
-      summary: Possui as formas de pagamento disponíveis ao estabelecimento
+      summary: Possui as formas de pagamento disponíveis ao estabelecimento dadovalor pré-definido.
       operationId: paymentMethods
       parameters:
         - in: query
@@ -62,10 +61,10 @@ paths:
     post:
       tags:
         - orders
-      summary: Cria uma nova transação e envia para aprovação
+      summary: Cria novo link de pagamento e retorna url para o pagamento ser realizado.
       operationId: createOrders
       requestBody:
-        description: Objeto contendo as informações para a solicitação de transação
+        description: Objeto contendo as informações para criar o link de pagamento.
         content:
           application/json:
             schema:
@@ -101,7 +100,7 @@ paths:
           schema:
             type: string
           description: Uuid do Link de Pagamento
-      summary: 'Consulta o Link de Pagamento e de acordo com o uuid '
+      summary: 'Consulta o Link de Pagamento de acordo com o uuid.'
       operationId: consultOrder
       responses:
         '200':
@@ -127,7 +126,7 @@ components:
     PaymentMethodsInputDto:
       type: object
       description: >-
-        Objeto para a busca de formas de pagamento disponíveis ao estabelecimento.
+        Objeto para a busca de formas de pagamento disponíveis ao estabelecimento conforme valor desejado.
       properties:
         amount:
           type: string
@@ -149,7 +148,7 @@ components:
     PaymentMethod:
       type: object
       description: >-
-        Objeto contendo método de pagamento do estabelecimento.
+        Objeto contendo as informações de pagamento do estabelecimento.
       properties:
         type:
           type: string
@@ -158,8 +157,7 @@ components:
             - CREDIT
             - RECURRENT
           description: >- 
-            Determina o método de pagamento. Pode ser crédito
-            ou recorrente
+            Determina o método de pagamento, podendo ser crédito ou recorrente
         paymentOption:
           type: object
           $ref: '#/components/schemas/PaymentOption'
@@ -189,14 +187,14 @@ components:
               type: string
               example: 123CLIENTS
               description: >-
-                Identificação referenciando o order.
+                Identificação referenciando o order
             redirectUrl:
               type: string
               example: 'https://example.com/callback'
               description: >-
                 Redireciona a URL depois do pagamento do pedido. Faça um retorno
                 de chamada 'POST' com o formato 'x-www-form-urlencoded' e com os
-                parâmetros 'uuid' e 'transactionNumber'.
+                parâmetros 'uuid' e 'transactionNumber'
             amount:
               type: string
               example: '10000.00'
@@ -206,32 +204,34 @@ components:
               type: number
               example: '2'
               description: >-
-                Número máximo de parcelas permitidos pelo order.
+                Número máximo de parcelas permitidos pelo order
             merchantCode:
               type: string
               example: A1B2C3
               description: >-
-                Código do estabelecimento referente ao order.
+                Código do estabelecimento referente ao order
             customerName:
               type: string
               example: Rodrigo
               description: >-
-                Nome do cliente do order.
+                Nome do cliente do order
             customerDocument:
               type: string
               example: 01234567890
               description: >-
-                Documento do cliente do order.
+                Documento do cliente do order
             recurrent:
               type: boolean
               example: true
               description: >-
-                Indica se o pagamento do order é do tipo recorrente ou não;
+                Indica se o pagamento do order é do tipo recorrente ou não
             recurrenceType:
               type: string
               description: >-
-                Tipo de recorrência do pagamento do order. Pode ser mensal ou flexível, 
-                a cada determinado período fixo.
+                Tipo de recorrência do pagamento do order podendo ser mensal ou flexível 
+                (por período fixo determinado).
+                O preenchimento do campo é Obrigatório caso o campo
+                `recurrent` seja definido como `true`.
               enum:
                 - MONTHLY
                 - FLEXIBLE
@@ -239,12 +239,16 @@ components:
               type: number
               example: '10'
               description: >-
-                Quantidade de recorrências que serão cobradas no order.
+                Quantidade de recorrências que serão cobradas no order
+                O preenchimento do campo é Obrigatório caso o campo
+                `recurrent` seja definido como `true`.
             frequency:
               type: number
               example: '30'
               description: >-
                 Período fixo entre as cobranças da recorrência, em dias.
+                O preenchimento do campo é Obrigatório caso o campo
+                `recurrent` seja definido como `true`.
     ClientsOrderOutputDto:
       type: object
       description: >-
@@ -254,21 +258,21 @@ components:
           type: string
           example: e2ba235d-0b30-4edc-981d-e2c222763aee
           description: >-
-            UUID do link de pagamento gerado pelo order.
+            UUID do link de pagamento gerado pelo order
         payUrl:
           type: string
           example: api.evoluservices.com/orders/pay
           description: >-
-            URL do link de pagamento para tal order.
+            URL do link de pagamento para tal order
         reference:
           type: string
           example: 123CLIENTS
           description: >-
-            Identificação referenciando o order.
+            Identificação referenciando o order
         status:
           type: string
           description: >-
-            Status do order.
+            Status do order
           enum:
             - APPROVED
             - CANCELED
@@ -276,23 +280,23 @@ components:
     ClientsOrderTransactionsDto:
       type: object
       description: >-
-        Objeto de retorno contendo informações sobre a transação efetuada por um link de pagamento, 
+        Objeto de retorno contendo informações sobre a transação efetuada por um link de pagamento 
         de acordo com o UUID buscado.
       properties:
         uuid:
           type: string
           example: e2ba235d-0b30-4edc-981d-e2c222763aee
           description: >-
-            UUID do link de pagamento.
+            UUID do link de pagamento
         reference:
           type: string
           example: 123CLIENTS
           description: >-
-            Identificação referenciando o order da transação.
+            Identificação referenciando o order da transação
         status:
           type: string
           description: >+
-            Status da transação.
+            Status da transação
           enum:
             - APPROVED
             - CANCELED
@@ -312,7 +316,7 @@ components:
           type: number
           example: '12345678909'
           description: >-
-            Número da transação.
+            Número da transação
         status:
           type: string
           enum:
@@ -325,7 +329,7 @@ components:
             Além dos valores abaixo, temos algumas outras possibilidades de
             status para controle interno, por exemplo: COMPLETE, INCOMPLETE,
             CANCEL_REQUESTED, etc, mas eles não devem ser considerados como
-            valores esperados porque são extremamente voláteis.
+            valores esperados porque são extremamente voláteis
         amount:
           type: number
           example: '100.00'
@@ -335,11 +339,11 @@ components:
           type: number
           example: '2'
           description: >-
-            Número de parcelas efetuadas na transação.
+            Número de parcelas efetuadas na transação
         paymentBrand:
           type: string
           description: >-
-            Bandeira com a qual a transação foi efetuada.
+            Bandeira com a qual a transação foi efetuada
           enum:
             - VISA_CREDITO
             - VISA_ELECTRON
@@ -373,7 +377,7 @@ components:
           type: number
           example: '3'
           description: >-
-            Quantidades de pagamentos existentes na transação.
+            Quantidades de pagamentos existentes na transação
         nsu:
           type: string
           example: '993485982'
@@ -383,7 +387,7 @@ components:
           type: string
           example: '470216'
           description: >-
-            Número de autorização da transação.
+            Número de autorização da transação
         customer:
           type: object
           $ref: '#/components/schemas/SubjectIdentifierDto'
@@ -394,22 +398,22 @@ components:
     SubjectIdentifierDto:
       type: object
       description: >-
-        Objeto contendo informações sobre o cliente ou o estabelecimento que efetuou a transação com link de pagamento.
+        Objeto contendo informações do cliente que efetuou a transação com link de pagamento.
       properties:
         name:
           type: string
           example: Jose da Silva
           description: >-
-            Nome do cliente ou do estabelecimento.
+            Nome do cliente
         document:
           type: string
           example: 123.456.789-09
           description: >-
-            Documento do cliente ou do estabelecimento.
+            Documento do cliente
     ClientsTransactionPaymentDto:
       type: object
       description: >-
-        Objeto contendo informações sobre o pagamento da transçaão do link de pagamento ao parceiro.
+        Objeto contendo informações sobre o pagamento da transação feita pelo link de pagamento.
       properties:
         number:
           type: number
@@ -420,11 +424,11 @@ components:
           type: number
           example: '100.00'
           description: >-
-            Valor do pagamento, em formato decimal.
+            Valor do pagamento, em formato decimal
         status:
           type: string
           description: >-
-            Status do pagamento da transação.
+            Status do pagamento da transação
           enum:
             - PAYED
             - UNPAID
@@ -436,8 +440,8 @@ components:
           type: string
           example: 01/01/2001
           description: >-
-            Descreve a data em que o pagamento efetivamente foi feito ou, se
-            ainda não foi pago, mostra a data esperada.
+            Data em que o pagamento efetivamente foi feito ou, se
+            ainda não foi pago, data esperada de pagamento
         merchant:
           type: object
           $ref: '#/components/schemas/SubjectIdentifierDto'

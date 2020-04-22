@@ -12,7 +12,7 @@ app.set('view engine', 'html');
 app.engine('html', ejs.renderFile);
 
 app.get('/', function(req, res) {
-    res.render(path.join(__dirname, 'portal.html'))
+    res.render(path.join(__dirname, 'index.html'))
 });
 
 app.get('*.html', function(req, res) {

@@ -8,6 +8,7 @@
         - java: "Java"
         - javascript: "Javascript"
         - python: "Python"
+        - javascript--nodejs: "NodeJs"
     user_templates: "./user_templates/openapi3"
     theme: "ir-black"
     search: true
@@ -16,8 +17,11 @@
     includes: []
     shallowSchemas: false
     tocSummary: false
-    headings: 2
+    headings: 3
     yaml: false
     resolve: false
-    summary: false
+    summary: true
     raw: false
+    toc_footers:
+        - url: index.html
+          description: Voltar para o portal
