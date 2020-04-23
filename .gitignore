@@ -102,3 +102,9 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Gemfiles
+Gemfile.lock
+
+# Jekyll directories
+_site/

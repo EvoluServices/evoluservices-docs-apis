@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node app & node server",
+    "render": "node app",
+    "launch": "node app & node server",
+    "start": "node app & bundle exec jekyll serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

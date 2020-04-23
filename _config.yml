@@ -1,0 +1,9 @@
+include:
+        - _jquery.js
+        - _jquery.highlight.js
+        - _lunr.js
+        - _imagesloaded.min.js
+        - _energize.js
+        - _search.js
+        - _lang.js
+        - _toc.js
