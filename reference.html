@@ -351,10 +351,10 @@ window.onpopstate = function() {
 <p>O credencial, a senha e o merchantCode são adquiridos no <a href="./guideOrders.html#processo-homologat-rio">processo homologatório</a>.</p>
 <h2 id="ambiente-de-testes">Ambiente de testes</h2>
 <p>Para uma boa integração, disponibilizamos um ambiente de testes encontrado pela seguinte url: <a href="https://sandbox.evoluservices.com">https://sandbox.evoluservices.com</a>.</p>
-<p>Para ter acesso a esse ambiente de teste, será recebido um e-mail com  com as credenciais de acesso no endereço de e-mail cadastrado assim que o <a href="./guideOrders.html#processo-homologat-rio">processo homologatório</a> for iniciado.</p>
+<p>Para ter acesso a esse ambiente de teste, será recebido um e-mail com as credenciais de acesso no endereço de e-mail cadastrado assim que o <a href="./guideOrders.html#processo-homologat-rio">processo homologatório</a> for iniciado.</p>
 <h1 id="requisi--es-e-respostas">Requisições e respostas</h1>
 <h2 id="evoluservices-orders-api-payment-methods">payment-methods</h2>
-<p>Obtém os métodos de pagamento disponíveis para estabelecimentos específicos conforme o valor desejo.</p>
+<p>Obtém os métodos de pagamento disponíveis para estabelecimentos específicos conforme o valor desejado.</p>
 <h3 id="paymentmethods">paymentMethods</h3>
 <p><a id="opIdpaymentMethods"></a></p>
 <blockquote>
@@ -423,7 +423,7 @@ fetch(<span class="hljs-string">'https://sandbox.evoluservices.com/api/payment-m
 
 </code></pre>
 <p><code>GET /api/payment-methods</code></p>
-<p><em>Possui as formas de pagamento disponíveis ao estabelecimento dadovalor pré-definido.</em></p>
+<p><em>Possui as formas de pagamento disponíveis ao estabelecimento dado o valor pré-definido.</em></p>
 <h3 id="paymentmethods-parameters">Parameters</h3>
 <table>
 <thead>
@@ -809,7 +809,7 @@ fetch(<span class="hljs-string">'https://sandbox.evoluservices.com/api/orders'</
 <tr>
 <td>401</td>
 <td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
-<td>não autorizado</td>
+<td>Não autorizado</td>
 <td>None</td>
 </tr>
 <tr>

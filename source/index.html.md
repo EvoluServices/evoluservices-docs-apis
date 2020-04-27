@@ -16,10 +16,10 @@ Aqui será possível encontrar informações necessárias para poder realizar a 
 
 ## Guia da Orders Client API
 
-Para entender melhor o que é a nossa API e o passo a passo para integração conosco, basta acessar nosso [Guia](./guideOrders.html).
+Para entender melhor o que é a nossa API e o passo a passo para integração conosco, basta acessar nosso <a id="guideLink" href="./guideOrders.html">Guia</a>.
 
 ## Referência da Orders Client API
-Para entender os detalhes técnicos para realizar a integração basta acessar nossa [Referência](./reference.html).
+Para entender os detalhes técnicos para realizar a integração basta acessar nossa <a id="referenceLink" href="./reference.html">Referência</a>.
 
 ## Histórico de revisões
 

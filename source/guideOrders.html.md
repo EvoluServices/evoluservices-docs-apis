@@ -41,15 +41,23 @@ Através de nossa API, é possível verificar as formas de pagamento disponívei
 
 Não só criar links de pagamento, mas API também permite que seja consultado status desses links, e caso aprovados, é possível realizar um controle dos pagamentos referentes à essas transações.
 
+Além disso, é utilizado o padrão OpenApi 3.0 e disponibilizamos o [JSON com a especificação](https://www.evoluservices.com/resources/docs/orders-api-docs.json).
+
+## Como integrar
+
+Cada parceiro poderá criar a sua plataforma para fazer chamadas ao nosso API. O diagrama sequencial abaixo mostra quais são os passos para realizar uma transação com o link de pagamento.
+
+![Diagrama sequencial](/source/images/diagram.png)
+
 ## Postman
 
 O Postman é uma ferramenta cujo objetivo é testar e desenvolver APIs que utilizam requisições HTTP para extrair, inserir, postar e deletar dados (RESTful APIs). Além disso, ele analisa as respostas da API e as exibe de forma clara e agradável, o Postman também permite a configuração de testes para as Interface de Programação de Aplicações.
 
 Para saber mais informações sobre o Postman, acesse o site do [Postman](https://www.postman.com/) que será possível encontrar diversos conteúdos e diversas formas de se utilizar o mesmo.
 
-No Postman, é possível importar uma Collection que são um conjunto de exemplos de requisições que podem ser utilizadas para fins de teste.
+No Postman, é possível importar Collections que são um conjunto de exemplos de requisições que podem ser utilizadas para fins de teste. Para importá-la clique no botão abaixo:
 
-A Evoluservices disponibiliza uma Collection com as chamadas devidamente montadas e organizadas para facilitar no processo de testes.
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/d006ac77c92afa942f3a)
 
 # Termos fundamentais
 
@@ -75,7 +83,7 @@ Para conseguir essa certificação e obter maior eficácia na segurança dos dad
 
 Essas regras objetivam proteger os estabelecimentos e consumidores de fraudes que envolvam o compartilhamento de dados de cartão a terceiros. As empresas que não se enquadram aos requisitos estabelecidos estão sujeitas ao descredenciamento por parte das operadoras dos cartões de crédito, entre outras medidas cabíveis.
 
-A Evoluservices é certifica anualmente pelo PCI DSS.
+A Evoluservices é certificada anualmente pelo PCI DSS.
 
 ## Transação
 
@@ -85,13 +93,13 @@ No nosso sistema, o link de pagamento se trata de uma transação com um cartão
 
 ## Pagamento
 
-Dado uma transação que foi realizada com sucesso utilizando algum de nossos produtos, o pagamento é o valor que o estabelecimento irá receber referente a essa transação.
+Dada uma transação que foi realizada com sucesso utilizando algum de nossos produtos, o pagamento é o valor que o estabelecimento irá receber referente a essa transação.
 
 O valor desse pagamento se dará de acordo com o plano que o estabelecimento tem acordado conosco.
 
 ## Order
 
-Uma order é um link de pagamento. Ele pode iniciar uma transação de crédito ou uma recorrência de transações. O link de pagamento terá um valor definido no momento de sua criação e deve ser enviado ao pagador para realizar a transação de fato.
+Uma order é um link de pagamento. Ela pode iniciar uma transação de crédito ou uma recorrência de transações. O link de pagamento terá um valor definido no momento de sua criação e deve ser enviado ao pagador para realizar a transação de fato.
 
 # Ciclo de vida de uma order
 
@@ -101,12 +109,12 @@ Abaixo, estão alguns exemplos de caso de uso que poderá ser realizado com a no
 
 Antes de criar o link de pagamento, é necessário conferir os métodos possíveis para criar o link de pagamento de acordo com o valor desejado através do endpoint [/api/paymentMethods](./reference.html#paymentmethods).
 
-Os métodos possíveis se referem as opções de crédito e recorrente (`type`). Além disso, mostrará informações como as bandeiras disponíveis para realizar a transação (`paymentBrands`) e a quantidade máxima de parcelas possível para aquele valor (`maxInstallments`). No caso, a quantidade máxima de parcelas se refere apenas para a transação de crédito.
+Os métodos possíveis se referem às opções de crédito e recorrente (`type`). Além disso, mostrará informações como as bandeiras disponíveis para realizar a transação (`paymentBrands`) e a quantidade máxima de parcelas possível para aquele valor (`maxInstallments`). No caso, a quantidade máxima de parcelas se refere apenas para a transação de crédito.
 
 Tendo o conhecimento dos métodos disponíveis para criar o link de pagamento, basta utilizar o endpoint [/api/orders](./reference.html#createorders) com o body devidamente preenchido. Como desejamos criar um link de pagamento para uma transação de crédito,  o campo `recurrent` deve ter o valor `false` e os campos `recurrentType`, 
 `quantityCharges` e `frequency` não serão considerados.
 
-A resposta dessa requisição será o [ClientOrderOutpuDto](./reference.html#tocs_clientsorderoutputdto), onde será possível encontrar a `payUrl` que deve ser enviado ao pagador para que o link de pagamento seja pago. Neste momento pós criação do link de pagamento, o status estará como `PENDING` enquanto aguarda o link ser pago.
+A resposta dessa requisição será o [ClientOrderOutpuDto](./reference.html#tocs_clientsorderoutputdto), onde será possível encontrar a `payUrl` que deve ser enviada ao pagador para que o link de pagamento seja pago. Neste momento pós criação do link de pagamento, o status estará como `PENDING` enquanto aguarda o link ser pago.
 
 É possível consultar o status do link de pagamento utilizando o endpoint [/api/orders/{uuid}](./reference.html#consultorder). Enquanto o link não for pago, ele terá como status `PENDING`. Após o pagamento ser feito, ele terá o status `APPROVED` e mostrará uma lista com os detalhes das tentativas de aprovação da transação. Tendo a transação aprovada, será possível encontrar os detalhes de seus pagamento. 
 
@@ -117,13 +125,13 @@ Da mesma forma que no caso anterior, conferir os métodos possíveis para criar 
 Sabendo que é possível criar um link de pagamento para uma transação recorrente, basta preencher o body no [/api/orders](./reference.html#createorders) com as informações corretas. Neste caso, o que será diferente do caso anterior será que o campo `recurrent` agora será `true` e consequentemente alguns campos serão obrigatórios, como  
 `recurrentType`, `quantityCharges` e `frequency`. 
 
-Como o campo `recurrent` será `true`, o campo `maxInstallments` será desconsidera.
+Como o campo `recurrent` será `true`, o campo `maxInstallments` será desconsiderado.
 
 Com relação ao campo `recurrentType`, ele pode ter como valor `MONTHLY` ou  
 `FLEXIBLE`. No caso de ser escolhido a opção `MONTHLY`, o que estiver no campo  
 `frequency` não será considerado. E caso a opção `FLEXIBLE` seja escolhida, o campo  `frequency` deve ser preenchido com o número de dias em que as transações serão intervaladas. E por último, o campo `quantityCharges` se refere à quantidade de vezes em que essa recorrência de transação ocorrerá.
 
-A partir daqui, a sequência será a mesmo do caso de um link de pagamento de uma transação de crédito. Será recebido como resposta o [ClientOrderOutpuDto](./reference.html#tocs_clientsorderoutputdto) com as informações do link de pagamento em questão.
+A partir daqui, a sequência será a mesma do caso de um link de pagamento de uma transação de crédito. Será recebido como resposta o [ClientOrderOutpuDto](./reference.html#tocs_clientsorderoutputdto) com as informações do link de pagamento em questão.
 
 Para realizar a consulta deste link de pagamento em específico, basta utilizar o endpoint [/api/orders/{uuid}](./reference.html#consultorder) com a `uuid` do mesmo. É importante saber que apenas aparecerá as informações da primeira transação dessa recorrência de transações. Para ter mais detalhes das outras transações geradas a partir dessa recorrência, é necessário acessar a [área do estabelecimento](https://www.evoluservices.com/login).
 
@@ -140,14 +148,14 @@ Caso tenha ocorrido alguma tentativa da transação ser realizada, cada tentativ
 # Guidelines
 
 Para que possamos evoluir a API do melhor modo possível, seguimos algumas guidelines. São elas:
-* Evitaremos ao máximo remover ou renomear parâmetros e requisições
+* Evitaremos ao máximo remover ou renomear parâmetros e requisições;
 * Caso adicionarmos algum parâmetro a mais para ter acesso a novos recursos, ele será opcional e não prejudicará o funcionamento da API. 
 
 # Processo homologatório
 
 Para realizar a integração com a Orders API, é necessário passar pelo processo homologatório. Esse processo é realizado da seguinte forma, considerando que já houve o contato com o setor comercial:
-1. Entrar em contato com o nosso suporte especializado através do [formulário](https://bit.ly/396FwNF)
-2. O nosso suporte irá entrar em contato para realizar as orientações iniciais com relação ao sistema, assim como da integração em si e enviar e-mail com as credenciais para o uso em nosso ambiente de testes (como o `merchantCode`). Caso seja desejado, pode ser feito um acesso remoto para explicar como pode ser realizados os testes via Postman.
-3. Após a integração com a API implementada, entrar em contato novamente com nosso suporte especializado para realização de testes de requisição.
+1. Entrar em contato com o nosso suporte especializado através do [formulário](https://bit.ly/396FwNF);
+2. O nosso suporte irá entrar em contato para realizar as orientações iniciais com relação ao sistema, assim como da integração em si e enviar e-mail com as credenciais para o uso em nosso ambiente de testes (como o `merchantCode`). Caso seja desejado, pode ser feito um acesso remoto para explicar como pode ser realizados os testes via Postman;
+3. Após a integração com a API implementada, entrar em contato novamente com nosso suporte especializado para realização de testes de requisição;
 4. Realização dos testes homologatórios de fato.
 Após o processo homologatório ser feito, é possível que as conversas sejam por um grupo de [WhatsApp](https://api.whatsapp.com/send?phone=5511933679024) com nossos desenvolvedores e todos os envolvidos na integração para melhor auxiliá-los.

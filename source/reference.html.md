@@ -38,13 +38,13 @@ O credencial, a senha e o merchantCode são adquiridos no [processo homologatór
 ## Ambiente de testes
 Para uma boa integração, disponibilizamos um ambiente de testes encontrado pela seguinte url: https://sandbox.evoluservices.com.
 
-Para ter acesso a esse ambiente de teste, será recebido um e-mail com  com as credenciais de acesso no endereço de e-mail cadastrado assim que o [processo homologatório](./guideOrders.html#processo-homologat-rio) for iniciado.
+Para ter acesso a esse ambiente de teste, será recebido um e-mail com as credenciais de acesso no endereço de e-mail cadastrado assim que o [processo homologatório](./guideOrders.html#processo-homologat-rio) for iniciado.
 
 # Requisições e respostas
 
 <h2 id="evoluservices-orders-api-payment-methods">payment-methods</h2>
 
-Obtém os métodos de pagamento disponíveis para estabelecimentos específicos conforme o valor desejo.
+Obtém os métodos de pagamento disponíveis para estabelecimentos específicos conforme o valor desejado.
 
 ### paymentMethods
 
@@ -124,7 +124,7 @@ fetch('https://sandbox.evoluservices.com/api/payment-methods',
 
 `GET /api/payment-methods`
 
-*Possui as formas de pagamento disponíveis ao estabelecimento dadovalor pré-definido.*
+*Possui as formas de pagamento disponíveis ao estabelecimento dado o valor pré-definido.*
 
 <h3 id="paymentmethods-parameters">Parameters</h3>
 
@@ -348,7 +348,7 @@ fetch('https://sandbox.evoluservices.com/api/orders',
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[ClientsOrderOutputDto](#schemaclientsorderoutputdto)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Exceção de validação|None|
-|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|não autorizado|None|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Não autorizado|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Estabelecimento não encontrado|None|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|Erro de integração|None|
 |500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Erro interno no servidor|None|

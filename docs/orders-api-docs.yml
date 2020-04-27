@@ -17,7 +17,7 @@ tags:
   - name: payment-methods
     description: >-
       Obtém os métodos de pagamento disponíveis para estabelecimentos
-      específicos conforme o valor desejo.
+      específicos conforme o valor desejado.
   - name: orders
     description: Operação para criar novos pedidos e verificar os já existentes.
 paths:
@@ -25,7 +25,7 @@ paths:
     get:
       tags:
         - payment-methods
-      summary: Possui as formas de pagamento disponíveis ao estabelecimento dadovalor pré-definido.
+      summary: Possui as formas de pagamento disponíveis ao estabelecimento dado o valor pré-definido.
       operationId: paymentMethods
       parameters:
         - in: query
@@ -80,7 +80,7 @@ paths:
         '400':
           description: Exceção de validação
         '401':
-          description: não autorizado
+          description: Não autorizado
         '404':
           description: Estabelecimento não encontrado
         '422':

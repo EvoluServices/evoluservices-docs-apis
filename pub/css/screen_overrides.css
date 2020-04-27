@@ -78,6 +78,26 @@ template {
 a {
   background-color: transparent; }
 
+a#guideLink {
+  color: #E97424;
+  font-weight: bold;
+  text-decoration:none;
+}
+
+a#guideLink:hover {
+  text-decoration:underline;
+}
+
+a#referenceLink {
+  color: #E97424;
+  font-weight: bold;
+  text-decoration:none;
+}
+
+a#referenceLink:hover {
+  text-decoration:underline;
+}
+
 /**
  * Improve readability when focused and also mouse hovered in all browsers.
  */
