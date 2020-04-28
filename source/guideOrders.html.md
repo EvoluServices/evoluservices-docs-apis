@@ -47,7 +47,7 @@ Além disso, é utilizado o padrão OpenApi 3.0 e disponibilizamos o [JSON com a
 
 Cada parceiro poderá criar a sua plataforma para fazer chamadas ao nosso API. O diagrama sequencial abaixo mostra quais são os passos para realizar uma transação com o link de pagamento.
 
-![Diagrama sequencial](/source/images/diagram.png)
+![Diagrama sequencial](source/images/diagram.png)
 
 ## Postman
 
