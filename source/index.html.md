@@ -23,5 +23,5 @@ Para entender os detalhes técnicos para realizar a integração basta acessar n
 
 ## Histórico de revisões
 
-## v1.0.0
+### v1.0.0
 * Primeira versão da documentação
