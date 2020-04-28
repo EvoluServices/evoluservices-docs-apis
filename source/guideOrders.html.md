@@ -111,10 +111,12 @@ Antes de criar o link de pagamento, é necessário conferir os métodos possíve
 
 Os métodos possíveis se referem às opções de crédito e recorrente (`type`). Além disso, mostrará informações como as bandeiras disponíveis para realizar a transação (`paymentBrands`) e a quantidade máxima de parcelas possível para aquele valor (`maxInstallments`). No caso, a quantidade máxima de parcelas se refere apenas para a transação de crédito.
 
-Tendo o conhecimento dos métodos disponíveis para criar o link de pagamento, basta utilizar o endpoint [/api/orders](./reference.html#createorders) com o body devidamente preenchido. Como desejamos criar um link de pagamento para uma transação de crédito,  o campo `recurrent` deve ter o valor `false` e os campos `recurrentType`, 
+Tendo o conhecimento dos métodos disponíveis para criar o link de pagamento, basta utilizar o endpoint [/api/orders](./reference.html#createorders) com o body devidamente preenchido. Como desejamos criar um link de pagamento para uma transação de crédito,  o campo  
+`recurrent` deve ter o valor `false` e os campos `recurrentType`, 
 `quantityCharges` e `frequency` não serão considerados.
 
-A resposta dessa requisição será o [ClientOrderOutpuDto](./reference.html#tocs_clientsorderoutputdto), onde será possível encontrar a `payUrl` que deve ser enviada ao pagador para que o link de pagamento seja pago. Neste momento pós criação do link de pagamento, o status estará como `PENDING` enquanto aguarda o link ser pago.
+A resposta dessa requisição será o [ClientOrderOutpuDto](./reference.html#tocs_clientsorderoutputdto), onde será possível encontrar a `payUrl` que deve ser enviada ao pagador para que o link de pagamento seja pago. Neste momento pós criação do link de pagamento, o status estará como  
+`PENDING` enquanto aguarda o link ser pago.
 
 É possível consultar o status do link de pagamento utilizando o endpoint [/api/orders/{uuid}](./reference.html#consultorder). Enquanto o link não for pago, ele terá como status `PENDING`. Após o pagamento ser feito, ele terá o status `APPROVED` e mostrará uma lista com os detalhes das tentativas de aprovação da transação. Tendo a transação aprovada, será possível encontrar os detalhes de seus pagamento. 
 
@@ -127,9 +129,10 @@ Sabendo que é possível criar um link de pagamento para uma transação recorre
 
 Como o campo `recurrent` será `true`, o campo `maxInstallments` será desconsiderado.
 
-Com relação ao campo `recurrentType`, ele pode ter como valor `MONTHLY` ou  
-`FLEXIBLE`. No caso de ser escolhido a opção `MONTHLY`, o que estiver no campo  
-`frequency` não será considerado. E caso a opção `FLEXIBLE` seja escolhida, o campo  `frequency` deve ser preenchido com o número de dias em que as transações serão intervaladas. E por último, o campo `quantityCharges` se refere à quantidade de vezes em que essa recorrência de transação ocorrerá.
+Com relação ao campo `recurrentType`, ele pode ter como valor `MONTHLY` ou `FLEXIBLE`. No caso de ser escolhido a opção  
+`MONTHLY`, o que estiver no campo `frequency` não será considerado. E caso a opção `FLEXIBLE` seja escolhida, o campo  
+`frequency` deve ser preenchido com o número de dias em que as transações serão intervaladas. E por último, o campo  
+`quantityCharges` se refere à quantidade de vezes em que essa recorrência de transação ocorrerá.
 
 A partir daqui, a sequência será a mesma do caso de um link de pagamento de uma transação de crédito. Será recebido como resposta o [ClientOrderOutpuDto](./reference.html#tocs_clientsorderoutputdto) com as informações do link de pagamento em questão.
 
