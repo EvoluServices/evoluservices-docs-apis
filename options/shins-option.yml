@@ -1,9 +1,11 @@
 --- #Shin's option data
     pages: 
         - index.html.md
-        - guideOrders.html.md
         - reference.html.md
-    
+        - about.html.md
+        - paymentLinkDetails.html.md
+        - homologation.html.md
+        - checkoutDetails.html.md
     cli: true
     minify: false
     customCss: true

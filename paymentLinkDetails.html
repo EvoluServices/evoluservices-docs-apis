@@ -1,0 +1,337 @@
+
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Procedimentos para a integração com o Link de Pagamento</title>
+
+    <style>
+    </style>
+    <link rel="stylesheet" media="screen" href="pub/css/screen.css">
+    <link rel="stylesheet" media="screen" href="pub/css/screen_overrides.css">
+    <link rel="stylesheet" media="print" href="pub/css/print.css">
+    <link rel="stylesheet" media="print" href="pub/css/print_overrides.css">
+    <link rel="stylesheet" media="screen" href="pub/css/ir-black.css">
+    <link rel="stylesheet" media="screen" href="pub/css/theme_overrides.css">
+    
+      <script src="source/javascripts/lib/_jquery.js"></script>
+<script src="source/javascripts/lib/_jquery.highlight.js"></script>
+<script src="source/javascripts/lib/_lunr.js"></script>
+<script src="source/javascripts/lib/_imagesloaded.min.js"></script>
+<script src="source/javascripts/lib/_energize.js"></script>
+<script src="source/javascripts/app/_lang.js"></script>
+<script src="source/javascripts/app/_search.js"></script>
+<script src="source/javascripts/app/_toc.js"></script>
+<script type="text/javascript">
+$(function() {
+  loadToc($('#toc'), '.toc-link', '.toc-list-h2, .toc-list-h3, .toc-list-h4, .toc-list-h5, .toc-list-h6', 10);
+  setupLanguages($('body').data('languages'));
+  $('.content').imagesLoaded( function() {
+    recacheHeights();
+    refreshToc();
+  });
+});
+
+window.onpopstate = function() {
+  activateLanguage(getLanguageFromQueryString());
+};
+</script>
+
+    
+    <meta name="theme-color" content="#F3F7F9" />
+<!-- Renderer: Shins v2.4.1-0 -->
+  </head>
+
+  <body data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="source/images/navbar.png" class="undefined" alt="Navigation">
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="source/images/custom_logo.png" class="logo" alt="Logo">
+      
+      
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      
+      <div id="toc" class="toc-list-h1">
+	  	<ul class="toc-list-h1">
+        
+          <li>
+            <a href="#procedimentos-para-integra--o-com-link-de-pagamento" class="toc-h1 toc-link" data-title="Procedimentos para integração com Link de Pagamento">Procedimentos para integra&#xE7;&#xE3;o com Link de Pagamento</a>
+            
+              <ul class="toc-list-h2">
+                
+                  <li>
+                    <a href="#1--consultar-as-op--es-de-pagamento-dispon-veis-para-o-estabelecimento" class="toc-h2 toc-link" data-title="">1. Consultar as op&#xE7;&#xF5;es de pagamento dispon&#xED;veis para o estabelecimento</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#2--realizar-uma-transa--o-parcelada-com-o-link-de-pagamento" class="toc-h2 toc-link" data-title="">2. Realizar uma transa&#xE7;&#xE3;o parcelada com o link de pagamento</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#3--realizar-uma-transa--o-recorrente-com-o-link-de-pagamento" class="toc-h2 toc-link" data-title="">3. Realizar uma transa&#xE7;&#xE3;o recorrente com o link de pagamento</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#4--realizar-uma-consulta-de-uma-order-espec-fica" class="toc-h2 toc-link" data-title="">4. Realizar uma consulta de uma order espec&#xED;fica</a>
+                    
+                  </li>
+                
+              </ul>
+            
+          </li>
+        
+		</ul>
+      </div>
+      
+        <ul class="toc-footer">
+          
+            <li><a href="index.html">Voltar para a página inicial</a></li>
+          
+        </ul>
+      
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id="procedimentos-para-integra--o-com-link-de-pagamento">Procedimentos para integração com Link de Pagamento</h1>
+<p>A API pode ser integrada com o sistema do parceiro para que ele possa gerar os links de pagamento e ele possa ter seu próprio controle dos mesmo. Dessa forma, também fica a encargo do parceiro fazer o envio do link para que o portador do cartão possa efetuar o pagamento.</p>
+<p>Abaixo, estão alguns exemplos de caso de uso que poderá ser realizado com a nossa API usando como link de pagamento.</p>
+<p>Para detalhes técnicos, acesse o <a id="learnMoreLink" href="reference.html"> Guia de Referência</a></p>
+<h2 id="1--consultar-as-op--es-de-pagamento-dispon-veis-para-o-estabelecimento">1. Consultar as opções de pagamento disponíveis para o estabelecimento</h2>
+<blockquote>
+<p><strong>Consultar opções de pagamento</strong></p>
+</blockquote>
+<blockquote>
+<p>Requisição</p>
+</blockquote>
+<pre class="highlight tab tab-shell"><code>curl -X GET \
+  <span class="hljs-string">'https://sandbox.evoluservices.com/api/payment-methods?paymentMethods.amount=100.00&amp;paymentMethods.merchantCode=A1B2C3'</span> \
+  -H <span class="hljs-string">'Authorization: Basic e3t1c2VybmFtZX19Ont7cGFzc3dvcmR9fQ=='</span> \
+  -H <span class="hljs-string">'cache-control: no-cache'</span>
+</code></pre>
+<blockquote>
+<p>Respostas</p>
+</blockquote>
+<blockquote>
+<p>200: Successo</p>
+</blockquote>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">"paymentMethods"</span>: [
+    {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"CREDIT"</span>,
+      <span class="hljs-attr">"options"</span>: {
+        <span class="hljs-attr">"maxInstallments"</span>: <span class="hljs-string">"12"</span>,
+        <span class="hljs-attr">"paymentBrands"</span>: {
+          <span class="hljs-attr">"value"</span>: [
+            <span class="hljs-string">"VISA"</span>, 
+            <span class="hljs-string">"MASTER"</span>,
+            <span class="hljs-string">"ELO"</span>
+          ]
+        }
+      }
+    }
+  ]
+}
+</code></pre>
+<p>Antes de criar o link de pagamento, é possível conferir os métodos possíveis para criar o link de pagamento de acordo com o valor desejado através do endpoint <a href="./reference.html#paymentmethods">/api/paymentMethods</a>.</p>
+<p>Os métodos possíveis se referem as opções de crédito e recorrente (<code>type</code>). Além disso, mostrará informações como as bandeiras disponíveis para realizar a transação (<code>paymentBrands</code>) e a quantidade máxima de parcelas possível para aquele valor (<code>maxInstallments</code>). No caso, a quantidade máxima de parcelas se refere apenas para a transação de crédito.</p>
+<h2 id="2--realizar-uma-transa--o-parcelada-com-o-link-de-pagamento">2. Realizar uma transação parcelada com o link de pagamento</h2>
+<blockquote>
+<p><strong>Criar link de pagamento</strong></p>
+</blockquote>
+<blockquote>
+<p>Requisição</p>
+</blockquote>
+<pre class="highlight tab tab-shell"><code>curl -X POST \
+  <span class="hljs-string">'https://sandbox.evoluservices.com/api/orders'</span> \
+  -H <span class="hljs-string">'Content-Type: application/json'</span> \
+  -H <span class="hljs-string">'Authorization: Basic b3JkZXJzOjEyM211ZGFy'</span> \
+  -H <span class="hljs-string">'cache-control: no-cache'</span> \
+  -d <span class="hljs-string">'{
+  "order":{
+    "reference": "123CLIENTS",
+    "redirectUrl": "https://example.com/callback",
+    "amount": "10000.00",
+    "maxInstallments": "2",
+    "merchantCode": "A1B2C3",
+    "customerName": "Rodrigo",
+    "customerDocument": "01234567890",
+    "recurrent": false
+  }
+}'</span>
+</code></pre>
+<blockquote>
+<p>Respostas</p>
+</blockquote>
+<blockquote>
+<p>200: Aguardando pagamento do link</p>
+</blockquote>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">"uuid"</span>: <span class="hljs-string">"e2ba235d-0b30-4edc-981d-e2c222763aee"</span>,
+  <span class="hljs-attr">"payUrl"</span>: <span class="hljs-string">"sandbox.evoluservices.com/api/orders/e2ba235d-0b30-4edc-981d-e2c222763aee/pay"</span>,
+  <span class="hljs-attr">"reference"</span>: <span class="hljs-string">"123CLIENTS"</span>,
+  <span class="hljs-attr">"status"</span>: <span class="hljs-string">"PENDING"</span>
+}
+</code></pre>
+<p>Tendo o conhecimento dos métodos disponíveis para criar o link de pagamento, basta utilizar o endpoint <a href="./reference.html#createorders">/api/orders</a> com o body devidamente preenchido. Como desejamos criar um link de pagamento para uma transação de crédito,  o campo <code>recurrent</code> deve ter o valor <code>false</code> e os campos <code>recurrentType</code>, <code>quantityCharges</code> e <code>frequency</code> não serão considerados.</p>
+<p>A resposta dessa requisição será o <a href="./reference.html#tocs_clientsorderoutputdto">ClientOrderOutpuDto</a>, onde será possível encontrar a <code>payUrl</code> que deve ser enviado ao pagador para que o link de pagamento seja pago. Neste momento pós criação do link de pagamento, o status estará como <code>PENDING</code> enquanto aguarda o link ser pago.</p>
+<p>É possível receber as informações das transações e seus recebimentos sempre que houver alguma atualização dos mesmos. Para isso, basta entrar em contato com o suporte para configurar qual url receberá a callback e ter mais informações.</p>
+<h2 id="3--realizar-uma-transa--o-recorrente-com-o-link-de-pagamento">3. Realizar uma transação recorrente com o link de pagamento</h2>
+<blockquote>
+<p><strong>Realizar transação recorrente do link de pagamento</strong></p>
+</blockquote>
+<blockquote>
+<p>Requisição: Recorrência mensal</p>
+</blockquote>
+<pre class="highlight tab tab-shell"><code>curl -X POST \
+  <span class="hljs-string">'https://sandbox.evoluservices.com/api/orders'</span> \
+  -H <span class="hljs-string">'Content-Type: application/json'</span> \
+  -H <span class="hljs-string">'Authorization: Basic b3JkZXJzOjEyM211ZGFy'</span> \
+  -H <span class="hljs-string">'cache-control: no-cache'</span> \
+  -d <span class="hljs-string">'{
+  "order":{
+    "reference": "123CLIENTS",
+    "redirectUrl": "https://example.com/callback",
+    "amount": "10000.00",
+    "maxInstallments": "2",
+    "merchantCode": "A1B2C3",
+    "customerName": "Rodrigo",
+    "customerDocument": "01234567890",
+    "recurrent": true,
+    "recurrenceType": "MONTHLY",
+    "quantityCharges"10"
+  }
+}'</span>
+</code></pre>
+<blockquote>
+<p>Requisição: Recorrência flexível</p>
+</blockquote>
+<pre class="highlight tab tab-shell"><code>curl -X POST \
+  <span class="hljs-string">'https://sandbox.evoluservices.com/api/orders'</span> \
+  -H <span class="hljs-string">'Content-Type: application/json'</span> \
+  -H <span class="hljs-string">'Authorization: Basic b3JkZXJzOjEyM211ZGFy'</span> \
+  -H <span class="hljs-string">'cache-control: no-cache'</span> \
+  -d <span class="hljs-string">'{
+  "order":{
+    "reference": "123CLIENTS",
+    "redirectUrl": "https://example.com/callback",
+    "amount": "10000.00",
+    "maxInstallments": "2",
+    "merchantCode": "A1B2C3",
+    "customerName": "Rodrigo",
+    "customerDocument": "01234567890",
+    "recurrent": true,
+    "recurrenceType": "FLEXIBLE",
+    "quantityCharges: "10",
+    "frequency": "21"
+  }
+}'</span>
+</code></pre>
+<blockquote>
+<p>Respostas
+200: Aguardando pagamento do link</p>
+</blockquote>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">"uuid"</span>: <span class="hljs-string">"e2ba235d-0b30-4edc-981d-e2c222763aee"</span>,
+  <span class="hljs-attr">"payUrl"</span>: <span class="hljs-string">"sandbox.evoluservices.com/api/orders/e2ba235d-0b30-4edc-981d-e2c222763aee/pay"</span>,
+  <span class="hljs-attr">"reference"</span>: <span class="hljs-string">"123CLIENTS"</span>,
+  <span class="hljs-attr">"status"</span>: <span class="hljs-string">"PENDING"</span>
+}
+</code></pre>
+<p>Sabendo que é possível criar um link de pagamento para uma transação recorrente, basta preencher o body no <a href="./reference.html#createorders">/api/orders</a> com as informações corretas. Neste caso, o que será diferente do caso anterior será que o campo <code>recurrent</code> agora será <code>true</code> e consequentemente alguns campos serão obrigatórios, como <code>recurrentType</code>, <code>quantityCharges</code> e <code>frequency</code>.</p>
+<p>Como o campo <code>recurrent</code> será <code>true</code>, o campo <code>maxInstallments</code> será desconsidera.</p>
+<p>Com relação ao campo <code>recurrentType</code>, ele pode ter como valor <code>MONTHLY</code> ou <code>FLEXIBLE</code>. No caso de ser escolhido a opção <code>MONTHLY</code>, o que estiver no campo <code>frequency</code> não será considerado. E caso a opção <code>FLEXIBLE</code> seja escolhida, o campo <code>frequency</code> deve ser preenchido com o número de dias em que as transações serão intervaladas. E por último, o campo <code>quantityCharges</code> se refere à quantidade de vezes em que essa recorrência de transação ocorrerá.</p>
+<p>A partir daqui, a sequência será a mesmo do caso de um link de pagamento de uma transação de crédito. Será recebido como resposta o <a href="./reference.html#tocs_clientsorderoutputdto">ClientOrderOutpuDto</a> com as informações do link de pagamento em questão.</p>
+<p>Assim como no caso anterior, pode ser recebido callbacks com as informações da transação e seus recebimentos. Para configurar essa opção, é necessário enviar a url que será usada para o nosso suporte.</p>
+<h2 id="4--realizar-uma-consulta-de-uma-order-espec-fica">4. Realizar uma consulta de uma order específica</h2>
+<blockquote>
+<p><strong>Consultar uma order específica</strong></p>
+</blockquote>
+<blockquote>
+<p>Requisição</p>
+</blockquote>
+<pre class="highlight tab tab-shell"><code>curl -X GET \
+  <span class="hljs-string">'http://sandbox.evoluservices.com/api/orders/e2ba235d-0b30-4edc-981d-e2c222763aee'</span> \
+  -H <span class="hljs-string">'Authorization: Basic b3JkZXJzOjEyM211ZGFy'</span> \
+  -H <span class="hljs-string">'cache-control: no-cache'</span>
+</code></pre>
+<blockquote>
+<p>Resposta</p>
+</blockquote>
+<blockquote>
+<p>200: Transação aprovada</p>
+</blockquote>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">"uuid"</span>: <span class="hljs-string">"e2ba235d-0b30-4edc-981d-e2c222763aee"</span>,
+  <span class="hljs-attr">"reference"</span>: <span class="hljs-string">"123CLIENTS"</span>,
+  <span class="hljs-attr">"status"</span>: <span class="hljs-string">"APPROVED"</span>,
+  <span class="hljs-attr">"transactionList"</span>: [
+    {
+      <span class="hljs-attr">"number"</span>: <span class="hljs-string">"12345678909"</span>,
+      <span class="hljs-attr">"status"</span>: <span class="hljs-string">"APPROVED"</span>,
+      <span class="hljs-attr">"amount"</span>: <span class="hljs-string">"100.00"</span>,
+      <span class="hljs-attr">"installments"</span>: <span class="hljs-string">"2"</span>,
+      <span class="hljs-attr">"paymentBrand"</span>: <span class="hljs-string">"VISA_CREDITO"</span>,
+      <span class="hljs-attr">"paymentQuantity"</span>: <span class="hljs-string">"3"</span>,
+      <span class="hljs-attr">"nsu"</span>: <span class="hljs-string">"993485982"</span>,
+      <span class="hljs-attr">"authorizationNumber"</span>: <span class="hljs-string">"470216"</span>,
+      <span class="hljs-attr">"customer"</span>: {
+        <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Jose da Silva"</span>,
+        <span class="hljs-attr">"document"</span>: <span class="hljs-string">"123.456.789-09"</span>
+      },
+      <span class="hljs-attr">"payments"</span>: [
+        {
+          <span class="hljs-attr">"number"</span>: <span class="hljs-string">"12345678909"</span>,
+          <span class="hljs-attr">"amount"</span>: <span class="hljs-string">"100.00"</span>,
+          <span class="hljs-attr">"status"</span>: <span class="hljs-string">"PAYED"</span>,
+          <span class="hljs-attr">"payDate"</span>: <span class="hljs-string">"01/01/2001"</span>,
+          <span class="hljs-attr">"merchant"</span>: {
+            <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Jose da Silva"</span>,
+            <span class="hljs-attr">"document"</span>: <span class="hljs-string">"123.456.789-09"</span>
+          }
+        }
+      ]
+    }
+  ]
+}
+</code></pre>
+<blockquote>
+<p>200: Transação pendente</p>
+</blockquote>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">"uuid"</span>: <span class="hljs-string">"e2ba235d-0b30-4edc-981d-e2c222763aee"</span>,
+  <span class="hljs-attr">"reference"</span>: <span class="hljs-string">"123CLIENTS"</span>,
+  <span class="hljs-attr">"status"</span>: <span class="hljs-string">"PENDING"</span>,
+  <span class="hljs-attr">"transactionList"</span>: []
+}
+</code></pre>
+<p>Como comentado, é possível realizar consultas a links de pagamento específicos a qualquer momento. Para realizar tal operação, basta utilizar o <a href="./reference.html#consultorder">/api/orders/{uuid}</a> com o uuid do link desejado.</p>
+<p>Caso o link de pagamento ainda esteja com o pagamento pendente, a resposta será a <a href="./reference.html#tocs_clientsordertransactionsdto">ClientOrderTransactionsDto</a> com <code>status</code> como <code>PENDING</code>.</p>
+<p>Caso tenha ocorrido alguma tentativa da transação ser realizada, cada tentativa irá gerar um <a href="./reference.html#tocs_clientstransactiondto">ClientTransactionOutpuDto</a> com o <code>status</code> adequado referente a cada tentativa dentro da resposta. Na transação que for de fato aprovada,<br>
+<code>payments</code> estará preenchido com as informações dos pagamentos referente à liquidação dessa transação. O campo <code>payDate</code> se refere ao dia do pagamento, sendo que se o pagamento já tiver sido realizado, a data será a do dia da liquidação, e se ele ainda não foi realizado, é a data prevista de pagamento.</p>
+<!-- Renderer: Shins v2.4.1-0 -->
+      </div>
+      <div class="dark-box">
+        
+          <div class="lang-selector">
+            
+          </div>
+        
+      </div>
+    </div>
+  </body>
+</html>

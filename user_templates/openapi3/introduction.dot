@@ -11,3 +11,29 @@ O credencial, a senha e o merchantCode são adquiridos no [processo homologatór
 Para uma boa integração, disponibilizamos um ambiente de testes encontrado pela seguinte url: https://sandbox.evoluservices.com.
 
 Para ter acesso a esse ambiente de teste, será recebido um e-mail com as credenciais de acesso no endereço de e-mail cadastrado assim que o [processo homologatório](./guideOrders.html#processo-homologat-rio) for iniciado.
+ 
+
+### Cartões de teste
+
+Para ser possível realizar testes, seguimos um conjunto de regras definidas pelos adquirentes. São elas:
+
+|Status da transação|Final do cartão|
+|-------------------|---------------|
+|Autorizado|1 e 4|
+|Não autorizado|2, 3, 5, 6, 7 e 8|
+|Autorização aleatória|9|
+
+É possível encontrar geradores de cartão de crédito de teste na internet para auxiliar, 
+pois é conferido se o número do cartão respeita o algoritmo de Luhn. A 
+data de vencimento do cartão deve ser futura, ou seja, caso inserido datas passadas, será considerado 
+como falha de transação. O código de segurança não será verificado para fins de testes.
+
+Para aprovar transações com cartão Hiper e HiperCard, deve ser usado especificamente 
+os seguintes números:
+
+|         |                |
+|---------|----------------|
+|Hipercard|6062825624254001|
+|Hiper|6370950847866501|
+
+Para simular erros com esses dois últimos cartões, basta realizar transações com o valor `amount` de R$103,00 ou R$104,00.

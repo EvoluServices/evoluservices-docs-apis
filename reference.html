@@ -114,6 +114,14 @@ window.onpopstate = function() {
                   <li>
                     <a href="#ambiente-de-testes" class="toc-h2 toc-link" data-title="">Ambiente de testes</a>
                     
+                      <ul class="toc-list-h3">
+                      
+                      <li>
+                        <a href="#cart-es-de-teste" class="toc-h3 toc-link" data-title="">Cart&#xF5;es de teste</a>
+                      </li>
+                      
+                    </ul>
+                    
                   </li>
                 
               </ul>
@@ -352,6 +360,55 @@ window.onpopstate = function() {
 <h2 id="ambiente-de-testes">Ambiente de testes</h2>
 <p>Para uma boa integração, disponibilizamos um ambiente de testes encontrado pela seguinte url: <a href="https://sandbox.evoluservices.com">https://sandbox.evoluservices.com</a>.</p>
 <p>Para ter acesso a esse ambiente de teste, será recebido um e-mail com as credenciais de acesso no endereço de e-mail cadastrado assim que o <a href="./guideOrders.html#processo-homologat-rio">processo homologatório</a> for iniciado.</p>
+<h3 id="cart-es-de-teste">Cartões de teste</h3>
+<p>Para ser possível realizar testes, seguimos um conjunto de regras definidas pelos adquirentes. São elas:</p>
+<table>
+<thead>
+<tr>
+<th>Status da transação</th>
+<th>Final do cartão</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Autorizado</td>
+<td>1 e 4</td>
+</tr>
+<tr>
+<td>Não autorizado</td>
+<td>2, 3, 5, 6, 7 e 8</td>
+</tr>
+<tr>
+<td>Autorização aleatória</td>
+<td>9</td>
+</tr>
+</tbody>
+</table>
+<p>É possível encontrar geradores de cartão de crédito de teste na internet para auxiliar,
+pois é conferido se o número do cartão respeita o algoritmo de Luhn. A
+data de vencimento do cartão deve ser futura, ou seja, caso inserido datas passadas, será considerado
+como falha de transação. O código de segurança não será verificado para fins de testes.</p>
+<p>Para aprovar transações com cartão Hiper e HiperCard, deve ser usado especificamente
+os seguintes números:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hipercard</td>
+<td>6062825624254001</td>
+</tr>
+<tr>
+<td>Hiper</td>
+<td>6370950847866501</td>
+</tr>
+</tbody>
+</table>
+<p>Para simular erros com esses dois últimos cartões, basta realizar transações com o valor <code>amount</code> de R$103,00 ou R$104,00.</p>
 <h1 id="requisi--es-e-respostas">Requisições e respostas</h1>
 <h2 id="evoluservices-orders-api-payment-methods">payment-methods</h2>
 <p>Obtém os métodos de pagamento disponíveis para estabelecimentos específicos conforme o valor desejado.</p>
@@ -462,11 +519,13 @@ fetch(<span class="hljs-string">'https://sandbox.evoluservices.com/api/payment-m
   <span class="hljs-attr">"paymentMethods"</span>: [
     {
       <span class="hljs-attr">"type"</span>: <span class="hljs-string">"CREDIT"</span>,
-      <span class="hljs-attr">"paymentOption"</span>: {
+      <span class="hljs-attr">"options"</span>: {
         <span class="hljs-attr">"maxInstallments"</span>: <span class="hljs-string">"12"</span>,
-        <span class="hljs-attr">"paymentBrands"</span>: [
-          <span class="hljs-string">"VISA, MASTER, ELO"</span>
-        ]
+        <span class="hljs-attr">"paymentBrands"</span>: {
+          <span class="hljs-attr">"value"</span>: [
+            <span class="hljs-string">"VISA"</span>
+          ]
+        }
       }
     }
   ]
@@ -1026,7 +1085,7 @@ BasicAuth
 <a id="tocSpaymentmethodsinputdto"></a>
 <a id="tocspaymentmethodsinputdto"></a></p>
 <pre class="highlight tab tab-json"><code>{
-  <span class="hljs-attr">"amount"</span>: <span class="hljs-string">"10000"</span>,
+  <span class="hljs-attr">"amount"</span>: <span class="hljs-string">"10000.00"</span>,
   <span class="hljs-attr">"merchantCode"</span>: <span class="hljs-string">"AVD242AN"</span>
 }
 
@@ -1069,11 +1128,13 @@ BasicAuth
   <span class="hljs-attr">"paymentMethods"</span>: [
     {
       <span class="hljs-attr">"type"</span>: <span class="hljs-string">"CREDIT"</span>,
-      <span class="hljs-attr">"paymentOption"</span>: {
+      <span class="hljs-attr">"options"</span>: {
         <span class="hljs-attr">"maxInstallments"</span>: <span class="hljs-string">"12"</span>,
-        <span class="hljs-attr">"paymentBrands"</span>: [
-          <span class="hljs-string">"VISA, MASTER, ELO"</span>
-        ]
+        <span class="hljs-attr">"paymentBrands"</span>: {
+          <span class="hljs-attr">"value"</span>: [
+            <span class="hljs-string">"VISA"</span>
+          ]
+        }
       }
     }
   ]
@@ -1109,11 +1170,13 @@ BasicAuth
 <a id="tocspaymentmethod"></a></p>
 <pre class="highlight tab tab-json"><code>{
   <span class="hljs-attr">"type"</span>: <span class="hljs-string">"CREDIT"</span>,
-  <span class="hljs-attr">"paymentOption"</span>: {
+  <span class="hljs-attr">"options"</span>: {
     <span class="hljs-attr">"maxInstallments"</span>: <span class="hljs-string">"12"</span>,
-    <span class="hljs-attr">"paymentBrands"</span>: [
-      <span class="hljs-string">"VISA, MASTER, ELO"</span>
-    ]
+    <span class="hljs-attr">"paymentBrands"</span>: {
+      <span class="hljs-attr">"value"</span>: [
+        <span class="hljs-string">"VISA"</span>
+      ]
+    }
   }
 }
 
@@ -1139,7 +1202,7 @@ BasicAuth
 <td>Determina o método de pagamento, podendo ser crédito ou recorrente</td>
 </tr>
 <tr>
-<td>paymentOption</td>
+<td>options</td>
 <td><a href="#schemapaymentoption">PaymentOption</a></td>
 <td>false</td>
 <td>none</td>
@@ -1173,9 +1236,11 @@ BasicAuth
 <a id="tocspaymentoption"></a></p>
 <pre class="highlight tab tab-json"><code>{
   <span class="hljs-attr">"maxInstallments"</span>: <span class="hljs-string">"12"</span>,
-  <span class="hljs-attr">"paymentBrands"</span>: [
-    <span class="hljs-string">"VISA, MASTER, ELO"</span>
-  ]
+  <span class="hljs-attr">"paymentBrands"</span>: {
+    <span class="hljs-attr">"value"</span>: [
+      <span class="hljs-string">"VISA"</span>
+    ]
+  }
 }
 
 </code></pre>
@@ -1201,10 +1266,17 @@ BasicAuth
 </tr>
 <tr>
 <td>paymentBrands</td>
-<td>[string]</td>
+<td>object</td>
 <td>false</td>
 <td>none</td>
 <td>Bandeiras disponíveis para a opção</td>
+</tr>
+<tr>
+<td>» value</td>
+<td>[string]</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
 </tr>
 </tbody>
 </table>

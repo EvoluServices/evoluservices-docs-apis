@@ -130,7 +130,7 @@ components:
       properties:
         amount:
           type: string
-          example: '10000'
+          example: '10000.00'
           description: 'Valor do pagamento'
         merchantCode:
           type: string
@@ -158,7 +158,7 @@ components:
             - RECURRENT
           description: >- 
             Determina o método de pagamento, podendo ser crédito ou recorrente
-        paymentOption:
+        options:
           type: object
           $ref: '#/components/schemas/PaymentOption'
     PaymentOption:
@@ -170,11 +170,14 @@ components:
           example: '12'
           description: 'Número máximo de parcelas permitido para a opção'
         paymentBrands:
-          type: array
+          type: object
           description: 'Bandeiras disponíveis para a opção'
-          items:
-            type: string
-            example: 'VISA, MASTER, ELO'
+          properties:
+            value:
+              type: array
+              items:
+                type: string
+                example: VISA
     ClientsOrderInputDto:
       type: object
       description: >-

@@ -16,10 +16,10 @@ function render() {
         console.log('Rendering ' + filePath);
         let mdString = fs.readFileSync(filePath, 'utf8');
         shins.render(mdString, option, function(err, html) {
+            let htmlFilePath = item.substring(0, item.lastIndexOf('.'));
             if (err !== null) {
-                console.log(`Rendering error: ${err}`);
+                console.log(`Cannot render ${htmlFilePath}: ${err}`);
             } else {
-                let htmlFilePath = item.substring(0, item.lastIndexOf('.'));
                 fs.writeFileSync(htmlFilePath, html, 'utf8');
                 console.log(htmlFilePath + ' successfully rendered.');
             }

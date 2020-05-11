@@ -39,6 +39,32 @@ O credencial, a senha e o merchantCode são adquiridos no [processo homologatór
 Para uma boa integração, disponibilizamos um ambiente de testes encontrado pela seguinte url: https://sandbox.evoluservices.com.
 
 Para ter acesso a esse ambiente de teste, será recebido um e-mail com as credenciais de acesso no endereço de e-mail cadastrado assim que o [processo homologatório](./guideOrders.html#processo-homologat-rio) for iniciado.
+ 
+
+### Cartões de teste
+
+Para ser possível realizar testes, seguimos um conjunto de regras definidas pelos adquirentes. São elas:
+
+|Status da transação|Final do cartão|
+|-------------------|---------------|
+|Autorizado|1 e 4|
+|Não autorizado|2, 3, 5, 6, 7 e 8|
+|Autorização aleatória|9|
+
+É possível encontrar geradores de cartão de crédito de teste na internet para auxiliar, 
+pois é conferido se o número do cartão respeita o algoritmo de Luhn. A 
+data de vencimento do cartão deve ser futura, ou seja, caso inserido datas passadas, será considerado 
+como falha de transação. O código de segurança não será verificado para fins de testes.
+
+Para aprovar transações com cartão Hiper e HiperCard, deve ser usado especificamente 
+os seguintes números:
+
+|         |                |
+|---------|----------------|
+|Hipercard|6062825624254001|
+|Hiper|6370950847866501|
+
+Para simular erros com esses dois últimos cartões, basta realizar transações com o valor `amount` de R$103,00 ou R$104,00.
 
 # Requisições e respostas
 
@@ -142,11 +168,13 @@ fetch('https://sandbox.evoluservices.com/api/payment-methods',
   "paymentMethods": [
     {
       "type": "CREDIT",
-      "paymentOption": {
+      "options": {
         "maxInstallments": "12",
-        "paymentBrands": [
-          "VISA, MASTER, ELO"
-        ]
+        "paymentBrands": {
+          "value": [
+            "VISA"
+          ]
+        }
       }
     }
   ]
@@ -511,7 +539,7 @@ BasicAuth
 
 ```json
 {
-  "amount": "10000",
+  "amount": "10000.00",
   "merchantCode": "AVD242AN"
 }
 
@@ -538,11 +566,13 @@ Objeto para a busca de formas de pagamento disponíveis ao estabelecimento confo
   "paymentMethods": [
     {
       "type": "CREDIT",
-      "paymentOption": {
+      "options": {
         "maxInstallments": "12",
-        "paymentBrands": [
-          "VISA, MASTER, ELO"
-        ]
+        "paymentBrands": {
+          "value": [
+            "VISA"
+          ]
+        }
       }
     }
   ]
@@ -568,11 +598,13 @@ Objeto de retorno contendo as informações sobre as formas de pagamento dispon�
 ```json
 {
   "type": "CREDIT",
-  "paymentOption": {
+  "options": {
     "maxInstallments": "12",
-    "paymentBrands": [
-      "VISA, MASTER, ELO"
-    ]
+    "paymentBrands": {
+      "value": [
+        "VISA"
+      ]
+    }
   }
 }
 
@@ -585,7 +617,7 @@ Objeto contendo as informações de pagamento do estabelecimento.
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |type|string|false|none|Determina o método de pagamento, podendo ser crédito ou recorrente|
-|paymentOption|[PaymentOption](#schemapaymentoption)|false|none|Opção para o tipo de pagamento do estabelecimento|
+|options|[PaymentOption](#schemapaymentoption)|false|none|Opção para o tipo de pagamento do estabelecimento|
 
 #### Enumerated Values
 
@@ -604,9 +636,11 @@ Objeto contendo as informações de pagamento do estabelecimento.
 ```json
 {
   "maxInstallments": "12",
-  "paymentBrands": [
-    "VISA, MASTER, ELO"
-  ]
+  "paymentBrands": {
+    "value": [
+      "VISA"
+    ]
+  }
 }
 
 ```
@@ -618,7 +652,8 @@ Opção para o tipo de pagamento do estabelecimento
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |maxInstallments|number|false|none|Número máximo de parcelas permitido para a opção|
-|paymentBrands|[string]|false|none|Bandeiras disponíveis para a opção|
+|paymentBrands|object|false|none|Bandeiras disponíveis para a opção|
+|» value|[string]|false|none|none|
 
 <h2 id="tocS_ClientsOrderInputDto">ClientsOrderInputDto</h2>
 <!-- backwards compatibility -->

@@ -78,6 +78,16 @@ template {
 a {
   background-color: transparent; }
 
+a#learnMoreLink {
+  color: #E97424;
+  font-weight: bold;
+  text-decoration:none;
+}
+
+a#learnMoreLink:hover {
+  text-decoration: underline;
+}
+
 a#guideLink {
   color: #E97424;
   font-weight: bold;
