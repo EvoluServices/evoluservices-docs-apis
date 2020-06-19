@@ -252,6 +252,11 @@ components:
                 Período fixo entre as cobranças da recorrência, em dias.
                 O preenchimento do campo é Obrigatório caso o campo
                 `recurrent` seja definido como `true`.
+            description:
+              type: string
+              example: "Venda de equipamento efetuada na data 13/05/2020"
+              description: >-
+                Descrição mais detalhada referente à order.
     ClientsOrderOutputDto:
       type: object
       description: >-
