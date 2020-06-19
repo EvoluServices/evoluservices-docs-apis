@@ -237,7 +237,8 @@ const inputBody = '{
     "recurrent": true,
     "recurrenceType": "MONTHLY",
     "quantityCharges": "10",
-    "frequency": "30"
+    "frequency": "30",
+    "description": "Venda de equipamento efetuada na data 13/05/2020"
   }
 }';
 const headers = {
@@ -286,7 +287,8 @@ const inputBody = {
     "recurrent": true,
     "recurrenceType": "MONTHLY",
     "quantityCharges": "10",
-    "frequency": "30"
+    "frequency": "30",
+    "description": "Venda de equipamento efetuada na data 13/05/2020"
   }
 };
 const headers = {
@@ -327,7 +329,8 @@ fetch('https://sandbox.evoluservices.com/api/orders',
     "recurrent": true,
     "recurrenceType": "MONTHLY",
     "quantityCharges": "10",
-    "frequency": "30"
+    "frequency": "30",
+    "description": "Venda de equipamento efetuada na data 13/05/2020"
   }
 }
 ```
@@ -349,6 +352,7 @@ fetch('https://sandbox.evoluservices.com/api/orders',
 |»» recurrenceType|body|string|false|Tipo de recorrência do pagamento do order podendo ser mensal ou flexível  (por período fixo determinado). O preenchimento do campo é Obrigatório caso o campo `recurrent` seja definido como `true`.|
 |»» quantityCharges|body|number|false|Quantidade de recorrências que serão cobradas no order O preenchimento do campo é Obrigatório caso o campo `recurrent` seja definido como `true`.|
 |»» frequency|body|number|false|Período fixo entre as cobranças da recorrência, em dias. O preenchimento do campo é Obrigatório caso o campo `recurrent` seja definido como `true`.|
+|»» description|body|string|false|Descrição mais detalhada referente à order.|
 
 #### Enumerated Values
 
@@ -675,7 +679,8 @@ Opção para o tipo de pagamento do estabelecimento
     "recurrent": true,
     "recurrenceType": "MONTHLY",
     "quantityCharges": "10",
-    "frequency": "30"
+    "frequency": "30",
+    "description": "Venda de equipamento efetuada na data 13/05/2020"
   }
 }
 
@@ -699,6 +704,7 @@ Objeto contendo informações para a solicitação de uma nova transação.
 |» recurrenceType|string|false|none|Tipo de recorrência do pagamento do order podendo ser mensal ou flexível  (por período fixo determinado). O preenchimento do campo é Obrigatório caso o campo `recurrent` seja definido como `true`.|
 |» quantityCharges|number|false|none|Quantidade de recorrências que serão cobradas no order O preenchimento do campo é Obrigatório caso o campo `recurrent` seja definido como `true`.|
 |» frequency|number|false|none|Período fixo entre as cobranças da recorrência, em dias. O preenchimento do campo é Obrigatório caso o campo `recurrent` seja definido como `true`.|
+|» description|string|false|none|Descrição mais detalhada referente à order.|
 
 #### Enumerated Values
 

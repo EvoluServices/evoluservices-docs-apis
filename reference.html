@@ -618,7 +618,8 @@ System.out.println(response.toString());
     "recurrent": true,
     "recurrenceType": "MONTHLY",
     "quantityCharges": "10",
-    "frequency": "30"
+    "frequency": "30",
+    "description": "Venda de equipamento efetuada na data 13/05/2020"
   }
 }'</span>;
 <span class="hljs-keyword">const</span> headers = {
@@ -663,7 +664,8 @@ print(r.json())
     <span class="hljs-string">"recurrent"</span>: <span class="hljs-literal">true</span>,
     <span class="hljs-string">"recurrenceType"</span>: <span class="hljs-string">"MONTHLY"</span>,
     <span class="hljs-string">"quantityCharges"</span>: <span class="hljs-string">"10"</span>,
-    <span class="hljs-string">"frequency"</span>: <span class="hljs-string">"30"</span>
+    <span class="hljs-string">"frequency"</span>: <span class="hljs-string">"30"</span>,
+    <span class="hljs-string">"description"</span>: <span class="hljs-string">"Venda de equipamento efetuada na data 13/05/2020"</span>
   }
 };
 <span class="hljs-keyword">const</span> headers = {
@@ -701,7 +703,8 @@ fetch(<span class="hljs-string">'https://sandbox.evoluservices.com/api/orders'</
     <span class="hljs-attr">"recurrent"</span>: <span class="hljs-literal">true</span>,
     <span class="hljs-attr">"recurrenceType"</span>: <span class="hljs-string">"MONTHLY"</span>,
     <span class="hljs-attr">"quantityCharges"</span>: <span class="hljs-string">"10"</span>,
-    <span class="hljs-attr">"frequency"</span>: <span class="hljs-string">"30"</span>
+    <span class="hljs-attr">"frequency"</span>: <span class="hljs-string">"30"</span>,
+    <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Venda de equipamento efetuada na data 13/05/2020"</span>
   }
 }
 </code></pre>
@@ -807,6 +810,13 @@ fetch(<span class="hljs-string">'https://sandbox.evoluservices.com/api/orders'</
 <td>number</td>
 <td>false</td>
 <td>Período fixo entre as cobranças da recorrência, em dias. O preenchimento do campo é Obrigatório caso o campo <code>recurrent</code> seja definido como <code>true</code>.</td>
+</tr>
+<tr>
+<td>»» description</td>
+<td>body</td>
+<td>string</td>
+<td>false</td>
+<td>Descrição mais detalhada referente à order.</td>
 </tr>
 </tbody>
 </table>
@@ -1297,7 +1307,8 @@ BasicAuth
     <span class="hljs-attr">"recurrent"</span>: <span class="hljs-literal">true</span>,
     <span class="hljs-attr">"recurrenceType"</span>: <span class="hljs-string">"MONTHLY"</span>,
     <span class="hljs-attr">"quantityCharges"</span>: <span class="hljs-string">"10"</span>,
-    <span class="hljs-attr">"frequency"</span>: <span class="hljs-string">"30"</span>
+    <span class="hljs-attr">"frequency"</span>: <span class="hljs-string">"30"</span>,
+    <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Venda de equipamento efetuada na data 13/05/2020"</span>
   }
 }
 
@@ -1398,6 +1409,13 @@ BasicAuth
 <td>false</td>
 <td>none</td>
 <td>Período fixo entre as cobranças da recorrência, em dias. O preenchimento do campo é Obrigatório caso o campo <code>recurrent</code> seja definido como <code>true</code>.</td>
+</tr>
+<tr>
+<td>» description</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Descrição mais detalhada referente à order.</td>
 </tr>
 </tbody>
 </table>
