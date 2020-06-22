@@ -72,7 +72,8 @@ curl -X POST \
     "merchantCode": "A1B2C3",
     "customerName": "Rodrigo",
     "customerDocument": "01234567890",
-    "recurrent": false
+    "recurrent": false,
+    "description":  "Venda de equipamento efetuada na data 22/06/2020"
   }
 }'
 ```
@@ -122,7 +123,8 @@ curl -X POST \
     "customerDocument": "01234567890",
     "recurrent": true,
     "recurrenceType": "MONTHLY",
-    "quantityCharges"10"
+    "quantityCharges"10",
+    "description":  "Venda de equipamento efetuada na data 22/06/2020"
   }
 }'
 ```
@@ -146,7 +148,8 @@ curl -X POST \
     "recurrent": true,
     "recurrenceType": "FLEXIBLE",
     "quantityCharges: "10",
-    "frequency": "21"
+    "frequency": "21",
+    "description":  "Venda de equipamento efetuada na data 22/06/2020"
   }
 }'
 ```

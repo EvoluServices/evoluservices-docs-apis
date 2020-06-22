@@ -47,8 +47,15 @@ Para ver o procedimento para integração, clique no link abaixo.
 
 Para os detalhes técnicos, disponibilizamos o conteúdo em duas formas:
 
-* <a id="learnMoreLink" href="reference.html">Guia de referência</a>
-* <a id="learnMoreLink" href="https://www.evoluservices.com/resources/docs/orders-api-docs.json">JSON em formato OpenApi 3.0</a>
+## Guia de referência
+Na guia de referência, irá encontrar procedimentos técnicos para integração como Autenticação e Ambiente de testes, assim como a lista de todas as requisições e respostas existentes na Orders Client API.
+
+<a id="learnMoreLink" href="reference.html">VER GUIA DE REFERÊNCIA</a>
+
+## YAML em formato OpenApi 3.0
+Também disponbilizamos a documentação no formato OpenApi 3.0 do Swagger, em um arquivo YAML. Para visualizá-la, abra o arquivo, copie e cole no [Editor do Swagger](https://editor.swagger.io).
+
+<a id="learnMoreLink" href="https://www.evoluservices.com/resources/docs/orders-api-docs.json">ABRIR DOCUMENTAÇÃO OPENAPI 3.0</a>
 
 # Integrando com Orders Client API
 
@@ -77,6 +84,10 @@ Caso seja necessário, pode entrar em contato pelos seguintes meios de comunica�
 * [WhatsApp](https://api.whatsapp.com/send?phone=5511933679024)
 
 # Histórico de revisões
+
+## v1.1.1
+* Inclusão do campo "description" nas requisições de criação de Orders.
+* Atualização da documentação OpenApi3.0
 
 ## v1.1.0
 * Reestruturação da documentação
