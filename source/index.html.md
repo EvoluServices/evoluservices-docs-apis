@@ -55,7 +55,7 @@ Na guia de referência, irá encontrar procedimentos técnicos para integração
 ## YAML em formato OpenApi 3.0
 Também disponbilizamos a documentação no formato OpenApi 3.0 do Swagger, em um arquivo YAML. Para visualizá-la, abra o arquivo, copie e cole no [Editor do Swagger](https://editor.swagger.io).
 
-<a id="learnMoreLink" href="https://www.evoluservices.com/resources/docs/orders-api-docs.json">ABRIR DOCUMENTAÇÃO OPENAPI 3.0</a>
+<a id="learnMoreLink" href="https://www.evoluservices.com/resources/docs/orders-api-docs.yml">ABRIR DOCUMENTAÇÃO OPENAPI 3.0</a>
 
 # Integrando com Orders Client API
 
