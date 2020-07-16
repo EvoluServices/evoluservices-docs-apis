@@ -85,12 +85,15 @@ Caso seja necessário, pode entrar em contato pelos seguintes meios de comunica�
 
 # Histórico de revisões
 
-## v1.1.1
+### v1.1.2
+* Inclusão do campo "expirationDate" nas requisições de criação de Orders.
+
+### v1.1.1
 * Inclusão do campo "description" nas requisições de criação de Orders.
 * Atualização da documentação OpenApi3.0
 
-## v1.1.0
+### v1.1.0
 * Reestruturação da documentação
 
-## v1.0.0
+### v1.0.0
 * Primeira versão da documentação

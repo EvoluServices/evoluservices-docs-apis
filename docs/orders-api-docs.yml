@@ -257,6 +257,11 @@ components:
               example: "Venda de equipamento efetuada na data 13/05/2020"
               description: >-
                 Descrição mais detalhada referente à order.
+            expirationDate:
+              type: string
+              example: "16/07/2020"
+              description: >-
+                Data de expiração da order. O campo é opcional.
     ClientsOrderOutputDto:
       type: object
       description: >-

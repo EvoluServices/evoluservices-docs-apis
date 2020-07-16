@@ -73,7 +73,8 @@ curl -X POST \
     "customerName": "Rodrigo",
     "customerDocument": "01234567890",
     "recurrent": false,
-    "description":  "Venda de equipamento efetuada na data 22/06/2020"
+    "description":  "Venda de equipamento efetuada na data 22/06/2020",
+    "expirationDate": "16/07/2020"
   }
 }'
 ```
@@ -124,7 +125,8 @@ curl -X POST \
     "recurrent": true,
     "recurrenceType": "MONTHLY",
     "quantityCharges"10",
-    "description":  "Venda de equipamento efetuada na data 22/06/2020"
+    "description":  "Venda de equipamento efetuada na data 22/06/2020",
+    "expirationDate": "16/07/2020"
   }
 }'
 ```
@@ -149,7 +151,8 @@ curl -X POST \
     "recurrenceType": "FLEXIBLE",
     "quantityCharges: "10",
     "frequency": "21",
-    "description":  "Venda de equipamento efetuada na data 22/06/2020"
+    "description":  "Venda de equipamento efetuada na data 22/06/2020",
+    "expirationDate": "16/07/2020"
   }
 }'
 ```

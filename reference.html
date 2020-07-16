@@ -619,7 +619,8 @@ System.out.println(response.toString());
     "recurrenceType": "MONTHLY",
     "quantityCharges": "10",
     "frequency": "30",
-    "description": "Venda de equipamento efetuada na data 13/05/2020"
+    "description": "Venda de equipamento efetuada na data 13/05/2020",
+    "expirationDate": "16/07/2020"
   }
 }'</span>;
 <span class="hljs-keyword">const</span> headers = {
@@ -665,7 +666,8 @@ print(r.json())
     <span class="hljs-string">"recurrenceType"</span>: <span class="hljs-string">"MONTHLY"</span>,
     <span class="hljs-string">"quantityCharges"</span>: <span class="hljs-string">"10"</span>,
     <span class="hljs-string">"frequency"</span>: <span class="hljs-string">"30"</span>,
-    <span class="hljs-string">"description"</span>: <span class="hljs-string">"Venda de equipamento efetuada na data 13/05/2020"</span>
+    <span class="hljs-string">"description"</span>: <span class="hljs-string">"Venda de equipamento efetuada na data 13/05/2020"</span>,
+    <span class="hljs-string">"expirationDate"</span>: <span class="hljs-string">"16/07/2020"</span>
   }
 };
 <span class="hljs-keyword">const</span> headers = {
@@ -704,7 +706,8 @@ fetch(<span class="hljs-string">'https://sandbox.evoluservices.com/api/orders'</
     <span class="hljs-attr">"recurrenceType"</span>: <span class="hljs-string">"MONTHLY"</span>,
     <span class="hljs-attr">"quantityCharges"</span>: <span class="hljs-string">"10"</span>,
     <span class="hljs-attr">"frequency"</span>: <span class="hljs-string">"30"</span>,
-    <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Venda de equipamento efetuada na data 13/05/2020"</span>
+    <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Venda de equipamento efetuada na data 13/05/2020"</span>,
+    <span class="hljs-attr">"expirationDate"</span>: <span class="hljs-string">"16/07/2020"</span>
   }
 }
 </code></pre>
@@ -817,6 +820,13 @@ fetch(<span class="hljs-string">'https://sandbox.evoluservices.com/api/orders'</
 <td>string</td>
 <td>false</td>
 <td>Descrição mais detalhada referente à order.</td>
+</tr>
+<tr>
+<td>»» expirationDate</td>
+<td>body</td>
+<td>string</td>
+<td>false</td>
+<td>Data de expiração da order. O campo é opcional.</td>
 </tr>
 </tbody>
 </table>
@@ -1308,7 +1318,8 @@ BasicAuth
     <span class="hljs-attr">"recurrenceType"</span>: <span class="hljs-string">"MONTHLY"</span>,
     <span class="hljs-attr">"quantityCharges"</span>: <span class="hljs-string">"10"</span>,
     <span class="hljs-attr">"frequency"</span>: <span class="hljs-string">"30"</span>,
-    <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Venda de equipamento efetuada na data 13/05/2020"</span>
+    <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Venda de equipamento efetuada na data 13/05/2020"</span>,
+    <span class="hljs-attr">"expirationDate"</span>: <span class="hljs-string">"16/07/2020"</span>
   }
 }
 
@@ -1416,6 +1427,13 @@ BasicAuth
 <td>false</td>
 <td>none</td>
 <td>Descrição mais detalhada referente à order.</td>
+</tr>
+<tr>
+<td>» expirationDate</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Data de expiração da order. O campo é opcional.</td>
 </tr>
 </tbody>
 </table>
