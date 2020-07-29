@@ -183,6 +183,18 @@ window.onpopstate = function() {
                         <a href="#consultorder-responses" class="toc-h3 toc-link" data-title="">Responses</a>
                       </li>
                       
+                      <li>
+                        <a href="#cancelorder" class="toc-h3 toc-link" data-title="">cancelOrder</a>
+                      </li>
+                      
+                      <li>
+                        <a href="#cancelorder-parameters" class="toc-h3 toc-link" data-title="">Parameters</a>
+                      </li>
+                      
+                      <li>
+                        <a href="#cancelorder-responses" class="toc-h3 toc-link" data-title="">Responses</a>
+                      </li>
+                      
                     </ul>
                     
                   </li>
@@ -1084,6 +1096,136 @@ fetch(<span class="hljs-string">'https://sandbox.evoluservices.com/api/orders/{u
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>Erro de integração</td>
+<td>None</td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
+<td>Erro interno no servidor</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<aside class="warning">
+Para executar esta operação, você deve estar autenticado através do método:
+BasicAuth
+</aside>
+<h3 id="cancelorder">cancelOrder</h3>
+<p><a id="opIdcancelOrder"></a></p>
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<pre class="highlight tab tab-java"><code>URL obj = <span class="hljs-keyword">new</span> URL(<span class="hljs-string">"https://sandbox.evoluservices.com/api/orders/{uuid}"</span>);
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod(<span class="hljs-string">"DELETE"</span>);
+<span class="hljs-keyword">int</span> responseCode = con.getResponseCode();
+BufferedReader in = <span class="hljs-keyword">new</span> BufferedReader(
+    <span class="hljs-keyword">new</span> InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = <span class="hljs-keyword">new</span> StringBuffer();
+<span class="hljs-keyword">while</span> ((inputLine = in.readLine()) != <span class="hljs-keyword">null</span>) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+</code></pre>
+<pre class="highlight tab tab-javascript"><code>
+fetch(<span class="hljs-string">'https://sandbox.evoluservices.com/api/orders/{uuid}'</span>,
+{
+  <span class="hljs-attr">method</span>: <span class="hljs-string">'DELETE'</span>
+
+})
+.then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>{
+    <span class="hljs-keyword">return</span> res.json();
+}).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">body</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(body);
+});
+
+</code></pre>
+<pre class="highlight tab tab-python"><code><span class="hljs-keyword">import</span> requests
+
+r = requests.delete(<span class="hljs-string">'https://sandbox.evoluservices.com/api/orders/{uuid}'</span>)
+
+print(r.json())
+
+</code></pre>
+<pre class="highlight tab tab-javascript--nodejs"><code><span class="hljs-keyword">const</span> fetch = <span class="hljs-built_in">require</span>(<span class="hljs-string">'node-fetch'</span>);
+
+fetch(<span class="hljs-string">'https://sandbox.evoluservices.com/api/orders/{uuid}'</span>,
+{
+  <span class="hljs-attr">method</span>: <span class="hljs-string">'DELETE'</span>
+
+})
+.then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>{
+    <span class="hljs-keyword">return</span> res.json();
+}).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">body</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(body);
+});
+
+</code></pre>
+<p><code>DELETE /api/orders/{uuid}</code></p>
+<p><em>Tenta efetuar o cancelamento de um Link de Pagamento de acordo com o seu Uuid.</em></p>
+<h3 id="cancelorder-parameters">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uuid</td>
+<td>path</td>
+<td>string</td>
+<td>true</td>
+<td>Uuid do Link de Pagamento a ser cancelado</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cancelorder-responses">Responses</h3>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>OK</td>
+<td>None</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>Exceção de validação</td>
+<td>None</td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
+<td>Credenciais invalidas, não autorizado</td>
+<td>None</td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
+<td>Uuid nulo ou vazio, não autorizado</td>
+<td>None</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
+<td>Pedido não encontrado</td>
 <td>None</td>
 </tr>
 <tr>

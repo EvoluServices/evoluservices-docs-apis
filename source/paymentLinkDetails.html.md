@@ -242,3 +242,51 @@ Caso o link de pagamento ainda esteja com o pagamento pendente, a resposta será
 
 Caso tenha ocorrido alguma tentativa da transação ser realizada, cada tentativa irá gerar um [ClientTransactionOutpuDto](./reference.html#tocs_clientstransactiondto) com o `status` adequado referente a cada tentativa dentro da resposta. Na transação que for de fato aprovada,  
 `payments` estará preenchido com as informações dos pagamentos referente à liquidação dessa transação. O campo `payDate` se refere ao dia do pagamento, sendo que se o pagamento já tiver sido realizado, a data será a do dia da liquidação, e se ele ainda não foi realizado, é a data prevista de pagamento. 
+
+
+
+## 5. Cancelar uma order específica
+
+> **Cancelar uma order específica**
+
+> Requisição
+
+```shell
+curl -L -X DELETE \
+'https://sandbox.evoluservices.com/api/orders/e2ba235d-0b30-4edc-981d-e2c222763aee' \
+-H 'Authorization: Basic b3JkZXJzOjEyM211ZGFy'
+```
+
+> Respostas
+
+> 200: Cancelamento realizado com sucesso
+```json
+{
+  "success": "true",
+  "error": "OK_MSG"
+}
+```
+
+> 500: Status da order inválido para cancelamento
+```json
+{
+  "success": "false",
+  "error": "ORDER_STATUS_INVALID_FOR_CANCELLATION"
+}
+```
+
+> 404: Order não encontrada a partir do uuid fornecido
+```json
+{
+  "success": "false",
+  "error": "ORDER_NOT_FOUND"
+}
+```
+
+Para efetuar o cancelamento de uma order e assim impossibilitar o pagamento e reenvio de notificações dela, utilize [/api/orders/{uuid}](./reference.html#cancelorder) com o uuid relacionado ao Link de Pagamento que deverá ser cancelado.
+
+Caso o `status` atual da order seja `PENDING`, ele será alterado para `CANCELED` e o Link será cancelado.
+
+Caso o `status` atual seja diferente de `PENDING` (já tenha `status` como `CANCELED` por exemplo), a order não sofrerá alterações.
+
+Lembre-se que orders com `status` como `CANCELED` **não podem ser reativadas**, portanto uma nova order deverá ser criada, caso seja necessário.

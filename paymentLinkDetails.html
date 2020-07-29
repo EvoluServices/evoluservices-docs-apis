@@ -90,6 +90,11 @@ window.onpopstate = function() {
                     
                   </li>
                 
+                  <li>
+                    <a href="#5--cancelar-uma-order-espec-fica" class="toc-h2 toc-link" data-title="">5. Cancelar uma order espec&#xED;fica</a>
+                    
+                  </li>
+                
               </ul>
             
           </li>
@@ -329,6 +334,48 @@ window.onpopstate = function() {
 <p>Caso o link de pagamento ainda esteja com o pagamento pendente, a resposta será a <a href="./reference.html#tocs_clientsordertransactionsdto">ClientOrderTransactionsDto</a> com <code>status</code> como <code>PENDING</code>.</p>
 <p>Caso tenha ocorrido alguma tentativa da transação ser realizada, cada tentativa irá gerar um <a href="./reference.html#tocs_clientstransactiondto">ClientTransactionOutpuDto</a> com o <code>status</code> adequado referente a cada tentativa dentro da resposta. Na transação que for de fato aprovada,<br>
 <code>payments</code> estará preenchido com as informações dos pagamentos referente à liquidação dessa transação. O campo <code>payDate</code> se refere ao dia do pagamento, sendo que se o pagamento já tiver sido realizado, a data será a do dia da liquidação, e se ele ainda não foi realizado, é a data prevista de pagamento.</p>
+<h2 id="5--cancelar-uma-order-espec-fica">5. Cancelar uma order específica</h2>
+<blockquote>
+<p><strong>Cancelar uma order específica</strong></p>
+</blockquote>
+<blockquote>
+<p>Requisição</p>
+</blockquote>
+<pre class="highlight tab tab-shell"><code>curl -L -X DELETE \
+<span class="hljs-string">'https://sandbox.evoluservices.com/api/orders/e2ba235d-0b30-4edc-981d-e2c222763aee'</span> \
+-H <span class="hljs-string">'Authorization: Basic b3JkZXJzOjEyM211ZGFy'</span>
+</code></pre>
+<blockquote>
+<p>Respostas</p>
+</blockquote>
+<blockquote>
+<p>200: Cancelamento realizado com sucesso</p>
+</blockquote>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">"success"</span>: <span class="hljs-string">"true"</span>,
+  <span class="hljs-attr">"error"</span>: <span class="hljs-string">"OK_MSG"</span>
+}
+</code></pre>
+<blockquote>
+<p>500: Status da order inválido para cancelamento</p>
+</blockquote>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">"success"</span>: <span class="hljs-string">"false"</span>,
+  <span class="hljs-attr">"error"</span>: <span class="hljs-string">"ORDER_STATUS_INVALID_FOR_CANCELLATION"</span>
+}
+</code></pre>
+<blockquote>
+<p>404: Order não encontrada a partir do uuid fornecido</p>
+</blockquote>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">"success"</span>: <span class="hljs-string">"false"</span>,
+  <span class="hljs-attr">"error"</span>: <span class="hljs-string">"ORDER_NOT_FOUND"</span>
+}
+</code></pre>
+<p>Para efetuar o cancelamento de uma order e assim impossibilitar o pagamento e reenvio de notificações dela, utilize <a href="./reference.html#cancelorder">/api/orders/{uuid}</a> com o uuid relacionado ao Link de Pagamento que deverá ser cancelado.</p>
+<p>Caso o <code>status</code> atual da order seja <code>PENDING</code>, ele será alterado para <code>CANCELED</code> e o Link será cancelado.</p>
+<p>Caso o <code>status</code> atual seja diferente de <code>PENDING</code> (já tenha <code>status</code> como <code>CANCELED</code> por exemplo), a order não sofrerá alterações.</p>
+<p>Lembre-se que orders com <code>status</code> como <code>CANCELED</code> <strong>não podem ser reativadas</strong>, portanto uma nova order deverá ser criada, caso seja necessário.</p>
 <!-- Renderer: Shins v2.4.1-0 -->
       </div>
       <div class="dark-box">

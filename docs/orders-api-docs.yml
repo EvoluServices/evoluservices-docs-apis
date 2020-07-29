@@ -121,6 +121,33 @@ paths:
           description: Erro interno no servidor
       security:
         - BasicAuth: []
+    delete:
+      tags:
+        - orders
+      parameters:
+        - required: true
+          in: path
+          name: uuid
+          schema:
+            type: string
+          description: Uuid do Link de Pagamento a ser cancelado
+      summary: 'Tenta efetuar o cancelamento de um Link de Pagamento de acordo com o seu Uuid.'
+      operationId: cancelOrder
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Exceção de validação
+        '401':
+          description: Credenciais invalidas, não autorizado
+        '403':
+          description: Uuid nulo ou vazio, não autorizado
+        '404':
+          description: Pedido não encontrado
+        '500':
+          description: Erro interno no servidor
+      security:
+        - BasicAuth: []
 components:
   schemas:
     PaymentMethodsInputDto:

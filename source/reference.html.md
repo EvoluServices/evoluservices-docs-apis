@@ -536,6 +536,95 @@ Para executar esta operação, você deve estar autenticado através do método:
 BasicAuth
 </aside>
 
+### cancelOrder
+
+<a id="opIdcancelOrder"></a>
+
+> Code samples
+
+```java
+URL obj = new URL("https://sandbox.evoluservices.com/api/orders/{uuid}");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("DELETE");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```javascript
+
+fetch('https://sandbox.evoluservices.com/api/orders/{uuid}',
+{
+  method: 'DELETE'
+
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```python
+import requests
+
+r = requests.delete('https://sandbox.evoluservices.com/api/orders/{uuid}')
+
+print(r.json())
+
+```
+
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+fetch('https://sandbox.evoluservices.com/api/orders/{uuid}',
+{
+  method: 'DELETE'
+
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+`DELETE /api/orders/{uuid}`
+
+*Tenta efetuar o cancelamento de um Link de Pagamento de acordo com o seu Uuid.*
+
+<h3 id="cancelorder-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|uuid|path|string|true|Uuid do Link de Pagamento a ser cancelado|
+
+<h3 id="cancelorder-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|None|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Exceção de validação|None|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Credenciais invalidas, não autorizado|None|
+|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Uuid nulo ou vazio, não autorizado|None|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Pedido não encontrado|None|
+|500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Erro interno no servidor|None|
+
+<aside class="warning">
+Para executar esta operação, você deve estar autenticado através do método:
+BasicAuth
+</aside>
+
 # Estruturas
 
 <h2 id="tocS_PaymentMethodsInputDto">PaymentMethodsInputDto</h2>
