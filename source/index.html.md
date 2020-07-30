@@ -87,7 +87,8 @@ Caso seja necessário, pode entrar em contato pelos seguintes meios de comunica�
 
 ### v1.1.3
 * Inclusão do endpoint de cancelamento de Links <a href="reference.html#cancelorder">cancelOrder</a> no Guia de Referência;
-* Inclusão de instruções para uso do endpoint de cancelamento nos procedimentos para integração com os produtos.
+* Inclusão de instruções para uso do endpoint de cancelamento nos procedimentos para integração com os produtos;
+* Correção do alinhamento de exemplos de requisição e retornos no Guia de Referência.
 
 ### v1.1.2
 * Inclusão do campo "expirationDate" nas requisições de criação de Orders.
