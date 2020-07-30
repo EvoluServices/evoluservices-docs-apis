@@ -131,7 +131,7 @@ paths:
           schema:
             type: string
           description: Uuid do Link de Pagamento a ser cancelado
-      summary: 'Tenta efetuar o cancelamento de um Link de Pagamento de acordo com o seu Uuid.'
+      summary: 'Cancela um Link de Pagamento de acordo com o seu uuid.'
       operationId: cancelOrder
       responses:
         '200':

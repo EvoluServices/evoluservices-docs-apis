@@ -72,7 +72,7 @@ Para simular erros com esses dois últimos cartões, basta realizar transações
 
 Obtém os métodos de pagamento disponíveis para estabelecimentos específicos conforme o valor desejado.
 
-### paymentMethods
+## paymentMethods
 
 <a id="opIdpaymentMethods"></a>
 
@@ -201,7 +201,7 @@ BasicAuth
 
 Operação para criar novos pedidos e verificar os já existentes.
 
-### createOrders
+## createOrders
 
 <a id="opIdcreateOrders"></a>
 
@@ -394,7 +394,7 @@ Para executar esta operação, você deve estar autenticado através do método:
 BasicAuth
 </aside>
 
-### consultOrder
+## consultOrder
 
 <a id="opIdconsultOrder"></a>
 
@@ -536,7 +536,7 @@ Para executar esta operação, você deve estar autenticado através do método:
 BasicAuth
 </aside>
 
-### cancelOrder
+## cancelOrder
 
 <a id="opIdcancelOrder"></a>
 
@@ -601,7 +601,7 @@ fetch('https://sandbox.evoluservices.com/api/orders/{uuid}',
 
 `DELETE /api/orders/{uuid}`
 
-*Tenta efetuar o cancelamento de um Link de Pagamento de acordo com o seu Uuid.*
+*Cancela um Link de Pagamento de acordo com o seu uuid.*
 
 <h3 id="cancelorder-parameters">Parameters</h3>
 

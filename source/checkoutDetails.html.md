@@ -293,6 +293,6 @@ Para efetuar o cancelamento de uma order e assim impossibilitar o pagamento e re
 
 Caso o `status` atual da order seja `PENDING`, ele será alterado para `CANCELED` e o Link será cancelado.
 
-Caso o `status` atual seja diferente de `PENDING` (já tenha `status` como `CANCELED` por exemplo), a order não sofrerá alterações.
+Caso o `status` atual seja diferente de `PENDING` (já tenha `status` como `CANCELED` ou `APPROVED`, por exemplo), a order não sofrerá alterações.
 
 Lembre-se que orders com `status` como `CANCELED` **não podem ser reativadas**, portanto uma nova order deverá ser criada, caso seja necessário.

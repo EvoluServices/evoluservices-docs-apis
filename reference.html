@@ -136,11 +136,12 @@ window.onpopstate = function() {
                   <li>
                     <a href="#evoluservices-orders-api-payment-methods" class="toc-h2 toc-link" data-title="">payment-methods</a>
                     
+                  </li>
+                
+                  <li>
+                    <a href="#paymentmethods" class="toc-h2 toc-link" data-title="">paymentMethods</a>
+                    
                       <ul class="toc-list-h3">
-                      
-                      <li>
-                        <a href="#paymentmethods" class="toc-h3 toc-link" data-title="">paymentMethods</a>
-                      </li>
                       
                       <li>
                         <a href="#paymentmethods-parameters" class="toc-h3 toc-link" data-title="">Parameters</a>
@@ -157,11 +158,12 @@ window.onpopstate = function() {
                   <li>
                     <a href="#evoluservices-orders-api-orders" class="toc-h2 toc-link" data-title="">orders</a>
                     
+                  </li>
+                
+                  <li>
+                    <a href="#createorders" class="toc-h2 toc-link" data-title="">createOrders</a>
+                    
                       <ul class="toc-list-h3">
-                      
-                      <li>
-                        <a href="#createorders" class="toc-h3 toc-link" data-title="">createOrders</a>
-                      </li>
                       
                       <li>
                         <a href="#createorders-parameters" class="toc-h3 toc-link" data-title="">Parameters</a>
@@ -171,9 +173,14 @@ window.onpopstate = function() {
                         <a href="#createorders-responses" class="toc-h3 toc-link" data-title="">Responses</a>
                       </li>
                       
-                      <li>
-                        <a href="#consultorder" class="toc-h3 toc-link" data-title="">consultOrder</a>
-                      </li>
+                    </ul>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#consultorder" class="toc-h2 toc-link" data-title="">consultOrder</a>
+                    
+                      <ul class="toc-list-h3">
                       
                       <li>
                         <a href="#consultorder-parameters" class="toc-h3 toc-link" data-title="">Parameters</a>
@@ -183,9 +190,14 @@ window.onpopstate = function() {
                         <a href="#consultorder-responses" class="toc-h3 toc-link" data-title="">Responses</a>
                       </li>
                       
-                      <li>
-                        <a href="#cancelorder" class="toc-h3 toc-link" data-title="">cancelOrder</a>
-                      </li>
+                    </ul>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#cancelorder" class="toc-h2 toc-link" data-title="">cancelOrder</a>
+                    
+                      <ul class="toc-list-h3">
                       
                       <li>
                         <a href="#cancelorder-parameters" class="toc-h3 toc-link" data-title="">Parameters</a>
@@ -424,7 +436,7 @@ os seguintes números:</p>
 <h1 id="requisi--es-e-respostas">Requisições e respostas</h1>
 <h2 id="evoluservices-orders-api-payment-methods">payment-methods</h2>
 <p>Obtém os métodos de pagamento disponíveis para estabelecimentos específicos conforme o valor desejado.</p>
-<h3 id="paymentmethods">paymentMethods</h3>
+<h2 id="paymentmethods">paymentMethods</h2>
 <p><a id="opIdpaymentMethods"></a></p>
 <blockquote>
 <p>Code samples</p>
@@ -598,7 +610,7 @@ BasicAuth
 </aside>
 <h2 id="evoluservices-orders-api-orders">orders</h2>
 <p>Operação para criar novos pedidos e verificar os já existentes.</p>
-<h3 id="createorders">createOrders</h3>
+<h2 id="createorders">createOrders</h2>
 <p><a id="opIdcreateOrders"></a></p>
 <blockquote>
 <p>Code samples</p>
@@ -927,7 +939,7 @@ fetch(<span class="hljs-string">'https://sandbox.evoluservices.com/api/orders'</
 Para executar esta operação, você deve estar autenticado através do método:
 BasicAuth
 </aside>
-<h3 id="consultorder">consultOrder</h3>
+<h2 id="consultorder">consultOrder</h2>
 <p><a id="opIdconsultOrder"></a></p>
 <blockquote>
 <p>Code samples</p>
@@ -1110,7 +1122,7 @@ fetch(<span class="hljs-string">'https://sandbox.evoluservices.com/api/orders/{u
 Para executar esta operação, você deve estar autenticado através do método:
 BasicAuth
 </aside>
-<h3 id="cancelorder">cancelOrder</h3>
+<h2 id="cancelorder">cancelOrder</h2>
 <p><a id="opIdcancelOrder"></a></p>
 <blockquote>
 <p>Code samples</p>
@@ -1165,7 +1177,7 @@ fetch(<span class="hljs-string">'https://sandbox.evoluservices.com/api/orders/{u
 
 </code></pre>
 <p><code>DELETE /api/orders/{uuid}</code></p>
-<p><em>Tenta efetuar o cancelamento de um Link de Pagamento de acordo com o seu Uuid.</em></p>
+<p><em>Cancela um Link de Pagamento de acordo com o seu uuid.</em></p>
 <h3 id="cancelorder-parameters">Parameters</h3>
 <table>
 <thead>
