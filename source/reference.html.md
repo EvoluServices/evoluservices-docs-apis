@@ -602,7 +602,7 @@ fetch('https://sandbox.evoluservices.com/api/orders/{uuid}',
 
 `DELETE /api/orders/{uuid}`
 
-*Tenta efetuar o cancelamento de um Link de Pagamento de acordo com o seu Uuid.*
+*Cancela um Link de Pagamento de acordo com o seu uuid.*
 
 <h3 id="cancelorder-parameters">Parameters</h3>
 
