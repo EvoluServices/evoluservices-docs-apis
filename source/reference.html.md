@@ -72,7 +72,7 @@ Para simular erros com esses dois últimos cartões, basta realizar transações
 
 Obtém os métodos de pagamento disponíveis para estabelecimentos específicos conforme o valor desejado.
 
-### paymentMethods
+## paymentMethods
 
 <a id="opIdpaymentMethods"></a>
 
@@ -201,7 +201,7 @@ BasicAuth
 
 Operação para criar novos pedidos e verificar os já existentes.
 
-### createOrders
+## createOrders
 
 <a id="opIdcreateOrders"></a>
 
@@ -239,7 +239,7 @@ const inputBody = '{
     "quantityCharges": "10",
     "frequency": "30",
     "description": "Venda de equipamento efetuada na data 13/05/2020",
-    "expirationDate": "16/07/2020"
+    "expirationDate": "2020-07-16"
   }
 }';
 const headers = {
@@ -290,7 +290,7 @@ const inputBody = {
     "quantityCharges": "10",
     "frequency": "30",
     "description": "Venda de equipamento efetuada na data 13/05/2020",
-    "expirationDate": "16/07/2020"
+    "expirationDate": "2020-07-16"
   }
 };
 const headers = {
@@ -333,7 +333,7 @@ fetch('https://sandbox.evoluservices.com/api/orders',
     "quantityCharges": "10",
     "frequency": "30",
     "description": "Venda de equipamento efetuada na data 13/05/2020",
-    "expirationDate": "16/07/2020"
+    "expirationDate": "2020-07-16"
   }
 }
 ```
@@ -356,7 +356,7 @@ fetch('https://sandbox.evoluservices.com/api/orders',
 |»» quantityCharges|body|number|false|Quantidade de recorrências que serão cobradas no order O preenchimento do campo é Obrigatório caso o campo `recurrent` seja definido como `true`.|
 |»» frequency|body|number|false|Período fixo entre as cobranças da recorrência, em dias. O preenchimento do campo é Obrigatório caso o campo `recurrent` seja definido como `true`.|
 |»» description|body|string|false|Descrição mais detalhada referente à order.|
-|»» expirationDate|body|string|false|Data de expiração da order. O campo é opcional.|
+|»» expirationDate|body|string|false|Data de vencimento da order. O campo é opcional.|
 
 #### Enumerated Values
 
@@ -394,7 +394,7 @@ Para executar esta operação, você deve estar autenticado através do método:
 BasicAuth
 </aside>
 
-### consultOrder
+## consultOrder
 
 <a id="opIdconsultOrder"></a>
 
@@ -489,6 +489,7 @@ fetch('https://sandbox.evoluservices.com/api/orders/{uuid}',
   "uuid": "e2ba235d-0b30-4edc-981d-e2c222763aee",
   "reference": "123CLIENTS",
   "status": "APPROVED",
+  "expirationDate": "2020-07-16",
   "transactionList": [
     {
       "number": "12345678909",
@@ -536,7 +537,7 @@ Para executar esta operação, você deve estar autenticado através do método:
 BasicAuth
 </aside>
 
-### cancelOrder
+## cancelOrder
 
 <a id="opIdcancelOrder"></a>
 
@@ -774,7 +775,7 @@ Opção para o tipo de pagamento do estabelecimento
     "quantityCharges": "10",
     "frequency": "30",
     "description": "Venda de equipamento efetuada na data 13/05/2020",
-    "expirationDate": "16/07/2020"
+    "expirationDate": "2020-07-16"
   }
 }
 
@@ -799,7 +800,7 @@ Objeto contendo informações para a solicitação de uma nova transação.
 |» quantityCharges|number|false|none|Quantidade de recorrências que serão cobradas no order O preenchimento do campo é Obrigatório caso o campo `recurrent` seja definido como `true`.|
 |» frequency|number|false|none|Período fixo entre as cobranças da recorrência, em dias. O preenchimento do campo é Obrigatório caso o campo `recurrent` seja definido como `true`.|
 |» description|string|false|none|Descrição mais detalhada referente à order.|
-|» expirationDate|string|false|none|Data de expiração da order. O campo é opcional.|
+|» expirationDate|string|false|none|Data de vencimento da order. O campo é opcional.|
 
 #### Enumerated Values
 
@@ -856,6 +857,7 @@ Objeto de retorno contendo informações sobre o link de pagamento gerado pelo o
   "uuid": "e2ba235d-0b30-4edc-981d-e2c222763aee",
   "reference": "123CLIENTS",
   "status": "APPROVED",
+  "expirationDate": "2020-07-16",
   "transactionList": [
     {
       "number": "12345678909",
@@ -897,6 +899,7 @@ Objeto de retorno contendo informações sobre a transação efetuada por um lin
 |uuid|string|false|none|UUID do link de pagamento|
 |reference|string|false|none|Identificação referenciando o order da transação|
 |status|string|false|none|Status da transação|
+|expirationDate|string|false|none|Data de vencimento da order, se existir|
 |transactionList|[[ClientsTransactionDto](#schemaclientstransactiondto)]|false|none|Transações efetuadas pelo link de pagamento.|
 
 #### Enumerated Values

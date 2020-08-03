@@ -136,11 +136,12 @@ window.onpopstate = function() {
                   <li>
                     <a href="#evoluservices-orders-api-payment-methods" class="toc-h2 toc-link" data-title="">payment-methods</a>
                     
+                  </li>
+                
+                  <li>
+                    <a href="#paymentmethods" class="toc-h2 toc-link" data-title="">paymentMethods</a>
+                    
                       <ul class="toc-list-h3">
-                      
-                      <li>
-                        <a href="#paymentmethods" class="toc-h3 toc-link" data-title="">paymentMethods</a>
-                      </li>
                       
                       <li>
                         <a href="#paymentmethods-parameters" class="toc-h3 toc-link" data-title="">Parameters</a>
@@ -157,11 +158,12 @@ window.onpopstate = function() {
                   <li>
                     <a href="#evoluservices-orders-api-orders" class="toc-h2 toc-link" data-title="">orders</a>
                     
+                  </li>
+                
+                  <li>
+                    <a href="#createorders" class="toc-h2 toc-link" data-title="">createOrders</a>
+                    
                       <ul class="toc-list-h3">
-                      
-                      <li>
-                        <a href="#createorders" class="toc-h3 toc-link" data-title="">createOrders</a>
-                      </li>
                       
                       <li>
                         <a href="#createorders-parameters" class="toc-h3 toc-link" data-title="">Parameters</a>
@@ -171,9 +173,14 @@ window.onpopstate = function() {
                         <a href="#createorders-responses" class="toc-h3 toc-link" data-title="">Responses</a>
                       </li>
                       
-                      <li>
-                        <a href="#consultorder" class="toc-h3 toc-link" data-title="">consultOrder</a>
-                      </li>
+                    </ul>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#consultorder" class="toc-h2 toc-link" data-title="">consultOrder</a>
+                    
+                      <ul class="toc-list-h3">
                       
                       <li>
                         <a href="#consultorder-parameters" class="toc-h3 toc-link" data-title="">Parameters</a>
@@ -183,9 +190,14 @@ window.onpopstate = function() {
                         <a href="#consultorder-responses" class="toc-h3 toc-link" data-title="">Responses</a>
                       </li>
                       
-                      <li>
-                        <a href="#cancelorder" class="toc-h3 toc-link" data-title="">cancelOrder</a>
-                      </li>
+                    </ul>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#cancelorder" class="toc-h2 toc-link" data-title="">cancelOrder</a>
+                    
+                      <ul class="toc-list-h3">
                       
                       <li>
                         <a href="#cancelorder-parameters" class="toc-h3 toc-link" data-title="">Parameters</a>
@@ -424,7 +436,7 @@ os seguintes números:</p>
 <h1 id="requisi--es-e-respostas">Requisições e respostas</h1>
 <h2 id="evoluservices-orders-api-payment-methods">payment-methods</h2>
 <p>Obtém os métodos de pagamento disponíveis para estabelecimentos específicos conforme o valor desejado.</p>
-<h3 id="paymentmethods">paymentMethods</h3>
+<h2 id="paymentmethods">paymentMethods</h2>
 <p><a id="opIdpaymentMethods"></a></p>
 <blockquote>
 <p>Code samples</p>
@@ -598,7 +610,7 @@ BasicAuth
 </aside>
 <h2 id="evoluservices-orders-api-orders">orders</h2>
 <p>Operação para criar novos pedidos e verificar os já existentes.</p>
-<h3 id="createorders">createOrders</h3>
+<h2 id="createorders">createOrders</h2>
 <p><a id="opIdcreateOrders"></a></p>
 <blockquote>
 <p>Code samples</p>
@@ -632,7 +644,7 @@ System.out.println(response.toString());
     "quantityCharges": "10",
     "frequency": "30",
     "description": "Venda de equipamento efetuada na data 13/05/2020",
-    "expirationDate": "16/07/2020"
+    "expirationDate": "2020-07-16"
   }
 }'</span>;
 <span class="hljs-keyword">const</span> headers = {
@@ -679,7 +691,7 @@ print(r.json())
     <span class="hljs-string">"quantityCharges"</span>: <span class="hljs-string">"10"</span>,
     <span class="hljs-string">"frequency"</span>: <span class="hljs-string">"30"</span>,
     <span class="hljs-string">"description"</span>: <span class="hljs-string">"Venda de equipamento efetuada na data 13/05/2020"</span>,
-    <span class="hljs-string">"expirationDate"</span>: <span class="hljs-string">"16/07/2020"</span>
+    <span class="hljs-string">"expirationDate"</span>: <span class="hljs-string">"2020-07-16"</span>
   }
 };
 <span class="hljs-keyword">const</span> headers = {
@@ -719,7 +731,7 @@ fetch(<span class="hljs-string">'https://sandbox.evoluservices.com/api/orders'</
     <span class="hljs-attr">"quantityCharges"</span>: <span class="hljs-string">"10"</span>,
     <span class="hljs-attr">"frequency"</span>: <span class="hljs-string">"30"</span>,
     <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Venda de equipamento efetuada na data 13/05/2020"</span>,
-    <span class="hljs-attr">"expirationDate"</span>: <span class="hljs-string">"16/07/2020"</span>
+    <span class="hljs-attr">"expirationDate"</span>: <span class="hljs-string">"2020-07-16"</span>
   }
 }
 </code></pre>
@@ -838,7 +850,7 @@ fetch(<span class="hljs-string">'https://sandbox.evoluservices.com/api/orders'</
 <td>body</td>
 <td>string</td>
 <td>false</td>
-<td>Data de expiração da order. O campo é opcional.</td>
+<td>Data de vencimento da order. O campo é opcional.</td>
 </tr>
 </tbody>
 </table>
@@ -927,7 +939,7 @@ fetch(<span class="hljs-string">'https://sandbox.evoluservices.com/api/orders'</
 Para executar esta operação, você deve estar autenticado através do método:
 BasicAuth
 </aside>
-<h3 id="consultorder">consultOrder</h3>
+<h2 id="consultorder">consultOrder</h2>
 <p><a id="opIdconsultOrder"></a></p>
 <blockquote>
 <p>Code samples</p>
@@ -1027,6 +1039,7 @@ fetch(<span class="hljs-string">'https://sandbox.evoluservices.com/api/orders/{u
   <span class="hljs-attr">"uuid"</span>: <span class="hljs-string">"e2ba235d-0b30-4edc-981d-e2c222763aee"</span>,
   <span class="hljs-attr">"reference"</span>: <span class="hljs-string">"123CLIENTS"</span>,
   <span class="hljs-attr">"status"</span>: <span class="hljs-string">"APPROVED"</span>,
+  <span class="hljs-attr">"expirationDate"</span>: <span class="hljs-string">"2020-07-16"</span>,
   <span class="hljs-attr">"transactionList"</span>: [
     {
       <span class="hljs-attr">"number"</span>: <span class="hljs-string">"12345678909"</span>,
@@ -1110,7 +1123,7 @@ fetch(<span class="hljs-string">'https://sandbox.evoluservices.com/api/orders/{u
 Para executar esta operação, você deve estar autenticado através do método:
 BasicAuth
 </aside>
-<h3 id="cancelorder">cancelOrder</h3>
+<h2 id="cancelorder">cancelOrder</h2>
 <p><a id="opIdcancelOrder"></a></p>
 <blockquote>
 <p>Code samples</p>
@@ -1461,7 +1474,7 @@ BasicAuth
     <span class="hljs-attr">"quantityCharges"</span>: <span class="hljs-string">"10"</span>,
     <span class="hljs-attr">"frequency"</span>: <span class="hljs-string">"30"</span>,
     <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Venda de equipamento efetuada na data 13/05/2020"</span>,
-    <span class="hljs-attr">"expirationDate"</span>: <span class="hljs-string">"16/07/2020"</span>
+    <span class="hljs-attr">"expirationDate"</span>: <span class="hljs-string">"2020-07-16"</span>
   }
 }
 
@@ -1575,7 +1588,7 @@ BasicAuth
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>Data de expiração da order. O campo é opcional.</td>
+<td>Data de vencimento da order. O campo é opcional.</td>
 </tr>
 </tbody>
 </table>
@@ -1686,6 +1699,7 @@ BasicAuth
   <span class="hljs-attr">"uuid"</span>: <span class="hljs-string">"e2ba235d-0b30-4edc-981d-e2c222763aee"</span>,
   <span class="hljs-attr">"reference"</span>: <span class="hljs-string">"123CLIENTS"</span>,
   <span class="hljs-attr">"status"</span>: <span class="hljs-string">"APPROVED"</span>,
+  <span class="hljs-attr">"expirationDate"</span>: <span class="hljs-string">"2020-07-16"</span>,
   <span class="hljs-attr">"transactionList"</span>: [
     {
       <span class="hljs-attr">"number"</span>: <span class="hljs-string">"12345678909"</span>,
@@ -1750,6 +1764,13 @@ BasicAuth
 <td>false</td>
 <td>none</td>
 <td>Status da transação</td>
+</tr>
+<tr>
+<td>expirationDate</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Data de vencimento da order, se existir</td>
 </tr>
 <tr>
 <td>transactionList</td>
