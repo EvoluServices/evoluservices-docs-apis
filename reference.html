@@ -644,7 +644,7 @@ System.out.println(response.toString());
     "quantityCharges": "10",
     "frequency": "30",
     "description": "Venda de equipamento efetuada na data 13/05/2020",
-    "expirationDate": "16/07/2020"
+    "expirationDate": "2020-07-16"
   }
 }'</span>;
 <span class="hljs-keyword">const</span> headers = {
@@ -691,7 +691,7 @@ print(r.json())
     <span class="hljs-string">"quantityCharges"</span>: <span class="hljs-string">"10"</span>,
     <span class="hljs-string">"frequency"</span>: <span class="hljs-string">"30"</span>,
     <span class="hljs-string">"description"</span>: <span class="hljs-string">"Venda de equipamento efetuada na data 13/05/2020"</span>,
-    <span class="hljs-string">"expirationDate"</span>: <span class="hljs-string">"16/07/2020"</span>
+    <span class="hljs-string">"expirationDate"</span>: <span class="hljs-string">"2020-07-16"</span>
   }
 };
 <span class="hljs-keyword">const</span> headers = {
@@ -731,7 +731,7 @@ fetch(<span class="hljs-string">'https://sandbox.evoluservices.com/api/orders'</
     <span class="hljs-attr">"quantityCharges"</span>: <span class="hljs-string">"10"</span>,
     <span class="hljs-attr">"frequency"</span>: <span class="hljs-string">"30"</span>,
     <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Venda de equipamento efetuada na data 13/05/2020"</span>,
-    <span class="hljs-attr">"expirationDate"</span>: <span class="hljs-string">"16/07/2020"</span>
+    <span class="hljs-attr">"expirationDate"</span>: <span class="hljs-string">"2020-07-16"</span>
   }
 }
 </code></pre>
@@ -850,7 +850,7 @@ fetch(<span class="hljs-string">'https://sandbox.evoluservices.com/api/orders'</
 <td>body</td>
 <td>string</td>
 <td>false</td>
-<td>Data de expiração da order. O campo é opcional.</td>
+<td>Data de vencimento da order. O campo é opcional.</td>
 </tr>
 </tbody>
 </table>
@@ -1039,6 +1039,7 @@ fetch(<span class="hljs-string">'https://sandbox.evoluservices.com/api/orders/{u
   <span class="hljs-attr">"uuid"</span>: <span class="hljs-string">"e2ba235d-0b30-4edc-981d-e2c222763aee"</span>,
   <span class="hljs-attr">"reference"</span>: <span class="hljs-string">"123CLIENTS"</span>,
   <span class="hljs-attr">"status"</span>: <span class="hljs-string">"APPROVED"</span>,
+  <span class="hljs-attr">"expirationDate"</span>: <span class="hljs-string">"2020-07-16"</span>,
   <span class="hljs-attr">"transactionList"</span>: [
     {
       <span class="hljs-attr">"number"</span>: <span class="hljs-string">"12345678909"</span>,
@@ -1473,7 +1474,7 @@ BasicAuth
     <span class="hljs-attr">"quantityCharges"</span>: <span class="hljs-string">"10"</span>,
     <span class="hljs-attr">"frequency"</span>: <span class="hljs-string">"30"</span>,
     <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Venda de equipamento efetuada na data 13/05/2020"</span>,
-    <span class="hljs-attr">"expirationDate"</span>: <span class="hljs-string">"16/07/2020"</span>
+    <span class="hljs-attr">"expirationDate"</span>: <span class="hljs-string">"2020-07-16"</span>
   }
 }
 
@@ -1587,7 +1588,7 @@ BasicAuth
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>Data de expiração da order. O campo é opcional.</td>
+<td>Data de vencimento da order. O campo é opcional.</td>
 </tr>
 </tbody>
 </table>
@@ -1698,6 +1699,7 @@ BasicAuth
   <span class="hljs-attr">"uuid"</span>: <span class="hljs-string">"e2ba235d-0b30-4edc-981d-e2c222763aee"</span>,
   <span class="hljs-attr">"reference"</span>: <span class="hljs-string">"123CLIENTS"</span>,
   <span class="hljs-attr">"status"</span>: <span class="hljs-string">"APPROVED"</span>,
+  <span class="hljs-attr">"expirationDate"</span>: <span class="hljs-string">"2020-07-16"</span>,
   <span class="hljs-attr">"transactionList"</span>: [
     {
       <span class="hljs-attr">"number"</span>: <span class="hljs-string">"12345678909"</span>,
@@ -1762,6 +1764,13 @@ BasicAuth
 <td>false</td>
 <td>none</td>
 <td>Status da transação</td>
+</tr>
+<tr>
+<td>expirationDate</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Data de vencimento da order, se existir</td>
 </tr>
 <tr>
 <td>transactionList</td>

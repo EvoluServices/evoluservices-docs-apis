@@ -286,9 +286,9 @@ components:
                 Descrição mais detalhada referente à order.
             expirationDate:
               type: string
-              example: "16/07/2020"
+              example: '2020-07-16'
               description: >-
-                Data de expiração da order. O campo é opcional.
+                Data de vencimento da order. O campo é opcional.
     ClientsOrderOutputDto:
       type: object
       description: >-
@@ -341,6 +341,11 @@ components:
             - APPROVED
             - CANCELED
             - PENDING
+        expirationDate:
+          type: string
+          example: '2020-07-16'
+          description: >-
+            Data de vencimento da order, se existir
         transactionList:
           type: array
           description: >-
