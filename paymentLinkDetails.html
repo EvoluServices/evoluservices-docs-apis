@@ -375,7 +375,7 @@ window.onpopstate = function() {
 </code></pre>
 <p>Para efetuar o cancelamento de uma order e assim impossibilitar o pagamento e reenvio de notificações dela, utilize <a href="./reference.html#cancelorder">/api/orders/{uuid}</a> com o uuid relacionado ao Link de Pagamento que deverá ser cancelado.</p>
 <p>Caso o <code>status</code> atual da order seja <code>PENDING</code>, ele será alterado para <code>CANCELED</code> e o Link será cancelado.</p>
-<p>Caso o <code>status</code> atual seja diferente de <code>PENDING</code> (já tenha <code>status</code> como <code>CANCELED</code> por exemplo), a order não sofrerá alterações.</p>
+<p>Caso o <code>status</code> atual seja diferente de <code>PENDING</code> (já tenha <code>status</code> como <code>CANCELED</code> ou <code>APPROVED</code>, por exemplo), a order não sofrerá alterações.</p>
 <p>Lembre-se que orders com <code>status</code> como <code>CANCELED</code> <strong>não podem ser reativadas</strong>, portanto uma nova order deverá ser criada, caso seja necessário.</p>
 <!-- Renderer: Shins v2.4.1-0 -->
       </div>
