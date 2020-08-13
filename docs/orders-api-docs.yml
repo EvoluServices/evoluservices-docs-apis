@@ -141,7 +141,7 @@ paths:
         '401':
           description: Credenciais invalidas, não autorizado
         '403':
-          description: Uuid nulo ou vazio, não autorizado
+          description: Não autorizado
         '404':
           description: Pedido não encontrado
         '500':
