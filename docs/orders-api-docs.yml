@@ -235,6 +235,13 @@ components:
               example: '2'
               description: >-
                 Número máximo de parcelas permitidos pelo order
+            minInstallments:
+              type: number
+              example: '1'
+              description: >-
+                Número mínimo de parcelas permitidos pelo order.
+                Opcional, caso não seja inserido um valor será considerado como `1`, por padrão.
+                Não pode ser maior do que o valor inserido em `maxInstallments`.
             merchantCode:
               type: string
               example: A1B2C3

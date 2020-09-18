@@ -636,6 +636,7 @@ System.out.println(response.toString());
     "redirectUrl": "https://example.com/callback",
     "amount": "10000.00",
     "maxInstallments": "2",
+    "minInstallments": "1",
     "merchantCode": "A1B2C3",
     "customerName": "Rodrigo",
     "customerDocument": "01234567890",
@@ -683,6 +684,7 @@ print(r.json())
     <span class="hljs-string">"redirectUrl"</span>: <span class="hljs-string">"https://example.com/callback"</span>,
     <span class="hljs-string">"amount"</span>: <span class="hljs-string">"10000.00"</span>,
     <span class="hljs-string">"maxInstallments"</span>: <span class="hljs-string">"2"</span>,
+    <span class="hljs-string">"minInstallments"</span>: <span class="hljs-string">"1"</span>,
     <span class="hljs-string">"merchantCode"</span>: <span class="hljs-string">"A1B2C3"</span>,
     <span class="hljs-string">"customerName"</span>: <span class="hljs-string">"Rodrigo"</span>,
     <span class="hljs-string">"customerDocument"</span>: <span class="hljs-string">"01234567890"</span>,
@@ -723,6 +725,7 @@ fetch(<span class="hljs-string">'https://sandbox.evoluservices.com/api/orders'</
     <span class="hljs-attr">"redirectUrl"</span>: <span class="hljs-string">"https://example.com/callback"</span>,
     <span class="hljs-attr">"amount"</span>: <span class="hljs-string">"10000.00"</span>,
     <span class="hljs-attr">"maxInstallments"</span>: <span class="hljs-string">"2"</span>,
+    <span class="hljs-attr">"minInstallments"</span>: <span class="hljs-string">"1"</span>,
     <span class="hljs-attr">"merchantCode"</span>: <span class="hljs-string">"A1B2C3"</span>,
     <span class="hljs-attr">"customerName"</span>: <span class="hljs-string">"Rodrigo"</span>,
     <span class="hljs-attr">"customerDocument"</span>: <span class="hljs-string">"01234567890"</span>,
@@ -788,6 +791,13 @@ fetch(<span class="hljs-string">'https://sandbox.evoluservices.com/api/orders'</
 <td>number</td>
 <td>false</td>
 <td>Número máximo de parcelas permitidos pelo order</td>
+</tr>
+<tr>
+<td>»» minInstallments</td>
+<td>body</td>
+<td>number</td>
+<td>false</td>
+<td>Número mínimo de parcelas permitidos pelo order. Opcional, caso não seja inserido um valor será considerado como <code>1</code>, por padrão. Não pode ser maior do que o valor inserido em <code>maxInstallments</code>.</td>
 </tr>
 <tr>
 <td>»» merchantCode</td>
@@ -1232,7 +1242,7 @@ fetch(<span class="hljs-string">'https://sandbox.evoluservices.com/api/orders/{u
 <tr>
 <td>403</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
-<td>Uuid nulo ou vazio, não autorizado</td>
+<td>Não autorizado</td>
 <td>None</td>
 </tr>
 <tr>
@@ -1466,6 +1476,7 @@ BasicAuth
     <span class="hljs-attr">"redirectUrl"</span>: <span class="hljs-string">"https://example.com/callback"</span>,
     <span class="hljs-attr">"amount"</span>: <span class="hljs-string">"10000.00"</span>,
     <span class="hljs-attr">"maxInstallments"</span>: <span class="hljs-string">"2"</span>,
+    <span class="hljs-attr">"minInstallments"</span>: <span class="hljs-string">"1"</span>,
     <span class="hljs-attr">"merchantCode"</span>: <span class="hljs-string">"A1B2C3"</span>,
     <span class="hljs-attr">"customerName"</span>: <span class="hljs-string">"Rodrigo"</span>,
     <span class="hljs-attr">"customerDocument"</span>: <span class="hljs-string">"01234567890"</span>,
@@ -1526,6 +1537,13 @@ BasicAuth
 <td>false</td>
 <td>none</td>
 <td>Número máximo de parcelas permitidos pelo order</td>
+</tr>
+<tr>
+<td>» minInstallments</td>
+<td>number</td>
+<td>false</td>
+<td>none</td>
+<td>Número mínimo de parcelas permitidos pelo order. Opcional, caso não seja inserido um valor será considerado como <code>1</code>, por padrão. Não pode ser maior do que o valor inserido em <code>maxInstallments</code>.</td>
 </tr>
 <tr>
 <td>» merchantCode</td>

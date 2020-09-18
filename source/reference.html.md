@@ -231,6 +231,7 @@ const inputBody = '{
     "redirectUrl": "https://example.com/callback",
     "amount": "10000.00",
     "maxInstallments": "2",
+    "minInstallments": "1",
     "merchantCode": "A1B2C3",
     "customerName": "Rodrigo",
     "customerDocument": "01234567890",
@@ -282,6 +283,7 @@ const inputBody = {
     "redirectUrl": "https://example.com/callback",
     "amount": "10000.00",
     "maxInstallments": "2",
+    "minInstallments": "1",
     "merchantCode": "A1B2C3",
     "customerName": "Rodrigo",
     "customerDocument": "01234567890",
@@ -325,6 +327,7 @@ fetch('https://sandbox.evoluservices.com/api/orders',
     "redirectUrl": "https://example.com/callback",
     "amount": "10000.00",
     "maxInstallments": "2",
+    "minInstallments": "1",
     "merchantCode": "A1B2C3",
     "customerName": "Rodrigo",
     "customerDocument": "01234567890",
@@ -348,6 +351,7 @@ fetch('https://sandbox.evoluservices.com/api/orders',
 |»» redirectUrl|body|string|false|Redireciona a URL depois do pagamento do pedido. Faça um retorno de chamada 'POST' com o formato 'x-www-form-urlencoded' e com os parâmetros 'uuid' e 'transactionNumber'|
 |»» amount|body|string|false|Valor do order, em formato decimal (XXXX.XX)|
 |»» maxInstallments|body|number|false|Número máximo de parcelas permitidos pelo order|
+|»» minInstallments|body|number|false|Número mínimo de parcelas permitidos pelo order. Opcional, caso não seja inserido um valor será considerado como `1`, por padrão. Não pode ser maior do que o valor inserido em `maxInstallments`.|
 |»» merchantCode|body|string|false|Código do estabelecimento referente ao order|
 |»» customerName|body|string|false|Nome do cliente do order|
 |»» customerDocument|body|string|false|Documento do cliente do order|
@@ -617,7 +621,7 @@ fetch('https://sandbox.evoluservices.com/api/orders/{uuid}',
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|None|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Exceção de validação|None|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Credenciais invalidas, não autorizado|None|
-|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Uuid nulo ou vazio, não autorizado|None|
+|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Não autorizado|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Pedido não encontrado|None|
 |500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Erro interno no servidor|None|
 
@@ -767,6 +771,7 @@ Opção para o tipo de pagamento do estabelecimento
     "redirectUrl": "https://example.com/callback",
     "amount": "10000.00",
     "maxInstallments": "2",
+    "minInstallments": "1",
     "merchantCode": "A1B2C3",
     "customerName": "Rodrigo",
     "customerDocument": "01234567890",
@@ -792,6 +797,7 @@ Objeto contendo informações para a solicitação de uma nova transação.
 |» redirectUrl|string|false|none|Redireciona a URL depois do pagamento do pedido. Faça um retorno de chamada 'POST' com o formato 'x-www-form-urlencoded' e com os parâmetros 'uuid' e 'transactionNumber'|
 |» amount|string|false|none|Valor do order, em formato decimal (XXXX.XX)|
 |» maxInstallments|number|false|none|Número máximo de parcelas permitidos pelo order|
+|» minInstallments|number|false|none|Número mínimo de parcelas permitidos pelo order. Opcional, caso não seja inserido um valor será considerado como `1`, por padrão. Não pode ser maior do que o valor inserido em `maxInstallments`.|
 |» merchantCode|string|false|none|Código do estabelecimento referente ao order|
 |» customerName|string|false|none|Nome do cliente do order|
 |» customerDocument|string|false|none|Documento do cliente do order|

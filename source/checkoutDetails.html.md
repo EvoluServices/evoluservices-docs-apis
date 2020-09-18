@@ -69,6 +69,7 @@ curl -X POST \
     "redirectUrl": "https://example.com/callback",
     "amount": "10000.00",
     "maxInstallments": "2",
+    "minInstallments": "1",
     "merchantCode": "A1B2C3",
     "customerName": "Rodrigo",
     "customerDocument": "01234567890",

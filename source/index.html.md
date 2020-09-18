@@ -85,6 +85,9 @@ Caso seja necessário, pode entrar em contato pelos seguintes meios de comunica�
 
 # Histórico de revisões
 
+### v1.1.4
+* Inclusão do campo "minInstallments" na <a href="reference.html#createorders">requisição</a> de criação de Orders e no objeto de criação de Orders <a href="reference.html#tocs_clientsorderinputdto">ClientsOrderInputDto</a>.
+
 ### v1.1.3
 * Inclusão do endpoint de cancelamento de Links <a href="reference.html#cancelorder">cancelOrder</a> no Guia de Referência;
 * Inclusão de instruções para uso do endpoint de cancelamento nos procedimentos para integração com os produtos;
