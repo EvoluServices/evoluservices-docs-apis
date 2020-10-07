@@ -33,7 +33,7 @@ Para saber mais informações sobre o Postman, acesse o site do [Postman](https:
 
 No Postman, é possível importar Collections que são um conjunto de exemplos de requisições que podem ser utilizadas para fins de teste. Para importá-la clique no botão abaixo:
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/2acc41900d4af2c5cfa4)
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/5da5c26a20c0e076c7c2)
 
 # Termos fundamentais
 
