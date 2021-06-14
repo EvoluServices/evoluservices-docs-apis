@@ -85,6 +85,8 @@ Caso seja necessário, pode entrar em contato pelos seguintes meios de comunica�
 
 # Histórico de revisões
 
+### v1.1.5
+* Atualização da seção "Homologação" considerando o novo processo dos parceiros adquirirem os credenciais de acesso ao API.
 ### v1.1.4
 * Inclusão do campo "minInstallments" na <a href="reference.html#createorders">requisição</a> de criação de Orders e no objeto de criação de Orders <a href="reference.html#tocs_clientsorderinputdto">ClientsOrderInputDto</a>.
 
