@@ -36,7 +36,7 @@ curl -X GET \
         "maxInstallments": "12",
         "paymentBrands": {
           "value": [
-            "VISA", 
+            "VISA",
             "MASTER",
             "ELO"
           ]
@@ -101,7 +101,7 @@ Tendo o conhecimento dos métodos disponíveis para fazer o checkout, basta util
 
 A resposta dessa requisição será o [ClientOrderOutpuDto](./reference.html#tocs_clientsorderoutputdto), onde será possível encontrar a `uuid` que deve ser redirecionado ao pagador para que a página seja redirecionada através da URL `https://sandbox.evoluservices.com/orders/{uuid}/pay`.
 
-Após o pagamento ser aprovado, o pagador será redirecionado para o endereço que for definido no campo `redirectUrl`. 
+Após o pagamento ser aprovado, o pagador será redirecionado para o endereço que for definido no campo `redirectUrl`.
 
 # 3. Realizar uma transação recorrente com Evoluservices Checkout
 
@@ -183,7 +183,7 @@ Como o campo `recurrent` será `true`, o campo `maxInstallments` será desconsid
 
 Com relação ao campo `recurrentType`, ele pode ter como valor `MONTHLY` ou `FLEXIBLE`. No caso de ser escolhido a opção `MONTHLY`, o que estiver no campo `frequency` não será considerado. E caso a opção `FLEXIBLE` seja escolhida, o campo `frequency` deve ser preenchido com o número de dias em que as transações serão intervaladas. E por último, o campo `quantityCharges` se refere à quantidade de vezes em que essa recorrência de transação ocorrerá.
 
-A partir daqui, a sequência será a mesmo do caso de um link de pagamento de uma transação de crédito. Será recebido como resposta o [ClientOrderOutpuDto](./reference.html#tocs_clientsorderoutputdto) com as informações do checkout em questão, inclusive a `uuid` e poderá fazer o redirecionamento de página através da URL `sandbox.evoluservices.com/orders/{uuid}/pay`. 
+A partir daqui, a sequência será a mesmo do caso de um link de pagamento de uma transação de crédito. Será recebido como resposta o [ClientOrderOutpuDto](./reference.html#tocs_clientsorderoutputdto) com as informações do checkout em questão, inclusive a `uuid` e poderá fazer o redirecionamento de página através da URL `sandbox.evoluservices.com/orders/{uuid}/pay`.
 
 # 4. Realizar uma consulta de uma order específica
 
@@ -213,12 +213,12 @@ curl -X GET \
       "amount": "100.00",
       "installments": "2",
       "paymentBrand": "VISA_CREDITO",
-      "paymentQuantity": "3",
+      "paymentQuantity": "1",
       "nsu": "993485982",
       "authorizationNumber": "470216",
       "customer": {
         "name": "Jose da Silva",
-        "document": "123.456.789-09"
+        "document": "012.345.678-90"
       },
       "payments": [
         {
@@ -227,7 +227,7 @@ curl -X GET \
           "status": "PAYED",
           "payDate": "01/01/2001",
           "merchant": {
-            "name": "Jose da Silva",
+            "name": "Marcelo Pereira",
             "document": "123.456.789-09"
           }
         }
@@ -237,7 +237,32 @@ curl -X GET \
 }
 ```
 
-> 200: Transação pendente
+> 200: Transação reprovada
+```json
+{
+    "uuid": "bf91138e-050c-4f15-bf4a-cfb0dbdeba8e",
+    "reference": "123CLIENTS",
+    "status": "PENDING",
+    "expirationDate": "2021-06-30",
+    "transactionList": [
+        {
+            "number": 855021062300001,
+            "status": "DISAPPROVED",
+            "amount": "333.33",
+            "installments": 3,
+            "paymentBrand": "VISA_CREDITO",
+            "paymentQuantity": 0,
+            "customer": {
+                "name": "Jose da Silva",
+                "document": "57116662073"
+            },
+            "payments": []
+        }
+    ]
+}
+```
+
+> 200: Link pendente, sem transações
 ```json
 {
   "uuid": "e2ba235d-0b30-4edc-981d-e2c222763aee",
@@ -247,9 +272,89 @@ curl -X GET \
 }
 ```
 
+> 200: Link com primeira transação incompleta (erro). Segunda transação aprovada e ha pagamentos para fornecedores.
+```json
+{
+  "uuid": "7d2434d6-4fd8-46e5-abc2-7cc02360c046",
+  "status": "APPROVED",
+  "expirationDate": "2021-08-19",
+  "transactionList": [
+    {
+      "number": 857321081700107,
+      "status": "APPROVED",
+      "amount": "1000.00",
+      "installments": 2,
+      "paymentBrand": "VISA_CREDITO",
+      "paymentQuantity": 4,
+      "nsu": "721808",
+      "authorizationNumber": "789631",
+      "customer": {
+        "name": "Maria Silva",
+        "document": "01234567890"
+      },
+      "payments": [
+        {
+          "number": 1,
+          "amount": "452.00",
+          "status": "UNPAID",
+          "payDate": "17/09/2021",
+          "merchant": {
+            "name": "Clínica Dentista",
+            "document": "01234567890"
+          }
+        },
+        {
+          "number": 2,
+          "amount": "452.00",
+          "status": "UNPAID",
+          "payDate": "18/10/2021",
+          "merchant": {
+            "name": "Clínica Dentista",
+            "document": "01234567890"
+          }
+        },
+        {
+          "number": 1,
+          "amount": "30.00",
+          "status": "UNPAID",
+          "payDate": "17/09/2021",
+          "merchant": {
+            "name": "Fornecedor Raios-x",
+            "document": "33086046716"
+          }
+        },
+        {
+          "number": 2,
+          "amount": "30.00",
+          "status": "UNPAID",
+          "payDate": "18/10/2021",
+          "merchant": {
+            "name": "Fornecedor Raios-x",
+            "document": "33086046716"
+          }
+        }
+      ]
+    },
+    {
+      "number": 856021081200107,
+      "status": "PENDING_APPROVAL",
+      "amount": "1000.00",
+      "installments": 12,
+      "paymentBrand": "VISA_CREDITO",
+      "paymentQuantity": 0,
+      "customer": {
+        "name": "Pedro Costa",
+        "document": "01234567890"
+      },
+      "payments": []
+    }
+  ]
+}
+```
+
 Como comentado, é possível realizar consultas de checkout específicos a qualquer momento. Para realizar tal operação, basta utilizar o [/api/orders/{uuid}](./reference.html#consultorder) com o uuid do checkout desejado.
 
-Caso a transação de chekcout ainda esteja com o pagamento pendente, a resposta será a [ClientOrderOutpuDto](./reference.html#tocs_clientsordertransactionsdto) com `status` como `PENDING`. 
+Caso a transação de chekcout ainda esteja com o pagamento pendente, a resposta será a [ClientOrderOutpuDto](./reference.html#tocs_clientsordertransactionsdto) com `status` como `PENDING`.
 
 Caso tenha ocorrido alguma tentativa da transação ser realizada, cada tentativa irá gerar um [ClientTransactionOutpuDto](./reference.html#tocs_clientstransactiondto) com o `status` adequado referente a cada tentativa dentro da resposta. Na transação que for de fato aprovada, `payments` estará preenchido com as informações dos pagamentos referente à liquidação dessa transação. O campo `payDate` se refere ao dia do pagamento, sendo que se o pagamento já tiver sido realizado, a data será a do dia da liquidação, e se ele ainda não foi realizado, é a data prevista de pagamento.
 
