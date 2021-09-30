@@ -135,7 +135,7 @@ window.onpopstate = function() {
         <span class="hljs-attr">"maxInstallments"</span>: <span class="hljs-string">"12"</span>,
         <span class="hljs-attr">"paymentBrands"</span>: {
           <span class="hljs-attr">"value"</span>: [
-            <span class="hljs-string">"VISA"</span>, 
+            <span class="hljs-string">"VISA"</span>,
             <span class="hljs-string">"MASTER"</span>,
             <span class="hljs-string">"ELO"</span>
           ]
@@ -306,12 +306,12 @@ window.onpopstate = function() {
       <span class="hljs-attr">"amount"</span>: <span class="hljs-string">"100.00"</span>,
       <span class="hljs-attr">"installments"</span>: <span class="hljs-string">"2"</span>,
       <span class="hljs-attr">"paymentBrand"</span>: <span class="hljs-string">"VISA_CREDITO"</span>,
-      <span class="hljs-attr">"paymentQuantity"</span>: <span class="hljs-string">"3"</span>,
+      <span class="hljs-attr">"paymentQuantity"</span>: <span class="hljs-string">"1"</span>,
       <span class="hljs-attr">"nsu"</span>: <span class="hljs-string">"993485982"</span>,
       <span class="hljs-attr">"authorizationNumber"</span>: <span class="hljs-string">"470216"</span>,
       <span class="hljs-attr">"customer"</span>: {
         <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Jose da Silva"</span>,
-        <span class="hljs-attr">"document"</span>: <span class="hljs-string">"123.456.789-09"</span>
+        <span class="hljs-attr">"document"</span>: <span class="hljs-string">"012.345.678-90"</span>
       },
       <span class="hljs-attr">"payments"</span>: [
         {
@@ -320,7 +320,7 @@ window.onpopstate = function() {
           <span class="hljs-attr">"status"</span>: <span class="hljs-string">"PAYED"</span>,
           <span class="hljs-attr">"payDate"</span>: <span class="hljs-string">"01/01/2001"</span>,
           <span class="hljs-attr">"merchant"</span>: {
-            <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Jose da Silva"</span>,
+            <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Marcelo Pereira"</span>,
             <span class="hljs-attr">"document"</span>: <span class="hljs-string">"123.456.789-09"</span>
           }
         }
@@ -330,13 +330,118 @@ window.onpopstate = function() {
 }
 </code></pre>
 <blockquote>
-<p>200: Transação pendente</p>
+<p>200: Transação reprovada</p>
+</blockquote>
+<pre class="highlight tab tab-json"><code>{
+    <span class="hljs-attr">"uuid"</span>: <span class="hljs-string">"bf91138e-050c-4f15-bf4a-cfb0dbdeba8e"</span>,
+    <span class="hljs-attr">"reference"</span>: <span class="hljs-string">"123CLIENTS"</span>,
+    <span class="hljs-attr">"status"</span>: <span class="hljs-string">"PENDING"</span>,
+    <span class="hljs-attr">"expirationDate"</span>: <span class="hljs-string">"2021-06-30"</span>,
+    <span class="hljs-attr">"transactionList"</span>: [
+        {
+            <span class="hljs-attr">"number"</span>: <span class="hljs-number">855021062300001</span>,
+            <span class="hljs-attr">"status"</span>: <span class="hljs-string">"DISAPPROVED"</span>,
+            <span class="hljs-attr">"amount"</span>: <span class="hljs-string">"333.33"</span>,
+            <span class="hljs-attr">"installments"</span>: <span class="hljs-number">3</span>,
+            <span class="hljs-attr">"paymentBrand"</span>: <span class="hljs-string">"VISA_CREDITO"</span>,
+            <span class="hljs-attr">"paymentQuantity"</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">"customer"</span>: {
+                <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Jose da Silva"</span>,
+                <span class="hljs-attr">"document"</span>: <span class="hljs-string">"57116662073"</span>
+            },
+            <span class="hljs-attr">"payments"</span>: []
+        }
+    ]
+}
+</code></pre>
+<blockquote>
+<p>200: Link pendente, sem transações</p>
 </blockquote>
 <pre class="highlight tab tab-json"><code>{
   <span class="hljs-attr">"uuid"</span>: <span class="hljs-string">"e2ba235d-0b30-4edc-981d-e2c222763aee"</span>,
   <span class="hljs-attr">"reference"</span>: <span class="hljs-string">"123CLIENTS"</span>,
   <span class="hljs-attr">"status"</span>: <span class="hljs-string">"PENDING"</span>,
   <span class="hljs-attr">"transactionList"</span>: []
+}
+</code></pre>
+<blockquote>
+<p>200: Link com primeira transação incompleta (erro). Segunda transação aprovada e ha pagamentos para fornecedores.</p>
+</blockquote>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">"uuid"</span>: <span class="hljs-string">"7d2434d6-4fd8-46e5-abc2-7cc02360c046"</span>,
+  <span class="hljs-attr">"status"</span>: <span class="hljs-string">"APPROVED"</span>,
+  <span class="hljs-attr">"expirationDate"</span>: <span class="hljs-string">"2021-08-19"</span>,
+  <span class="hljs-attr">"transactionList"</span>: [
+    {
+      <span class="hljs-attr">"number"</span>: <span class="hljs-number">857321081700107</span>,
+      <span class="hljs-attr">"status"</span>: <span class="hljs-string">"APPROVED"</span>,
+      <span class="hljs-attr">"amount"</span>: <span class="hljs-string">"1000.00"</span>,
+      <span class="hljs-attr">"installments"</span>: <span class="hljs-number">2</span>,
+      <span class="hljs-attr">"paymentBrand"</span>: <span class="hljs-string">"VISA_CREDITO"</span>,
+      <span class="hljs-attr">"paymentQuantity"</span>: <span class="hljs-number">4</span>,
+      <span class="hljs-attr">"nsu"</span>: <span class="hljs-string">"721808"</span>,
+      <span class="hljs-attr">"authorizationNumber"</span>: <span class="hljs-string">"789631"</span>,
+      <span class="hljs-attr">"customer"</span>: {
+        <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Maria Silva"</span>,
+        <span class="hljs-attr">"document"</span>: <span class="hljs-string">"01234567890"</span>
+      },
+      <span class="hljs-attr">"payments"</span>: [
+        {
+          <span class="hljs-attr">"number"</span>: <span class="hljs-number">1</span>,
+          <span class="hljs-attr">"amount"</span>: <span class="hljs-string">"452.00"</span>,
+          <span class="hljs-attr">"status"</span>: <span class="hljs-string">"UNPAID"</span>,
+          <span class="hljs-attr">"payDate"</span>: <span class="hljs-string">"17/09/2021"</span>,
+          <span class="hljs-attr">"merchant"</span>: {
+            <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Clínica Dentista"</span>,
+            <span class="hljs-attr">"document"</span>: <span class="hljs-string">"01234567890"</span>
+          }
+        },
+        {
+          <span class="hljs-attr">"number"</span>: <span class="hljs-number">2</span>,
+          <span class="hljs-attr">"amount"</span>: <span class="hljs-string">"452.00"</span>,
+          <span class="hljs-attr">"status"</span>: <span class="hljs-string">"UNPAID"</span>,
+          <span class="hljs-attr">"payDate"</span>: <span class="hljs-string">"18/10/2021"</span>,
+          <span class="hljs-attr">"merchant"</span>: {
+            <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Clínica Dentista"</span>,
+            <span class="hljs-attr">"document"</span>: <span class="hljs-string">"01234567890"</span>
+          }
+        },
+        {
+          <span class="hljs-attr">"number"</span>: <span class="hljs-number">1</span>,
+          <span class="hljs-attr">"amount"</span>: <span class="hljs-string">"30.00"</span>,
+          <span class="hljs-attr">"status"</span>: <span class="hljs-string">"UNPAID"</span>,
+          <span class="hljs-attr">"payDate"</span>: <span class="hljs-string">"17/09/2021"</span>,
+          <span class="hljs-attr">"merchant"</span>: {
+            <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Fornecedor Raios-x"</span>,
+            <span class="hljs-attr">"document"</span>: <span class="hljs-string">"33086046716"</span>
+          }
+        },
+        {
+          <span class="hljs-attr">"number"</span>: <span class="hljs-number">2</span>,
+          <span class="hljs-attr">"amount"</span>: <span class="hljs-string">"30.00"</span>,
+          <span class="hljs-attr">"status"</span>: <span class="hljs-string">"UNPAID"</span>,
+          <span class="hljs-attr">"payDate"</span>: <span class="hljs-string">"18/10/2021"</span>,
+          <span class="hljs-attr">"merchant"</span>: {
+            <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Fornecedor Raios-x"</span>,
+            <span class="hljs-attr">"document"</span>: <span class="hljs-string">"33086046716"</span>
+          }
+        }
+      ]
+    },
+    {
+      <span class="hljs-attr">"number"</span>: <span class="hljs-number">856021081200107</span>,
+      <span class="hljs-attr">"status"</span>: <span class="hljs-string">"PENDING_APPROVAL"</span>,
+      <span class="hljs-attr">"amount"</span>: <span class="hljs-string">"1000.00"</span>,
+      <span class="hljs-attr">"installments"</span>: <span class="hljs-number">12</span>,
+      <span class="hljs-attr">"paymentBrand"</span>: <span class="hljs-string">"VISA_CREDITO"</span>,
+      <span class="hljs-attr">"paymentQuantity"</span>: <span class="hljs-number">0</span>,
+      <span class="hljs-attr">"customer"</span>: {
+        <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Pedro Costa"</span>,
+        <span class="hljs-attr">"document"</span>: <span class="hljs-string">"01234567890"</span>
+      },
+      <span class="hljs-attr">"payments"</span>: []
+    }
+  ]
 }
 </code></pre>
 <p>Como comentado, é possível realizar consultas de checkout específicos a qualquer momento. Para realizar tal operação, basta utilizar o <a href="./reference.html#consultorder">/api/orders/{uuid}</a> com o uuid do checkout desejado.</p>
