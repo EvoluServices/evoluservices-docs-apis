@@ -79,7 +79,7 @@ Obtém os métodos de pagamento disponíveis para estabelecimentos específicos 
 > Code samples
 
 ```java
-URL obj = new URL("https://sandbox.evoluservices.com/api/payment-methods");
+URL obj = new URL("https://sandbox.evoluservices.com/api/payment-methods?paymentMethods%2Eamount=string&paymentMethods%2EmerchantCode=string");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
 int responseCode = con.getResponseCode();
@@ -101,7 +101,7 @@ const headers = {
   'Accept':'application/json'
 };
 
-fetch('https://sandbox.evoluservices.com/api/payment-methods',
+fetch('https://sandbox.evoluservices.com/api/payment-methods?paymentMethods%2Eamount=string&paymentMethods%2EmerchantCode=string',
 {
   method: 'GET',
 
@@ -121,7 +121,9 @@ headers = {
   'Accept': 'application/json'
 }
 
-r = requests.get('https://sandbox.evoluservices.com/api/payment-methods', headers = headers)
+r = requests.get('https://sandbox.evoluservices.com/api/payment-methods', params={
+  'paymentMethods.amount': 'string',  'paymentMethods.merchantCode': 'string'
+}, headers = headers)
 
 print(r.json())
 
@@ -134,7 +136,7 @@ const headers = {
   'Accept':'application/json'
 };
 
-fetch('https://sandbox.evoluservices.com/api/payment-methods',
+fetch('https://sandbox.evoluservices.com/api/payment-methods?paymentMethods%2Eamount=string&paymentMethods%2EmerchantCode=string',
 {
   method: 'GET',
 
@@ -156,8 +158,8 @@ fetch('https://sandbox.evoluservices.com/api/payment-methods',
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|paymentMethods.amount|query|string|false|Valor do pagamento|
-|paymentMethods.merchantCode|query|string|false|Código de identificação do estabelecimento|
+|paymentMethods.amount|query|string|true|Valor do pagamento|
+|paymentMethods.merchantCode|query|string|true|Código de identificação do estabelecimento|
 
 > Example responses
 

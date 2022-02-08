@@ -33,11 +33,13 @@ paths:
           schema:
             type: string
           description: Valor do pagamento
+          required: true
         - in: query
           name: paymentMethods.merchantCode
           schema:
             type: string
           description: Código de identificação do estabelecimento
+          required: true
       responses:
         '200':
           description: OK

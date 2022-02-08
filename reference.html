@@ -441,7 +441,7 @@ os seguintes números:</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight tab tab-java"><code>URL obj = <span class="hljs-keyword">new</span> URL(<span class="hljs-string">"https://sandbox.evoluservices.com/api/payment-methods"</span>);
+<pre class="highlight tab tab-java"><code>URL obj = <span class="hljs-keyword">new</span> URL(<span class="hljs-string">"https://sandbox.evoluservices.com/api/payment-methods?paymentMethods%2Eamount=string&amp;paymentMethods%2EmerchantCode=string"</span>);
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod(<span class="hljs-string">"GET"</span>);
 <span class="hljs-keyword">int</span> responseCode = con.getResponseCode();
@@ -461,7 +461,7 @@ System.out.println(response.toString());
   <span class="hljs-string">'Accept'</span>:<span class="hljs-string">'application/json'</span>
 };
 
-fetch(<span class="hljs-string">'https://sandbox.evoluservices.com/api/payment-methods'</span>,
+fetch(<span class="hljs-string">'https://sandbox.evoluservices.com/api/payment-methods?paymentMethods%2Eamount=string&amp;paymentMethods%2EmerchantCode=string'</span>,
 {
   <span class="hljs-attr">method</span>: <span class="hljs-string">'GET'</span>,
 
@@ -479,7 +479,9 @@ headers = {
   <span class="hljs-string">'Accept'</span>: <span class="hljs-string">'application/json'</span>
 }
 
-r = requests.get(<span class="hljs-string">'https://sandbox.evoluservices.com/api/payment-methods'</span>, headers = headers)
+r = requests.get(<span class="hljs-string">'https://sandbox.evoluservices.com/api/payment-methods'</span>, params={
+  <span class="hljs-string">'paymentMethods.amount'</span>: <span class="hljs-string">'string'</span>,  <span class="hljs-string">'paymentMethods.merchantCode'</span>: <span class="hljs-string">'string'</span>
+}, headers = headers)
 
 print(r.json())
 
@@ -490,7 +492,7 @@ print(r.json())
   <span class="hljs-string">'Accept'</span>:<span class="hljs-string">'application/json'</span>
 };
 
-fetch(<span class="hljs-string">'https://sandbox.evoluservices.com/api/payment-methods'</span>,
+fetch(<span class="hljs-string">'https://sandbox.evoluservices.com/api/payment-methods?paymentMethods%2Eamount=string&amp;paymentMethods%2EmerchantCode=string'</span>,
 {
   <span class="hljs-attr">method</span>: <span class="hljs-string">'GET'</span>,
 
@@ -521,14 +523,14 @@ fetch(<span class="hljs-string">'https://sandbox.evoluservices.com/api/payment-m
 <td>paymentMethods.amount</td>
 <td>query</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>Valor do pagamento</td>
 </tr>
 <tr>
 <td>paymentMethods.merchantCode</td>
 <td>query</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>Código de identificação do estabelecimento</td>
 </tr>
 </tbody>
